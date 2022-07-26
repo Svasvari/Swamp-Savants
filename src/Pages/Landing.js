@@ -1,8 +1,12 @@
-
+import React from 'react';
+import ReactPlayer from 'react-player';
 
 const Landing = () => {
     return (
-        <h2>Welcome!</h2>
+        <div className='videoContainer'>
+            <ReactPlayer className="video" id="video" controls={true} on url="https://youtu.be/iC6rWNpWStE" />
+        </div>
+
     );
 };
 

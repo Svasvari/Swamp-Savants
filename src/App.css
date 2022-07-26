@@ -133,3 +133,11 @@ li a {
 #games:hover .dd {
   display: block;
 }
+
+/* VIDEO */
+.video {
+  border: #222;
+  border-style: solid;
+  border-width: 10px;
+  margin: 10px;
+}

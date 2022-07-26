@@ -27,6 +27,7 @@ function App() {
       </nav>
       <div>
         <Routes>
+        <Route path="/" element={<Landing />} />
           <Route path="/featured" element={<Landing />} />
         </Routes>
       </div>
