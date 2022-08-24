@@ -353,6 +353,8 @@ li {
   position: absolute;
   top: 0;
   left: 0;
+  width: 400%;
+  height: 100%;
   -webkit-transition: left 0.4s;
   transition: left 0.4s;
   display: -webkit-box;
