@@ -5,7 +5,9 @@
 }
 
 body {
-  background: linear-gradient(45deg, #ea4f4c 0%, #6d0019 100%);
+  background: linear-gradient(45deg, #914cea 0%, #45006d 100%);
+  background-image: url('https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661358374/Tarot%20Cards/Hunt_rk7afl.jpg');
+  background-size: cover;
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
@@ -23,11 +25,13 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: #222;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+  /* background-color: #222; */
+  background-color: transparent;
+  /* box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25); */
   color: white;
   text-transform: uppercase;
   width: 600;
+  z-index: 1000;
 }
 
 .logoWrapper {
@@ -36,11 +40,13 @@ body {
 
 .stylish {
   font-weight: bold;
+  font-size: xx-large;
 }
 
 .logo {
   padding-left: 4px;
-  color: #ea4f4c;
+  font-size: xx-large;
+  color: red;
 }
 
 .navigation {
@@ -70,8 +76,17 @@ body {
   color: white;
 }
 
+.link-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  color: white;
+}
+
 .link:hover {
-  color: #ea4f4c;
+  color: red
 }
 
 .fa-minus {
@@ -88,22 +103,10 @@ body {
 }
 
 .fas {
-  color: #ea4f4c;
+  color: #914cea;
   margin: -2px 4px 0;
   font-size: 10px;
   transition: all 0.3s ease-in-out;
-}
-
-.subnavigation {
-  display: none;
-  list-style-type: none;
-  width: 500px;
-  position: absolute;
-  top: 40%;
-  left: 25%;
-  margin: auto;
-  transition: all 0.3s ease-in-out;
-  background-color: #222;
 }
 
 li a {
@@ -111,33 +114,181 @@ li a {
   padding: 0 5px;
 }
 
-.dd {
-  display: none;
-  position: absolute;
-  background-color: #222;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1;
+/* Card Deck */
+.Deck h3 {
+  color: WhiteSmoke;
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
-.subparent {
-  padding: 10px;
+.Deck h3 span {
+  color: Red;
+}
+
+.Deck h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: WhiteSmoke;
+}
+
+.Deck h4 span {
+  color: Red;
+}
+
+.Cards {
+  margin-top: 80px;
+}
+
+.Card {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  max-width: 400px;
+}
+
+.deal-button {
+  margin: 0.5em;
+  padding: 0.5em 1.5em;
+  border: 2px solid Red;
+  border-radius: 5px;
+  outline: none;
+  background: none;
+  font-size: 20px;
+  color: WhiteSmoke;
+  transition: 0.25s;
+}
+
+.deal-button:hover {
+  box-shadow: inset 0 0 0 2rem Red;
   cursor: pointer;
 }
 
-#games:hover {
-  border-bottom: none;
+/* Parallax */
+#parallax {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-3.png), url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-2.png), url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: 50% 50%;
 }
 
-#games:hover .dd {
-  display: block;
+h1 {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: "Arial";
+  text-transform: uppercase;
+  opacity: .2;
+  font-size: 70px;
 }
 
-/* VIDEO */
-.video {
-  border: #222;
-  border-style: solid;
-  border-width: 10px;
-  margin: 10px;
+html {
+  background: linear-gradient(135deg, #2b7594 0%, #655900 100%);
+  position: fixed;
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+.slider-box {
+  float: right;
+  margin: 10px 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+#range {
+  margin-top: 5px;
+  color: #eee;
+  font-size: 10pt;
+  margin-left: 10px;
+  position: relative;
+}
+
+#specks {
+  position: absolute;
+  z-index: 999;
+  height: 100vh;
+  width: 100vw;
+}
+
+.speck {
+  opacity: 0;
+  height: 4px;
+  width: 4px;
+  background: url("http://i1272.photobucket.com/albums/y391/matthew_williams10/speck_zpsu9xym9zl.png");
+  background-size: cover;
+  position: absolute;
+  border-radius: 10px;
+  z-index: 99;
+}
+
+.img {
+  position: absolute;
+  height: 100000px;
+  width: 100000px;
+  top: -8500px;
+  left: -8000px;
+  animation-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+  animation-name: float;
+  animation-iteration-count: infinite;
+}
+
+#img-1 {
+  opacity: 0.25;
+  background: url("https://image.ibb.co/jcTvpv/dust1.jpg");
+  background-repeat: repeat;
+  animation-duration: 600s;
+}
+
+#img-2 {
+  opacity: 0.2;
+  background: url("https://image.ibb.co/goU1Uv/dust2.jpg");
+  background-repeat: repeat;
+  animation-duration: 450s;
+}
+
+#img-3 {
+  opacity: 0.15;
+  background: url("https://image.ibb.co/cymRwa/dust3.jpg");
+  background-repeat: repeat;
+  animation-duration: 350s;
+}
+/*ANIMATIONS*/
+
+@keyframes twinkle {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  30% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(175px, 100px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(8000px, 4000px);
+  }
 }
