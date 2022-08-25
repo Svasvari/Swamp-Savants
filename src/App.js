@@ -10,38 +10,120 @@ import PrestigeRoulette from './Pages/prestigeRoulette';
 
 function App() {
 
-  const [page, setPage] = useState(0);
+  const [screenID, setScreenID] = useState(1);
+
+  const handleDot1 = (screenID) => {
+    let dot1 = document.getElementById('dot1');
+    let dot2 = document.getElementById('dot2');
+    let dot3 = document.getElementById('dot3');
+    let screen1 = document.getElementById("page1");
+    let screen2 = document.getElementById("page2");
+    let screen3 = document.getElementById("page3");
+    dot1.setAttribute("style", "background:red");
+    dot2.setAttribute("style", "background:white");
+    dot3.setAttribute("style", "background:white");
+
+    //From screen3 to screen1
+    if (screenID === 3) {
+      screen1.style.transform = "translateY(0%)";
+      screen3.style.transform = "translateY(100%)";
+      screen2.style.transform = "translateY(100%)";
+      screen2.style.opacity = "0";
+
+    } else if (screenID === 2) {
+      //From screen2 to screen1
+      screen1.style.transform = "translateY(0%)";
+      screen2.style.transform = "translateY(100%)";
+    }
+    setScreenID(1);
+  }
+  const handleDot2 = (screenID) => {
+    let background2 = document.getElementById('background2');
+    let dot1 = document.getElementById('dot1');
+    let dot2 = document.getElementById('dot2');
+    let dot3 = document.getElementById('dot3');
+    let screen1 = document.getElementById("page1");
+    let screen2 = document.getElementById("page2");
+    let screen3 = document.getElementById("page3");
+    dot1.setAttribute("style", "background:white");
+    dot2.setAttribute("style", "background:red");
+    dot3.setAttribute("style", "background:white");
+    screen1.style.transform = "translateY(-100%)";
+    screen2.style.transform = "translateY(0%)";
+
+    //From screen3 to screen 2
+    if (screenID === 3) {
+      screen2.style.opacity = "100";
+      screen3.style.transform = "translateY(100%)";
+    } else if (screenID === 1) {
+      //From screen1 to screen 2
+      screen2.style.opacity = "100";
+      screen2.style.transform = "translateY(0%)";
+      screen1.style.transform = "translateY(-100%)";
+      background2.style.transform = "translateY(0%)";
+
+
+    }
+
+
+    setScreenID(2);
+  }
+  const handleDot3 = (screenID) => {
+    let dot1 = document.getElementById('dot1');
+    let dot2 = document.getElementById('dot2');
+    let dot3 = document.getElementById('dot3');
+    let screen1 = document.getElementById("page1");
+    let screen2 = document.getElementById("page2");
+    let screen3 = document.getElementById("page3");
+    dot1.setAttribute("style", "background:white");
+    dot2.setAttribute("style", "background:white");
+    dot3.setAttribute("style", "background:red");
+
+    //From screen1 to screen3
+    if (screenID === 1) {
+      screen1.style.transform = "translateY(-100%)";
+      screen3.style.transform = "translateY(0%)";
+      screen2.style.transform = "translateY(-100%)";
+      screen2.style.opacity = "0";
+    } else if (screenID === 2) {
+      //From screen2 to screen3
+      screen2.style.transform = "translateY(-100%)";
+      screen3.style.transform = "translateY(0%)";
+    }
+
+
+
+
+    setScreenID(3);
+  }
 
   return (
-    <div>
+    <div className='main'>
       <nav className="navigationWrapper">
-        <div className="logoWrapper" onClick={() => setPage(0)}>
+        <div className="logoWrapper" onClick={() => handleDot1(screenID)}>
           <span className="stylish">Swamp</span>
           <span className="logo">Savant</span>
         </div>
         <ul className="navigation">
-          <li className="parent" onClick={() => setPage(1)}>Loadout Randomizer</li>
-          <li className="parent" onClick={() => setPage(2)}>Prestige Roulette</li>
+          <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot2(screenID)}>Loadout Randomizer</li>
+          <li className={screenID === 1 ? ("parent") : ('parent2')}>Prestige Roulette</li>
           <li className="parent"><a className="link" href="/about">About</a></li>
           <li className="parent"><a className="link" href="/contact">Contact</a></li>
         </ul>
       </nav>
-      {page === 0 ? (
-        <Landing />)
-        :
-        (<></>)
-      }
-      {page === 1 ? (
-        <LoudoutRandomizer />)
-        :
-        (<></>)
-      }
-      {page === 2 ? (
-        <PrestigeRoulette />)
-        :
-        (<></>)
-      }
 
+      
+      <div id='background2'>
+        <div id="page2">
+          <LoudoutRandomizer />
+        </div>
+        <div id="page3">
+          <PrestigeRoulette />
+        </div>
+      </div>
+      <div id="page1">
+        <Landing />
+      </div>
       <div class="slider">
         <div class="items-group">
           <div class="item">
@@ -54,13 +136,9 @@ function App() {
 
         <div class="navigations">
           <ul class="dots">
-            <li id='dot1' onClick={() => {
-              let elem = document.getElementById('dot1');
-              elem.className = '.slider .navigations .dots li.active'
-              setPage(0);
-              }}/>
-            <li className='dot2' onClick={() => setPage(1)}/>
-            <li className='dot3' onClick={() => setPage(2)}/>
+            <li id='dot1' onClick={() => { handleDot1(screenID) }} />
+            <li id='dot2' onClick={() => handleDot2(screenID)} />
+            <li id='dot3' onClick={() => handleDot3(screenID)} />
           </ul>
         </div>
       </div>

@@ -5,8 +5,7 @@
 }
 
 body {
-  background: linear-gradient(45deg, #914cea 0%, #45006d 100%);
-  background-image: url('https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661358374/Tarot%20Cards/Hunt_rk7afl.jpg');
+  background-color: #222;
   background-size: cover;
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -20,18 +19,20 @@ body {
 
 /* NAVBAR */
 .navigationWrapper {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  /* background-color: #222; */
   background-color: transparent;
   /* box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25); */
   color: white;
   text-transform: uppercase;
   width: 100vw;
-  z-index: 1000;
+  z-index: 5000;
 }
 
 .logoWrapper {
@@ -40,7 +41,7 @@ body {
 }
 
 .stylish {
-  font-weight: bold;
+  font-weight: bolder;
   font-size: xx-large;
 }
 
@@ -59,17 +60,26 @@ body {
 .navigation li {
   opacity: 1;
   list-style-type: none;
-  color: white;
   text-decoration: none;
+  font-weight: bolder;
   transition: all 0.3s ease-in-out;
 }
 
 .parent {
   padding: 0 10px;
   cursor: pointer;
+  color: black;
+}
+.parent2 {
+  padding: 0 10px;
+  cursor: pointer;
+  color: white;
 }
 
 .parent:hover {
+  color: red;
+}
+.parent2:hover {
   color: red;
 }
 
@@ -172,6 +182,104 @@ li a {
   cursor: pointer;
 }
 
+
+
+/* SLider */
+.slider .navigations {
+  position: absolute;
+  min-width: 10vw;
+  min-height: 100vh;
+  height:500px;
+  top: 50vh;
+  left: 1vw;
+  z-index: 1001;
+}
+.slider .navigations .dots {
+  height: 100%;
+  padding: 0px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.slider .navigations .dots li {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fff;
+  border-radius: 50%;
+  margin: 5%;
+}
+
+#dot1 {
+  background: red;
+}
+#dot2 {
+  background: white;
+}
+#dot2 {
+  background: white;
+}
+
+.slider .navigations .dots li:hover {
+  filter: blur(2px);
+}
+.slider .navigations .dots li.active:hover {
+  filter: blur(0px);
+}
+
+/* Page Movenment */
+
+#page1 {
+  background-image: url('https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661409424/Tarot%20Cards/Hunt_Trees_rjcnx1.jpg');
+  background-size: cover;
+  box-shadow: 0px 0px 90px 90px black;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  transform: translateY(0%);
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 999;
+  filter: brightness(200%);
+}
+#background2 {
+  background-size: cover;
+  width: 200vh;
+  height: 100vh;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  position: absolute;
+  z-index: 1000;
+}
+#page2 {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1000;
+}
+#page3 {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 997;
+}
+
 /* Parallax */
 #parallax {
   position: relative;
@@ -196,7 +304,6 @@ h1 {
 }
 
 html {
-  background: linear-gradient(135deg, #2b7594 0%, #655900 100%);
   position: fixed;
   overflow: hidden;
   font-family: "Orbitron", sans-serif;
@@ -271,7 +378,7 @@ li {
   animation-duration: 350s;
 }
 
-/*ANIMATIONS*/
+/* ANIMATIONS */
 
 @keyframes twinkle {
   0% {
@@ -305,158 +412,18 @@ li {
   }
 }
 
-/* SLider */
-.slider {
-  width: 100%;
-  height: 100vh;
-}
-.slider .items-group {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.slider .items-group .item {
-  top: 0px;
-  left: 0px;
-  opacity: 0;
+#test {
+  background-image: url('https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661358374/Tarot%20Cards/Hunt_rk7afl.jpg');
+  background-size: cover;
+  opacity: 80%;;
   width: 100vw;
   height: 100vh;
-  display: flex;
   overflow: hidden;
-  transition: 0.5s;
-  visibility: hidden;
-  position: relative;
-  padding: 50px 20px;
-  position: absolute;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-.slider .items-group .item:hover .bg {
-  opacity: 0.2;
-}
-.slider .items-group .item:hover .block {
-  box-shadow: 0px 0px 50px #333;
-}
-.slider .items-group .item.active {
-  opacity: 1;
-  visibility: visible;
-}
-.slider .items-group .item .bg {
-  top: 0px;
-  left: 0px;
-  opacity: 1;
-  z-index: 900;
-  width: 100%;
-  height: 100%;
-  transition: 0.5s;
-  position: absolute;
-  transform: scale(1.03);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.slider .items-group .item .blur {
-  top: 0px;
-  left: 0px;
-  z-index: 900;
-  width: 100%;
-  height: 100%;
-  transition: 0.5s;
-  filter: blur(5px);
-  position: absolute;
-  transform: scale(1.03);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.slider .items-group .item .block {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  color: #ffffff;
-  transition: box-shadow 0.5s;
-  max-width: 300px;
-  overflow: hidden;
-  max-height: 450px;
-  border-radius: 10px;
-  transform: scale(1.03);
-  box-sizing: border-box;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  box-shadow: none;
-}
-.slider .items-group .item .block .circleLight {
-  top: 0px;
-  left: 0px;
-  opacity: 0;
-  content: "";
-  width: 100%;
-  height: 100%;
-  display: block;
-  transition: 0.5s;
-  position: absolute;
-  border-radius: 10px;
-  background: radial-gradient(circle at 80px 40px, #fff, transparent);
-}
-.slider .items-group .item .block .text {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  background-position: center;
-  background-attachment: fixed;
-}
-.slider .items-group .item .block h2 {
-  font-family: "Oswald", sans-serif;
-  font-size: 130px;
-  margin-bottom: 0px;
-}
-.slider .items-group .item .block p {
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-}
-.slider .items-group .item .block:hover {
-  box-shadow: 0px 0px 70px #111;
-}
-.slider .items-group .item .block:hover .circleLight {
-  opacity: 0.4;
-}
-.slider .navigations {
-  bottom: 0px;
-  width: 100%;
   position: absolute;
   z-index: 1000;
 }
-.slider .navigations .dots {
-  height: 20px;
-  padding: 10px 0px;
-  text-align: center;
-}
-.slider .navigations .dots li {
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  background: #fff;
-  border-radius: 50%;
-  display: inline-block;
-  vertical-align: middle;
-}
-.slider .navigations .dots li + li {
-  margin-left: 10px;
-}
-.slider .navigations .dots li:hover {
-  filter: blur(2px);
-}
-.slider .navigations .dots li.active {
-  width: 15px;
-  height: 15px;
-  background: red;
-}
-.slider .navigations .dots li.active:hover {
-  filter: blur(0px);
-}/*# sourceMappingURL=slider.css.map */
