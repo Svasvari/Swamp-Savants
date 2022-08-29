@@ -412,18 +412,6 @@ li {
   }
 }
 
-#test {
-  background-image: url('https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661358374/Tarot%20Cards/Hunt_rk7afl.jpg');
-  background-size: cover;
-  opacity: 80%;;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  transform: translateY(100%);
-  transition: transform 0.5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 1000;
+.test {
+  color: #fff;
 }
