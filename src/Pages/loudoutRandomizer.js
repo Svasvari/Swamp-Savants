@@ -166,7 +166,7 @@ const LoudoutRandomizer = () => {
         let currentToolPool = toolPool;
 
         //Tool 1
-        if(fixedMedkit) {
+        if (fixedMedkit) {
             randomToolOne = tools.filter((tool) => tool.name === 'First Aid Kit')
             setToolOne(randomToolOne[0]);
             currentToolPool = currentToolPool.filter((tool) => tool.name !== 'First Aid Kit');
@@ -176,7 +176,7 @@ const LoudoutRandomizer = () => {
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolOne.name);
         }
         //Tool 2
-        if(fixedMeleeTool) {
+        if (fixedMeleeTool) {
             let randomMeleeTools = toolPool.filter((tool) => tool.type === 'melee')
             randomToolTwo = randomMeleeTools[Math.floor(Math.random() * randomMeleeTools.length)];
             setToolTwo(randomToolTwo);
@@ -228,15 +228,62 @@ const LoudoutRandomizer = () => {
             <h4>
                 A <span>Randomized</span> Loadout Generator
             </h4>
-            <h2 className="test">Name: {weaponOne.name} / Ammo Type: {weaponOneAmmo}</h2>
-            <h2 className="test">Name: {weaponTwo.name} / Ammo Type: {weaponTwoAmmo}</h2>
-            <h2 className="test">Tool 1: {toolOne.name}, Tool 2: {toolTwo.name}, Tool 3: {toolThree.name}, Tool 4: {toolFour.name}</h2>
-            <h2 className="test">C1: {consumableOne.name}, C2: {consumableTwo.name}, C3: {consumableThree.name}, C4: {consumableFour.name}</h2>
-            <button onClick={() => setFixedMedkit(!fixedMedkit)}>{fixedMedkit ? 'Disable Fixed Medkit' : 'Enable Fixed Medkit '}</button>
-            <button onClick={() => setFixedMeleeTool(!fixedMeleeTool)}>{fixedMeleeTool ? 'Disable Fixed Melee Tool' : 'Enable Fixed Melee Tool '}</button>
-            <button onClick={() => setCustomAmmo(!customAmmo)}>{customAmmo ? 'Disable Custom Ammo' : 'Enable Custom Ammo '}</button>
-            <button onClick={() => setQuartermaster(!quartermaster)}>{quartermaster ? 'Disable Quartermaster' : 'Enable Quartermaster '}</button>
-            <button onClick={() => handleDisableScopes()}>{disableScopes ? 'Enable Scopes' : 'Disable Scopes'}</button>
+            <div className="main-panel-container">
+                <div className="options-container">
+                    <button onClick={() => setFixedMedkit(!fixedMedkit)}>{fixedMedkit ? 'Disable Fixed Medkit' : 'Enable Fixed Medkit '}</button>
+                    <button onClick={() => setFixedMeleeTool(!fixedMeleeTool)}>{fixedMeleeTool ? 'Disable Fixed Melee Tool' : 'Enable Fixed Melee Tool '}</button>
+                    <button onClick={() => setCustomAmmo(!customAmmo)}>{customAmmo ? 'Disable Custom Ammo' : 'Enable Custom Ammo '}</button>
+                    <button onClick={() => setQuartermaster(!quartermaster)}>{quartermaster ? 'Disable Quartermaster' : 'Enable Quartermaster '}</button>
+                    <button onClick={() => handleDisableScopes()}>{disableScopes ? 'Enable Scopes' : 'Disable Scopes'}</button>
+                </div>
+                <div className="loudout-container">
+                    <div className="weapon-slot-container">
+                        <div className="weapon-slot">
+                            <h2 className="test">{weaponOne.name}</h2>
+                        </div>
+                        <div className="ammo-slot">
+                            <h2 className="test">{weaponOneAmmo}</h2>
+                        </div>
+                    </div>
+                    <div className="weapon-slot-container">
+                        <div className="weapon-slot">
+                            <h2 className="test">{weaponTwo.name}</h2>
+                        </div>
+                        <div className="ammo-slot">
+                            <h2 className="test">{weaponTwoAmmo}</h2>
+                        </div>
+                    </div>
+                    <div className="tool-slot-container">
+                        <div className="tool-slot">
+                            <h2 className="test">{toolOne.name}</h2>
+                        </div>
+                        <div className="tool-slot">
+                            <h2 className="test">{toolTwo.name}</h2>
+                        </div>
+                        <div className="tool-slot">
+                            <h2 className="test">{toolThree.name}</h2>
+                        </div>
+                        <div className="tool-slot">
+                            <h2 className="test">{toolFour.name}</h2>
+                        </div>
+                    </div>
+                    <div className="tool-slot-container">
+                        <div className="tool-slot">
+                            <h2 className="test">{consumableOne.name}</h2>
+                        </div>
+                        <div className="tool-slot">
+                            <h2 className="test">{consumableTwo.name}</h2>
+                        </div>
+                        <div className="tool-slot">
+                            <h2 className="test">{consumableThree.name}</h2>
+                        </div>
+                        <div className="tool-slot">
+                            <h2 className="test">{consumableFour.name}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <button onClick={() => roll()}>GENERATE</button>
         </div>
 

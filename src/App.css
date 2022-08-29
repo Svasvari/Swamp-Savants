@@ -70,6 +70,7 @@ body {
   cursor: pointer;
   color: black;
 }
+
 .parent2 {
   padding: 0 10px;
   cursor: pointer;
@@ -79,6 +80,7 @@ body {
 .parent:hover {
   color: red;
 }
+
 .parent2:hover {
   color: red;
 }
@@ -189,17 +191,19 @@ li a {
   position: absolute;
   min-width: 10vw;
   min-height: 100vh;
-  height:500px;
+  height: 500px;
   top: 50vh;
   left: 1vw;
   z-index: 1001;
 }
+
 .slider .navigations .dots {
   height: 100%;
   padding: 0px 0px;
   display: flex;
   flex-direction: column;
 }
+
 .slider .navigations .dots li {
   width: 10px;
   height: 10px;
@@ -213,9 +217,11 @@ li a {
 #dot1 {
   background: red;
 }
+
 #dot2 {
   background: white;
 }
+
 #dot2 {
   background: white;
 }
@@ -223,6 +229,7 @@ li a {
 .slider .navigations .dots li:hover {
   filter: blur(2px);
 }
+
 .slider .navigations .dots li.active:hover {
   filter: blur(0px);
 }
@@ -245,6 +252,7 @@ li a {
   z-index: 999;
   filter: brightness(200%);
 }
+
 #background2 {
   background-size: cover;
   width: 200vh;
@@ -255,6 +263,7 @@ li a {
   position: absolute;
   z-index: 1000;
 }
+
 #page2 {
   width: 100%;
   height: 100vh;
@@ -267,6 +276,7 @@ li a {
   position: absolute;
   z-index: 1000;
 }
+
 #page3 {
   width: 100%;
   height: 100vh;
@@ -412,6 +422,78 @@ li {
   }
 }
 
+/* Loudout Randomizer */
+.main-panel-container {
+  position: relative;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -250px;
+}
+
+.options-container button {
+  margin: 1%;
+  width: 200px;
+}
+
+.loudout-container {
+
+}
+
+.weapon-slot-container {
+  display: flex;
+}
+
+.weapon-slot {
+  background-color: grey;
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 5px;
+  border-radius: 10px;
+  padding: 1%;
+  width: 500px;
+  height: 50px;
+  margin-bottom: 1%;
+  margin-right: 1%;
+  display: flex;
+  align-items: center;
+}
+
+.ammo-slot {
+  background-color: grey;
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 5px;
+  border-radius: 10px;
+  padding: 1%;
+  min-width: 150px;
+  height: 50px;
+}
+
+.tool-slot-container {
+  display: flex;
+  margin-bottom: 1%;
+}
+
+.tool-slot {
+  background-color: grey;
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 5px;
+  border-radius: 10px;
+  padding: 0.5%;
+  width: 150px;
+  height: 75px;
+  margin-right: 1.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TEST */
 .test {
   color: #fff;
 }
