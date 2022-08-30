@@ -133,6 +133,10 @@ li a {
 }
 
 /* Card Deck */
+.Deck {
+  
+}
+
 .Deck h3 {
   color: WhiteSmoke;
   font-size: 40px;
@@ -257,7 +261,7 @@ li a {
   background-size: cover;
   width: 200vh;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   transform: translateY(100%);
   transition: transform 0.5s ease;
   position: absolute;
@@ -265,16 +269,16 @@ li a {
 }
 
 #page2 {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   transform: translateY(100%);
   transition: transform 0.5s ease;
   display: flex;
   justify-content: center;
-  align-items: center;
   position: absolute;
   z-index: 1000;
+  margin-top: 100px;
 }
 
 #page3 {
@@ -423,8 +427,21 @@ li {
 }
 
 /* Loudout Randomizer */
+.loudout-title {
+  position: relative;
+  margin-bottom: 15%;
+}
+
+.loudout-subtitle {
+  position: absolute;
+  top:30px;
+  left:50px;
+}
+
 .main-panel-container {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .options-container {
@@ -440,7 +457,7 @@ li {
 }
 
 .loudout-container {
-
+  max-width: fit-content;
 }
 
 .weapon-slot-container {
@@ -448,52 +465,134 @@ li {
 }
 
 .weapon-slot {
-  background-color: grey;
+  background-color: rgb(128, 128, 128, 0.3);
   border-style: solid;
   border-color: whitesmoke;
   border-width: 5px;
   border-radius: 10px;
   padding: 1%;
   width: 500px;
-  height: 50px;
-  margin-bottom: 1%;
-  margin-right: 1%;
-  display: flex;
-  align-items: center;
-}
-
-.ammo-slot {
-  background-color: grey;
-  border-style: solid;
-  border-color: whitesmoke;
-  border-width: 5px;
-  border-radius: 10px;
-  padding: 1%;
-  min-width: 150px;
-  height: 50px;
-}
-
-.tool-slot-container {
-  display: flex;
-  margin-bottom: 1%;
-}
-
-.tool-slot {
-  background-color: grey;
-  border-style: solid;
-  border-color: whitesmoke;
-  border-width: 5px;
-  border-radius: 10px;
-  padding: 0.5%;
-  width: 150px;
-  height: 75px;
-  margin-right: 1.5%;
+  height: 100px;
+  margin-bottom: 3%;
+  margin-right: 3%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.ammo-slot {
+  background-color: rgb(128, 128, 128, 0.3);
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 5px;
+  border-radius: 10px;
+  padding: 1%;
+  width: 50px;
+  height: 100px;
+}
+
+.tool-slot-container {
+  display: flex;
+  margin-bottom: 3%;
+}
+
+.tool-slot {
+  background-color: rgb(128, 128, 128, 0.3);
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 5px;
+  border-radius: 10px;
+  padding: 0.5%;
+  width: 100px;
+  height: 125px;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Loader */
+#loader {
+  /* margin: calc(4px - 9em) -9em; */
+  border: solid 0 #fff;
+  border-width: 2px 0px 0;
+  padding: calc(1.625em - 1px) 1.625em;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 5px #fff;
+  filter: blur(0.5px) drop-shadow(0 0 3px red) drop-shadow(0 0 5px red) drop-shadow(0 0 7px red);
+  animation: a 1s linear infinite;
+}
+
+@keyframes a {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 /* TEST */
 .test {
   color: #fff;
+}
+
+.wrapper{
+  margin: 0 auto;
+  text-align:center;
+}
+
+.btn_fab{
+  color: red;
+  text-transform: uppercase;
+  font-family:'Lato', sans-serif;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 3px solid red;
+  border-radius: 10px;
+  padding: 15px 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.btn_fab:hover{
+  animation-name: change-background;
+  animation-duration: .3s;
+  -webkit-animation-delay: .3s; /* Chrome, Safari, Opera */
+  animation-delay: .3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes change-background {
+    0%   {background: transparent;}
+    100% {background: red; color: #000;}
+}
+
+.btn_fab:before{
+  position: absolute;
+  content:"";
+  width: 10px;
+  height: 3px;
+  left:0;
+  top:22px;
+  background-color: red;
+  animation-name: right-to-left;
+  animation-duration: .3s;
+}
+
+@keyframes right-to-left {
+    0%   {width: 100%;}
+    50% {width: 100%; right: 0; }
+  100% { width: 10px; left:0; right: auto; }
+}
+
+.btn_fab:hover:before{
+  animation-name: left-to-right;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes left-to-right {
+    0%   {width: 10px;}
+    50% {width: 100%; left: 0; }
+  100% { width: 10px; right:0; left: auto; }
 }

@@ -77,6 +77,7 @@ const LoudoutRandomizer = () => {
     const weaponsMasterList = [].concat(weaponsSmall, weaponsMedium, weaponsLarge);
     const [weaponsPool, setWeaponsPool] = useState([].concat(weaponsSmall, weaponsMedium, weaponsLarge));
     const [toolPool, setToolPool] = useState(tools);
+    const [generating, setGenerating] = useState(false);
 
     //Toggle Options
     const [quartermaster, setQuartermaster] = useState(false);
@@ -86,7 +87,7 @@ const LoudoutRandomizer = () => {
     const [fixedMeleeTool, setFixedMeleeTool] = useState(false);
 
     //Weapons
-    const [weaponOne, setWeaponOne] = useState("N/A");
+    const [weaponOne, setWeaponOne] = useState('');
     const [weaponOneAmmo, setWeaponOneAmmo] = useState('N/A');
     const [weaponTwo, setWeaponTwo] = useState("N/A");
     const [weaponTwoAmmo, setWeaponTwoAmmo] = useState('N/A');
@@ -98,7 +99,7 @@ const LoudoutRandomizer = () => {
     const [toolFour, setToolFour] = useState('N/A');
 
     //Consumables
-    const [consumableOne, setConsumableOne] = useState('N/A');
+    const [consumableOne, setConsumableOne] = useState('');
     const [consumableTwo, setConsumableTwo] = useState('N/A');
     const [consumableThree, setConsumableThree] = useState('N/A');
     const [consumableFour, setConsumableFour] = useState('N/A');
@@ -118,6 +119,22 @@ const LoudoutRandomizer = () => {
 
     //Generate Loudout
     const roll = () => {
+        setGenerating(true);
+        setWeaponOne('');
+        setWeaponTwo('');
+        setWeaponOneAmmo('');
+        setWeaponTwoAmmo('');
+        setToolOne('');
+        setToolTwo('');
+        setToolThree('');
+        setToolFour('');
+        setConsumableOne('');
+        setConsumableTwo('');
+        setConsumableThree('');
+        setConsumableFour('');
+
+        let timeoutStart = 2000;
+
         //Roll Weapons
         let randomWeaponOne = '';
         let randomWeaponOneAmmo = '';
@@ -129,19 +146,27 @@ const LoudoutRandomizer = () => {
 
             randomWeaponOne = largeWeapons[Math.floor(Math.random() * largeWeapons.length)];
             randomWeaponOneAmmo = customAmmo ? randomWeaponOne.specialAmmo[Math.floor(Math.random() * randomWeaponOne.specialAmmo.length)] : '';
-            setWeaponOne(randomWeaponOne);
-            setWeaponOneAmmo(randomWeaponOneAmmo);
+            setTimeout(() => {
+                setWeaponOne(randomWeaponOne);
+                setWeaponOneAmmo(randomWeaponOneAmmo);
+            }, timeoutStart + 1000);
 
             randomWeaponTwo = weaponsMedium[Math.floor(Math.random() * weaponsMedium.length)];
             randomWeaponTwoAmmo = customAmmo ? randomWeaponTwo.specialAmmo[Math.floor(Math.random() * randomWeaponTwo.specialAmmo.length)] : '';
-            setWeaponTwo(randomWeaponTwo);
-            setWeaponTwoAmmo(randomWeaponTwoAmmo);
+            setTimeout(() => {
+                setWeaponTwo(randomWeaponTwo);
+                setWeaponTwoAmmo(randomWeaponTwoAmmo);
+            }, timeoutStart + 2000);
+
         } else {
             //Roll Weapon One
             randomWeaponOne = weaponsPool[Math.floor(Math.random() * weaponsPool.length)];
             randomWeaponOneAmmo = customAmmo ? randomWeaponOne.specialAmmo[Math.floor(Math.random() * randomWeaponOne.specialAmmo.length)] : '';
-            setWeaponOne(randomWeaponOne);
-            setWeaponOneAmmo(randomWeaponOneAmmo);
+            setTimeout(() => {
+                setWeaponOne(randomWeaponOne);
+                setWeaponOneAmmo(randomWeaponOneAmmo);
+            }, timeoutStart + 1000);
+
 
             //Roll Weapon Two
             let weapon2Pool = [];
@@ -154,8 +179,11 @@ const LoudoutRandomizer = () => {
             }
             randomWeaponTwo = weapon2Pool[Math.floor(Math.random() * weapon2Pool.length)];
             randomWeaponTwoAmmo = customAmmo ? randomWeaponTwo.specialAmmo[Math.floor(Math.random() * randomWeaponTwo.specialAmmo.length)] : '';
-            setWeaponTwo(randomWeaponTwo);
-            setWeaponTwoAmmo(randomWeaponTwoAmmo);
+            setTimeout(() => {
+                setWeaponTwo(randomWeaponTwo);
+                setWeaponTwoAmmo(randomWeaponTwoAmmo);
+            }, timeoutStart + 2000);
+
         }
 
         //Roll Tools
@@ -168,32 +196,45 @@ const LoudoutRandomizer = () => {
         //Tool 1
         if (fixedMedkit) {
             randomToolOne = tools.filter((tool) => tool.name === 'First Aid Kit')
-            setToolOne(randomToolOne[0]);
             currentToolPool = currentToolPool.filter((tool) => tool.name !== 'First Aid Kit');
+            setTimeout(() => {
+                setToolOne(randomToolOne[0]);
+            }, timeoutStart + 3000);
         } else {
             randomToolOne = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
-            setToolOne(randomToolOne);
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolOne.name);
+            setTimeout(() => {
+                setToolOne(randomToolOne);
+            }, timeoutStart + 3000);
         }
         //Tool 2
         if (fixedMeleeTool) {
             let randomMeleeTools = toolPool.filter((tool) => tool.type === 'melee')
             randomToolTwo = randomMeleeTools[Math.floor(Math.random() * randomMeleeTools.length)];
-            setToolTwo(randomToolTwo);
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
+            setTimeout(() => {
+                setToolTwo(randomToolTwo);
+            }, timeoutStart + 4000);
         } else {
             randomToolTwo = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
-            setToolTwo(randomToolTwo);
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
+            setTimeout(() => {
+                setToolTwo(randomToolTwo);
+            }, timeoutStart + 4000);
         }
         //Tool 3
         randomToolThree = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
-        setToolThree(randomToolThree);
         currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolThree.name);
+        setTimeout(() => {
+            setToolThree(randomToolThree);
+        }, timeoutStart + 5000);
 
         //Tool 4
         randomToolFour = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
-        setToolFour(randomToolFour);
+        setTimeout(() => {
+            setToolFour(randomToolFour);
+        }, timeoutStart + 6000);
+
 
         //Roll Consumables
         let randomConsumableOne = '';
@@ -203,31 +244,41 @@ const LoudoutRandomizer = () => {
 
         //Consumable One
         randomConsumableOne = consumables[Math.floor(Math.random() * consumables.length)];
-        setConsumableOne(randomConsumableOne);
+        setTimeout(() => {
+            setConsumableOne(randomConsumableOne);
+        }, timeoutStart + 7000);
 
         //Consumable Two
         randomConsumableTwo = consumables[Math.floor(Math.random() * consumables.length)];
-        setConsumableTwo(randomConsumableTwo);
+        setTimeout(() => {
+            setConsumableTwo(randomConsumableTwo);
+        }, timeoutStart + 8000);
+
 
         //Consumable Three
         randomConsumableThree = consumables[Math.floor(Math.random() * consumables.length)];
-        setConsumableThree(randomConsumableThree);
+        setTimeout(() => {
+            setConsumableThree(randomConsumableThree);
+        }, timeoutStart + 9000);
+
 
         //Consumable Four
         randomConsumableFour = consumables[Math.floor(Math.random() * consumables.length)];
-        setConsumableFour(randomConsumableFour);
+        setTimeout(() => {
+            setConsumableFour(randomConsumableFour);
+        }, timeoutStart + 10000);
+
     }
 
     return (
 
         <div className="Deck">
-            {console.log(weaponsPool)}
-            <h3>
+            <h3 className="loudout-title">
                 <span role="img">♢</span>Loudout Randomizer<span role="img">♢</span>
+                <h4 className="loudout-subtitle">
+                    A <span>Randomized</span> Loadout Generator
+                </h4>
             </h3>
-            <h4>
-                A <span>Randomized</span> Loadout Generator
-            </h4>
             <div className="main-panel-container">
                 <div className="options-container">
                     <button onClick={() => setFixedMedkit(!fixedMedkit)}>{fixedMedkit ? 'Disable Fixed Medkit' : 'Enable Fixed Medkit '}</button>
@@ -237,54 +288,62 @@ const LoudoutRandomizer = () => {
                     <button onClick={() => handleDisableScopes()}>{disableScopes ? 'Enable Scopes' : 'Disable Scopes'}</button>
                 </div>
                 <div className="loudout-container">
+                    <h4 className="test">Primary Weapon</h4>
                     <div className="weapon-slot-container">
                         <div className="weapon-slot">
-                            <h2 className="test">{weaponOne.name}</h2>
+                            {generating && weaponOne === '' ? <div id="loader"></div> : <h2 className="test">{weaponOne.name}</h2>}
                         </div>
                         <div className="ammo-slot">
                             <h2 className="test">{weaponOneAmmo}</h2>
                         </div>
                     </div>
+                    <h4 className="test">Secondary Weapon</h4>
                     <div className="weapon-slot-container">
                         <div className="weapon-slot">
-                            <h2 className="test">{weaponTwo.name}</h2>
+                            {generating && weaponTwo === '' ? <div id="loader"></div> : <h2 className="test">{weaponTwo.name}</h2>}
                         </div>
                         <div className="ammo-slot">
                             <h2 className="test">{weaponTwoAmmo}</h2>
                         </div>
                     </div>
+                    <h4 className="test">Tools</h4>
                     <div className="tool-slot-container">
                         <div className="tool-slot">
-                            <h2 className="test">{toolOne.name}</h2>
+                            {generating && toolOne === '' ? <div id="loader"></div> : <h2 className="test">{toolOne.name}</h2>}
                         </div>
                         <div className="tool-slot">
-                            <h2 className="test">{toolTwo.name}</h2>
+                            {generating && toolTwo === '' ? <div id="loader"></div> : <h2 className="test">{toolTwo.name}</h2>}
                         </div>
                         <div className="tool-slot">
-                            <h2 className="test">{toolThree.name}</h2>
+                            {generating && toolThree === '' ? <div id="loader"></div> : <h2 className="test">{toolThree.name}</h2>}
                         </div>
                         <div className="tool-slot">
-                            <h2 className="test">{toolFour.name}</h2>
+                            {generating && toolFour === '' ? <div id="loader"></div> : <h2 className="test">{toolFour.name}</h2>}
                         </div>
                     </div>
+                    <h4 className="test">Consumables</h4>
                     <div className="tool-slot-container">
                         <div className="tool-slot">
-                            <h2 className="test">{consumableOne.name}</h2>
+                            {generating && consumableOne === '' ? <div id="loader"></div> : <h2 className="test">{consumableOne.name}</h2>}
                         </div>
                         <div className="tool-slot">
-                            <h2 className="test">{consumableTwo.name}</h2>
+                            {generating && consumableTwo === '' ? <div id="loader"></div> : <h2 className="test">{consumableTwo.name}</h2>}
                         </div>
                         <div className="tool-slot">
-                            <h2 className="test">{consumableThree.name}</h2>
+                            {generating && consumableThree === '' ? <div id="loader"></div> : <h2 className="test">{consumableThree.name}</h2>}
                         </div>
                         <div className="tool-slot">
-                            <h2 className="test">{consumableFour.name}</h2>
+                            {generating && consumableFour === '' ? <div id="loader"></div> : <h2 className="test">{consumableFour.name}</h2>}
                         </div>
+                    </div>
+                    <div className="wrapper">
+                        <div className="btn_fab" onClick={() => roll()}>GENERATE</div>
                     </div>
                 </div>
             </div>
+            {/* <button onClick={() => roll()}>GENERATE</button> */}
 
-            <button onClick={() => roll()}>GENERATE</button>
+            {() => setGenerating(false)}
         </div>
 
 
