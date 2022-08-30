@@ -483,6 +483,7 @@ li {
   border-radius: 12px;
   width: 50px;
   height: 100px;
+  background-size: cover;
 }
 
 .tool-slot-container {
@@ -504,6 +505,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
 }
 
 /* Loader */

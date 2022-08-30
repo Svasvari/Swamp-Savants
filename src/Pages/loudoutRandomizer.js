@@ -4,8 +4,8 @@ import React, { useRef, useEffect, useState } from "react";
 const LoudoutRandomizer = () => {
 
     const weaponsSmall = [
-        { name: 'Bornheim No. 3', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
-        { name: 'Bornheim No. 3 Extended', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
+        { name: 'Bornheim No. 3', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889146/Tarot%20Cards/borneheim-no3_vctocq.png' },
+        { name: 'Bornheim No. 3 Extended', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889055/Tarot%20Cards/bornheim-extended_ktju8j.png' },
         { name: 'Caldwell Conversion Uppercut', size: 'S', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Explosive'], image: '' },
         { name: 'Caldwell Pax', size: 'S', defaultAmmo: 'Medium', specialAmmo: ['', 'Incendiary', 'Dumdum'], image: '' },
         { name: 'Caldwell Pax Claw', size: 'S', defaultAmmo: 'Medium', specialAmmo: ['', 'Incendiary', 'Dumdum'], image: '' },
@@ -13,62 +13,66 @@ const LoudoutRandomizer = () => {
     ];
 
     const weaponsMedium = [
-        { name: 'Bornheim No. 3 Match', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887574/Tarot%20Cards/bornheim_match_mdngtb.jpg' },
+        { name: 'Bornheim No. 3 Match', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887574/Tarot%20Cards/bornheim_match_mdngtb.jpg' },
         // { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
         // { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
     ];
 
     const weaponsLarge = [
         // { name: 'Berthier Mle 1892', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
-        // { name: 'Lebel 1886', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
-        // { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
+        { name: 'Lebel 1886', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888932/Tarot%20Cards/lebel_fxon4g.png' },
+        { name: 'Lebel 1886 Aperture', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888788/Tarot%20Cards/lebel-apeture_huzfek.png' },
         { name: 'Lebel 1886 Marksman', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], scope: 'marksman', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661883811/Tarot%20Cards/lebel_marksman.jpeg_yvfcyq.png' },
+        { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888684/Tarot%20Cards/lebel-talon_mgx3gs.png' },
+
 
     ];
 
     const tools = [
         { name: 'Alert Trip Mine', image: '' },
         { name: 'Blank Fire Decoys', image: '' },
-        { name: 'Choke Bomb', image: '' },
-        { name: 'Concertina Trip Mine', image: '' },
+        { name: 'Choke Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891054/Tarot%20Cards/choke-bomb_h1ugv8.png' },
+        { name: 'Concertina Trip Mine', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890746/Tarot%20Cards/concertina-mine_uwkm7u.png' },
         { name: 'Decoy Fuses', image: '' },
-        { name: 'Decoys', image: '' },
-        { name: 'Dusters', type: 'melee', image: '' },
-        { name: 'Electric Lamp', image: '' },
-        { name: 'First Aid Kit', image: '' },
+        { name: 'Decoys', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890748/Tarot%20Cards/decoys_gernzt.png' },
+        { name: 'Dusters', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891055/Tarot%20Cards/dusters_okdzh4.png' },
+        { name: 'Electric Lamp', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890752/Tarot%20Cards/lamp_uyszss.png' },
+        { name: 'First Aid Kit', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890339/Tarot%20Cards/medkit_x1pqx5.png' },
         { name: 'Flare Pistol', image: '' },
         { name: 'Fusees', image: '' },
-        { name: 'Heavy Knife', type: 'melee', image: '' },
-        { name: 'Knife', type: 'melee', image: '' },
-        { name: 'Knuckle Knife', type: 'melee', image: '' },
+        { name: 'Heavy Knife', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890333/Tarot%20Cards/heavy-knife_uxnh6n.png' },
+        { name: 'Knife', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891068/Tarot%20Cards/knife_xbrvxb.png' },
+        { name: 'Knuckle Knife', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890750/Tarot%20Cards/knuckle-knife_ijtllt.png' },
         { name: 'Poison Trip Mine', image: '' },
-        { name: 'Quad Derringer', image: '' },
-        { name: 'Spyglass', image: '' },
-        { name: 'Throwing Knives', image: '' },
+        { name: 'Quad Derringer', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890330/Tarot%20Cards/derringer_z0pbny.png' },
+        { name: 'Spyglass', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889783/Tarot%20Cards/spyglass_gzeu0h.png' },
+        { name: 'Throwing Knives', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890346/Tarot%20Cards/throwing-knives_yfmt0q.png' },
     ];
 
     const consumables = [
-        { name: 'Ammo Box', image: '' },
+        { name: 'Ammo Box', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891052/Tarot%20Cards/ammo-box_inhglj.png' },
         { name: 'Antidote Shot', image: '' },
-        { name: 'Big Dynamite Bundle', image: '' },
+        { name: 'Big Dynamite Bundle', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890739/Tarot%20Cards/big-dynamite-bundle_m8ujd6.png' },
         { name: 'Chaos Bomb', image: '' },
         { name: 'Concertina Bomb', image: '' },
-        { name: 'Dynamite Bundle', image: '' },
-        { name: 'Dynamite Stick', image: '' },
-        { name: 'Fire Bomb', image: '' },
+        { name: 'Dynamite Bundle', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890741/Tarot%20Cards/dynamite-bundle_fubjxp.png' },
+        { name: 'Dynamite Stick', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891060/Tarot%20Cards/dynamite-stick_rhwho9.png' },
+        { name: 'Fire Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890331/Tarot%20Cards/firebomb_xkroes.png' },
         { name: 'Flash Bomb', image: '' },
-        { name: 'Frag Bomb', image: '' },
+        { name: 'Frag Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890743/Tarot%20Cards/frag_eqe339.png' },
         { name: 'Hellfire Bomb', image: '' },
         { name: 'Hive Bomb', image: '' },
-        { name: 'Liquid Fire Bomb', image: '' },
-        { name: 'Poison Bomb', image: '' },
-        { name: 'Stamina Shot', image: '' },
-        { name: 'Sticky Bomb', image: '' },
-        { name: 'Vitality Shot', image: '' },
-        { name: 'Waxed Dynamite Stick', image: '' },
-        { name: 'Weak Antidote Shot', image: '' },
-        { name: 'Weak Stamina Shot', image: '' },
-        { name: 'Weak Vitality Shot', image: '' },
+        { name: 'Liquid Fire Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890338/Tarot%20Cards/liquid-firebomb_h6iioi.png' },
+        { name: 'Poison Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891090/Tarot%20Cards/poison-bomb_mi0ohq.png' },
+        { name: 'Regeneration Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889795/Tarot%20Cards/regen-shot_wct8jk.png' },
+        { name: 'Stamina Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889797/Tarot%20Cards/stam-shot_dv2aun.png' },
+        { name: 'Sticky Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890756/Tarot%20Cards/sticky_xifdeg.png' },
+        { name: 'Vitality Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890342/Tarot%20Cards/vitality-shot_zblhw9.png' },
+        { name: 'Waxed Dynamite Stick', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891065/Tarot%20Cards/wax-stick_r7zmqg.png' },
+        { name: 'Weak Antidote Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888577/Tarot%20Cards/weak-antidote-shot_ll5fj2.png' },
+        { name: 'Weak Regeneration Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890377/Tarot%20Cards/weak-regen-shot_sruqvx.png' },
+        { name: 'Weak Stamina Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888391/Tarot%20Cards/weak-stam-shot_akwoxo.png' },
+        { name: 'Weak Vitality Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887961/Tarot%20Cards/weak-vitality-Shot_rt5fls.png' },
     ];
 
     //Loader Logic
@@ -387,7 +391,7 @@ const LoudoutRandomizer = () => {
                 <div className="loudout-container">
                     <h4 className="test">Primary Weapon</h4>
                     <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponOne.image === undefined ? {borderColor: 'rgb(128, 128, 128, 0.1)'} : {backgroundImage: `url(${weaponOne.image})`, borderColor: 'rgb(128, 128, 128)'}}>
+                        <div className="weapon-slot" style={(repeat && generating) || weaponOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && weaponOne === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="ammo-slot">
@@ -396,7 +400,7 @@ const LoudoutRandomizer = () => {
                     </div>
                     <h4 className="test">Secondary Weapon</h4>
                     <div className="weapon-slot-container">
-                    <div className="weapon-slot" style={(repeat && generating) || weaponTwo.image === undefined ? {borderColor: 'rgb(128, 128, 128, 0.1)'} : {backgroundImage: `url(${weaponTwo.image})`, borderColor: 'rgb(128, 128, 128)'}}>
+                        <div className="weapon-slot" style={(repeat && generating) || weaponTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="ammo-slot">
@@ -405,32 +409,32 @@ const LoudoutRandomizer = () => {
                     </div>
                     <h4 className="test">Tools</h4>
                     <div className="tool-slot-container">
-                        <div className="tool-slot">
-                            {generating && toolOne === '' ? <div id="loader"></div> : <h2 className="test">{toolOne.name}</h2>}
+                    <div className="tool-slot" style={(repeat && generating) || toolOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolOne === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot">
-                            {generating && toolTwo === '' ? <div id="loader"></div> : <h2 className="test">{toolTwo.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || toolTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolTwo === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot">
-                            {generating && toolThree === '' ? <div id="loader"></div> : <h2 className="test">{toolThree.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || toolThree.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolThree === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot">
-                            {generating && toolFour === '' ? <div id="loader"></div> : <h2 className="test">{toolFour.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || toolFour.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolFour === '' ? <div id="loader"></div> : ''}
                         </div>
                     </div>
                     <h4 className="test">Consumables</h4>
                     <div className="tool-slot-container">
-                        <div className="tool-slot">
-                            {generating && consumableOne === '' ? <div id="loader"></div> : <h2 className="test">{consumableOne.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || consumableOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableOne === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot">
-                            {generating && consumableTwo === '' ? <div id="loader"></div> : <h2 className="test">{consumableTwo.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || consumableTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableTwo === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot">
-                            {generating && consumableThree === '' ? <div id="loader"></div> : <h2 className="test">{consumableThree.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || consumableThree.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableThree === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot">
-                            {generating && consumableFour === '' ? <div id="loader"></div> : <h2 className="test">{consumableFour.name}</h2>}
+                        <div className="tool-slot" style={(repeat && generating) || consumableFour.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableFour === '' ? <div id="loader"></div> : ''}
                         </div>
                     </div>
                 </div>
