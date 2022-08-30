@@ -461,10 +461,9 @@ li {
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
-  border-color: rgb(128, 128, 128, 0.1);;
+  border-color: rgb(128, 128, 128, 0.1);
   border-width: 5px;
-  border-radius: 10px;
-  padding: 1%;
+  border-radius: 12px;
   width: 500px;
   height: 100px;
   margin-bottom: 3%;
@@ -472,6 +471,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
 }
 
 .ammo-slot {
@@ -481,7 +481,6 @@ li {
   border-color: rgb(128, 128, 128, 0.1);
   border-width: 5px;
   border-radius: 12px;
-  padding: 1%;
   width: 50px;
   height: 100px;
 }
@@ -498,7 +497,6 @@ li {
   border-color: rgb(128, 128, 128, 0.1);;
   border-width: 5px;
   border-radius: 12px;
-  padding: 0.5%;
   width: 100px;
   height: 125px;
   margin-right: 3%;

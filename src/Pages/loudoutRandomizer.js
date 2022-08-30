@@ -13,16 +13,16 @@ const LoudoutRandomizer = () => {
     ];
 
     const weaponsMedium = [
-        { name: 'Bornheim No. 3 Match', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
-        { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
-        { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
+        { name: 'Bornheim No. 3 Match', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887574/Tarot%20Cards/bornheim_match_mdngtb.jpg' },
+        // { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
+        // { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
     ];
 
     const weaponsLarge = [
-        { name: 'Berthier Mle 1892', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
-        { name: 'Lebel 1886', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
-        { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
-        { name: 'Lebel 1886 Marksman', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], scope: 'marksman', image: '' },
+        // { name: 'Berthier Mle 1892', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
+        // { name: 'Lebel 1886', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
+        // { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
+        { name: 'Lebel 1886 Marksman', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], scope: 'marksman', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661883811/Tarot%20Cards/lebel_marksman.jpeg_yvfcyq.png' },
 
     ];
 
@@ -110,21 +110,21 @@ const LoudoutRandomizer = () => {
 
     //Weapons
     const [weaponOne, setWeaponOne] = useState('');
-    const [weaponOneAmmo, setWeaponOneAmmo] = useState('N/A');
-    const [weaponTwo, setWeaponTwo] = useState("N/A");
-    const [weaponTwoAmmo, setWeaponTwoAmmo] = useState('N/A');
+    const [weaponOneAmmo, setWeaponOneAmmo] = useState('');
+    const [weaponTwo, setWeaponTwo] = useState('');
+    const [weaponTwoAmmo, setWeaponTwoAmmo] = useState('');
 
     //Tools
-    const [toolOne, setToolOne] = useState('N/A');
-    const [toolTwo, setToolTwo] = useState('N/A');
-    const [toolThree, setToolThree] = useState('N/A');
+    const [toolOne, setToolOne] = useState('');
+    const [toolTwo, setToolTwo] = useState('');
+    const [toolThree, setToolThree] = useState('');
     const [toolFour, setToolFour] = useState('N/A');
 
     //Consumables
     const [consumableOne, setConsumableOne] = useState('');
-    const [consumableTwo, setConsumableTwo] = useState('N/A');
-    const [consumableThree, setConsumableThree] = useState('N/A');
-    const [consumableFour, setConsumableFour] = useState('N/A');
+    const [consumableTwo, setConsumableTwo] = useState('');
+    const [consumableThree, setConsumableThree] = useState('');
+    const [consumableFour, setConsumableFour] = useState('');
 
     //Text Outputs
     const [w1, setW1] = useState('');
@@ -387,8 +387,8 @@ const LoudoutRandomizer = () => {
                 <div className="loudout-container">
                     <h4 className="test">Primary Weapon</h4>
                     <div className="weapon-slot-container">
-                        <div className="weapon-slot">
-                            {generating && weaponOne === '' ? <div id="loader"></div> : <h2 className="test">{weaponOne.name}</h2>}
+                        <div className="weapon-slot" style={(repeat && generating) || weaponOne.image === undefined ? {borderColor: 'rgb(128, 128, 128, 0.1)'} : {backgroundImage: `url(${weaponOne.image})`, borderColor: 'rgb(128, 128, 128)'}}>
+                            {generating && weaponOne === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="ammo-slot">
                             <h2 className="test">{weaponOneAmmo}</h2>
@@ -396,8 +396,8 @@ const LoudoutRandomizer = () => {
                     </div>
                     <h4 className="test">Secondary Weapon</h4>
                     <div className="weapon-slot-container">
-                        <div className="weapon-slot">
-                            {generating && weaponTwo === '' ? <div id="loader"></div> : <h2 className="test">{weaponTwo.name}</h2>}
+                    <div className="weapon-slot" style={(repeat && generating) || weaponTwo.image === undefined ? {borderColor: 'rgb(128, 128, 128, 0.1)'} : {backgroundImage: `url(${weaponTwo.image})`, borderColor: 'rgb(128, 128, 128)'}}>
+                            {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="ammo-slot">
                             <h2 className="test">{weaponTwoAmmo}</h2>
