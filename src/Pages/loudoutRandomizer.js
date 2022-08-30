@@ -126,6 +126,19 @@ const LoudoutRandomizer = () => {
     const [consumableThree, setConsumableThree] = useState('N/A');
     const [consumableFour, setConsumableFour] = useState('N/A');
 
+    //Text Outputs
+    const [w1, setW1] = useState('');
+    const [w2, setW2] = useState('');
+    const [t1, setT1] = useState('');
+    const [t2, setT2] = useState('');
+    const [t3, setT3] = useState('');
+    const [t4, setT4] = useState('');
+    const [c1, setC1] = useState('');
+    const [c2, setC2] = useState('');
+    const [c3, setC3] = useState('');
+    const [c4, setC4] = useState('');
+
+
     //FUNCTIONS/////////////////////////////////////////////////////////////////////////////
 
     //Handle Toggle Scopes
@@ -139,11 +152,54 @@ const LoudoutRandomizer = () => {
         }
     }
 
+    // function([string1, string2],target id,[color1,color2])    
+    function consoleText(go, words, id, consoleId, colors) {
+        if (colors === undefined) colors = ['#fff'];
+        var visible = true;
+        var con = document.getElementById(consoleId);
+        var letterCount = 1;
+        var x = 1;
+        var waiting = false;
+        var target = document.getElementById(id);
+        target.setAttribute('style', 'color:' + colors[0]);
+        window.setInterval(function () {
+
+            if (waiting === false) {
+                go(words[0].substring(0, letterCount))
+                letterCount += x;
+                if (letterCount > words[0].length) {
+                    waiting = true;
+                }
+            }
+        }, 120)
+        window.setInterval(function () {
+            if (visible === true) {
+                con.className = 'console-underscore hidden'
+                visible = false;
+
+            } else {
+                con.className = 'console-underscore'
+                visible = true;
+            }
+        }, 400)
+    }
+
+    const clearText = () => {
+        let idArray = ['w1', 'w2', 't1', 't2', 't3', 't4', 'c1', 'c2', 'c3', 'c4'];
+        for (let i = 0; i < idArray.length; i++) {
+            let target = document.getElementById(idArray[i]);
+            target.innerHTML = "";
+        }
+    }
+
     //Generate Loudout
     const roll = () => {
         setGenerating(true);
         setRepeat(false);
         updateLoader();
+        if (repeat) {
+            clearText();
+        }
         setWeaponOne('');
         setWeaponTwo('');
         setWeaponOneAmmo('');
@@ -172,6 +228,7 @@ const LoudoutRandomizer = () => {
             randomWeaponOneAmmo = customAmmo ? randomWeaponOne.specialAmmo[Math.floor(Math.random() * randomWeaponOne.specialAmmo.length)] : '';
             setTimeout(() => {
                 setWeaponOne(randomWeaponOne);
+                consoleText(setW1, [randomWeaponOne.name], 'w1', 'w1c', ['white']);
                 setWeaponOneAmmo(randomWeaponOneAmmo);
             }, timeoutStart + 1000);
 
@@ -179,6 +236,7 @@ const LoudoutRandomizer = () => {
             randomWeaponTwoAmmo = customAmmo ? randomWeaponTwo.specialAmmo[Math.floor(Math.random() * randomWeaponTwo.specialAmmo.length)] : '';
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
+                consoleText(setW2, [randomWeaponTwo.name], 'w2', 'w2c', ['white']);
                 setWeaponTwoAmmo(randomWeaponTwoAmmo);
             }, timeoutStart + 2000);
 
@@ -188,6 +246,7 @@ const LoudoutRandomizer = () => {
             randomWeaponOneAmmo = customAmmo ? randomWeaponOne.specialAmmo[Math.floor(Math.random() * randomWeaponOne.specialAmmo.length)] : '';
             setTimeout(() => {
                 setWeaponOne(randomWeaponOne);
+                consoleText(setW1, [randomWeaponOne.name], 'w1', 'w1c', ['white']);
                 setWeaponOneAmmo(randomWeaponOneAmmo);
             }, timeoutStart + 1000);
 
@@ -205,6 +264,7 @@ const LoudoutRandomizer = () => {
             randomWeaponTwoAmmo = customAmmo ? randomWeaponTwo.specialAmmo[Math.floor(Math.random() * randomWeaponTwo.specialAmmo.length)] : '';
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
+                consoleText(setW2, [randomWeaponTwo.name], 'w2', 'w2c', ['white']);
                 setWeaponTwoAmmo(randomWeaponTwoAmmo);
             }, timeoutStart + 2000);
 
@@ -223,12 +283,14 @@ const LoudoutRandomizer = () => {
             currentToolPool = currentToolPool.filter((tool) => tool.name !== 'First Aid Kit');
             setTimeout(() => {
                 setToolOne(randomToolOne[0]);
+                consoleText(setT1, [randomToolOne[0].name], 't1', 't1c', ['white']);
             }, timeoutStart + 3000);
         } else {
             randomToolOne = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolOne.name);
             setTimeout(() => {
                 setToolOne(randomToolOne);
+                consoleText(setT1, [randomToolOne.name], 't1', 't1c', ['white']);
             }, timeoutStart + 3000);
         }
         //Tool 2
@@ -238,12 +300,14 @@ const LoudoutRandomizer = () => {
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
             setTimeout(() => {
                 setToolTwo(randomToolTwo);
+                consoleText(setT2, [randomToolTwo.name], 't2', 't2c', ['white']);
             }, timeoutStart + 4000);
         } else {
             randomToolTwo = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
             currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
             setTimeout(() => {
                 setToolTwo(randomToolTwo);
+                consoleText(setT2, [randomToolTwo.name], 't2', 't2c', ['white']);
             }, timeoutStart + 4000);
         }
         //Tool 3
@@ -251,12 +315,14 @@ const LoudoutRandomizer = () => {
         currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolThree.name);
         setTimeout(() => {
             setToolThree(randomToolThree);
+            consoleText(setT3, [randomToolThree.name], 't3', 't3c', ['white']);
         }, timeoutStart + 5000);
 
         //Tool 4
         randomToolFour = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
         setTimeout(() => {
             setToolFour(randomToolFour);
+            consoleText(setT4, [randomToolFour.name], 't4', 't4c', ['white']);
         }, timeoutStart + 6000);
 
 
@@ -270,12 +336,14 @@ const LoudoutRandomizer = () => {
         randomConsumableOne = consumables[Math.floor(Math.random() * consumables.length)];
         setTimeout(() => {
             setConsumableOne(randomConsumableOne);
+            consoleText(setC1, [randomConsumableOne.name], 'c1', 'c1c', ['white']);
         }, timeoutStart + 7000);
 
         //Consumable Two
         randomConsumableTwo = consumables[Math.floor(Math.random() * consumables.length)];
         setTimeout(() => {
             setConsumableTwo(randomConsumableTwo);
+            consoleText(setC2, [randomConsumableTwo.name], 'c2', 'c2c', ['white']);
         }, timeoutStart + 8000);
 
 
@@ -283,6 +351,7 @@ const LoudoutRandomizer = () => {
         randomConsumableThree = consumables[Math.floor(Math.random() * consumables.length)];
         setTimeout(() => {
             setConsumableThree(randomConsumableThree);
+            consoleText(setC3, [randomConsumableThree.name], 'c3', 'c3c', ['white']);
         }, timeoutStart + 9000);
 
 
@@ -290,6 +359,7 @@ const LoudoutRandomizer = () => {
         randomConsumableFour = consumables[Math.floor(Math.random() * consumables.length)];
         setTimeout(() => {
             setConsumableFour(randomConsumableFour);
+            consoleText(setC4, [randomConsumableFour.name], 'c4', 'c4c', ['white']);
         }, timeoutStart + 10000);
 
     }
@@ -365,14 +435,32 @@ const LoudoutRandomizer = () => {
                     </div>
                 </div>
             </div>
-            <div className="loading-box">
-                <div className="loading-circle">
-                    {repeat === false ? 
-                    <p className="loading-count" style={generating ? { color: 'red' } : {}} onClick={ generating ? () => {} : () => roll()}><span id="loadingNumber">{loadingText}</span></p> 
-                    :
-                    <p className="loading-count-two" style={generating ? { color: 'red' } : {}} onClick={ generating ? () => {} : () => roll()}><span id="loadingNumber">{loadingText}</span></p> }
+            <div className="right-container">
+                <div className="loading-box">
+                    <div className="loading-circle">
+                        {repeat === false ?
+                            <p className="loading-count" style={generating ? { color: 'red' } : {}} onClick={generating ? () => { } : () => roll()}><span id="loadingNumber">{loadingText}</span></p>
+                            :
+                            <p className="loading-count-two" style={generating ? { color: 'red' } : {}} onClick={generating ? () => { } : () => roll()}><span id="loadingNumber">{loadingText}</span></p>}
+                    </div>
+                </div>
+
+                <div className="info-box">
+                    <div className='console-container'>Primary Weapon:<span id='w1'>{w1}</span><div className='console-underscore' id='w1c'>&#95;</div></div>
+                    <div className='console-container'>Secondary Weapon:<span id='w2'>{w2}</span><div className='console-underscore' id='w2c'>&#95;</div></div>
+                    <div className='console-container'>Tool 1:<span id='t1'>{t1}</span><div className='console-underscore' id='t1c'>&#95;</div></div>
+                    <div className='console-container'>Tool 2:<span id='t2'>{t2}</span><div className='console-underscore' id='t2c'>&#95;</div></div>
+                    <div className='console-container'>Tool 3:<span id='t3'>{t3}</span><div className='console-underscore' id='t3c'>&#95;</div></div>
+                    <div className='console-container'>Tool 4:<span id='t4'>{t4}</span><div className='console-underscore' id='t4c'>&#95;</div></div>
+                    <div className='console-container'>Consumable 1:<span id='c1'>{c1}</span><div className='console-underscore' id='c1c'>&#95;</div></div>
+                    <div className='console-container'>Consumable 2:<span id='c2'>{c2}</span><div className='console-underscore' id='c2c'>&#95;</div></div>
+                    <div className='console-container'>Consumable 3:<span id='c3'>{c3}</span><div className='console-underscore' id='c3c'>&#95;</div></div>
+                    <div className='console-container'>Consumable 4:<span id='c4'>{c4}</span><div className='console-underscore' id='c4c'>&#95;</div></div>
+
                 </div>
             </div>
+
+
             <div className="scroll-indicator">
                 <div className="bottom"></div>
             </div>

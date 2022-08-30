@@ -296,8 +296,7 @@ li a {
   background-position: 50% 50%;
 }
 
-#scene {
-}
+#scene {}
 
 h1 {
   position: absolute;
@@ -623,13 +622,66 @@ li {
   }
 }
 
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  width: 100%;
+}
+
+.top {
+  width: 30px;
+  height: 30px;
+  margin: 16px auto;
+  border-left: 2px solid red;
+  border-top: 2px solid red;
+  border-top-left-radius: 2px;
+  transform: rotate(45deg);
+  animation-duration: 2s;
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bottom {
+  width: 30px;
+  height: 30px;
+  margin: 16px auto;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  border-bottom-right-radius: 2px;
+  transform: rotate(45deg);
+  animation-duration: 2s;
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes fade {
+  0% {
+    transform: rotate(45deg);
+    opacity: 1;
+  }
+
+  75% {
+    transform: rotate(45deg) translateY(-6px) translateX(-6px);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 /* Loading Circle */
+.right-container {
+  position: absolute;
+  top: 6%;
+  left: 120%;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 .loading-box {
-  position: absolute;
-  top: 10%;
-  left: 150%;
   min-width: 300px;
   min-height: 400px;
   display: flex;
@@ -694,6 +746,7 @@ li {
   font-size: 12px;
   font-weight: bold;
 }
+
 .loading-count-two {
   content: ' ';
   display: flex;
@@ -719,6 +772,7 @@ li {
 .loading-count:hover {
   color: red;
 }
+
 .loading-count-two:hover {
   color: red;
   animation: spin 100s linear infinite;
@@ -742,52 +796,43 @@ li {
   justify-content: center;
 }
 
-
-
-
-/* Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  width: 100%;
+/* Text Output */
+.info-box {
+  width: 700px;
+  height: 600px;
+  background-color: rgb(128, 128, 128, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
 }
-.top {
-  width: 30px;
-  height: 30px;
-  margin: 16px auto;
-  border-left: 2px solid red;
-  border-top: 2px solid red;
-  border-top-left-radius: 2px;
-  transform: rotate(45deg);
-  animation-duration: 2s;
-  animation-name: fade;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+.hidden {
+  opacity: 0;
 }
-.bottom {
-  width: 30px;
-  height: 30px;
-  margin: 16px auto;
-  border-right: 2px solid red;
-  border-bottom: 2px solid red;
-  border-bottom-right-radius: 2px;
-  transform: rotate(45deg);
-  animation-duration: 2s;
-  animation-name: fade;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+
+.console-container {
+
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  color: red;
+  margin: auto;
 }
-@keyframes fade {
-  0% {
-    transform: rotate(45deg);
-    opacity: 1;
- }
-  75% {
-    transform: rotate(45deg) translateY(-6px) translateX(-6px);
-    opacity: 0;
- }
-  100% {
-    opacity: 0;
- }
+
+.console-underscore {
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  left: 10px;
 }
 
 /* TEST */
