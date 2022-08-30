@@ -112,7 +112,7 @@ function App() {
         </ul>
       </nav>
 
-      
+
       <div id='background2'>
         <div id="page2">
           <LoudoutRandomizer />
@@ -123,6 +123,9 @@ function App() {
       </div>
       <div id="page1">
         <Landing />
+        <div className="wrapper">
+          <div className="btn_fab" onClick={() => handleDot2(screenID)}>Enter</div>
+        </div>
       </div>
       <div class="slider">
         <div class="items-group">

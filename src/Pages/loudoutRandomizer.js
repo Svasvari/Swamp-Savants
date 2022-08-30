@@ -71,6 +71,27 @@ const LoudoutRandomizer = () => {
         { name: 'Weak Vitality Shot', image: '' },
     ];
 
+    //Loader Logic
+    const [loadingText, setLoadingText] = useState('GENERATE');
+    const updateLoader = () => {
+        const loadingNumber = document.querySelector('#loadingNumber');
+        const loadingCircle = document.querySelector('.loading-circle');
+        let load = 0;
+
+        const myInterval = setInterval(count, 120);
+        function count() {
+            if (load === 100) {
+                setGenerating(false);
+                setLoadingText('GENERATE');
+                clearInterval(myInterval);
+            } else {
+                load += (load < 100);
+                setLoadingText(load + '%');
+            }
+            loadingCircle.style.background = 'conic-gradient(from 0deg at 50% 50%, red 0%, red ' + load + '%, #101012 ' + load + '%)';
+        }
+    }
+
     //STATES///////////////////////////////////////////////////////////////////////////////
 
     //Main States
@@ -120,6 +141,7 @@ const LoudoutRandomizer = () => {
     //Generate Loudout
     const roll = () => {
         setGenerating(true);
+        updateLoader();
         setWeaponOne('');
         setWeaponTwo('');
         setWeaponOneAmmo('');
@@ -336,14 +358,13 @@ const LoudoutRandomizer = () => {
                             {generating && consumableFour === '' ? <div id="loader"></div> : <h2 className="test">{consumableFour.name}</h2>}
                         </div>
                     </div>
-                    <div className="wrapper">
-                        <div className="btn_fab" onClick={() => roll()}>GENERATE</div>
-                    </div>
                 </div>
             </div>
-            {/* <button onClick={() => roll()}>GENERATE</button> */}
-
-            {() => setGenerating(false)}
+            <div className="loading-box">
+                <div className="loading-circle">
+                    <p className="loading-count" style={generating ? {color:'red'} : {color:'white'}} onClick={() => roll()}><span id="loadingNumber">{loadingText}</span></p>
+                </div>
+            </div>
         </div>
 
 

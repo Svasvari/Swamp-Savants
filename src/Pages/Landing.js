@@ -70,7 +70,7 @@ const Landing = () => {
 
 
     return (
-        <div id="parallax"><h1></h1>
+        <div id="parallax">
             <ul ref={list} id="scene" data-friction-x="0.03" data-friction-y="0.05">
                 <li className="layer" id="specks" data-depth="0.1">
                     {state.map((speck) => speck)}
@@ -85,6 +85,7 @@ const Landing = () => {
                     <div className="img" id="img-3"></div>
                 </li>
             </ul>
+
         </div>
 
     );
