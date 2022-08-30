@@ -458,9 +458,10 @@ li {
 }
 
 .weapon-slot {
-  background-color: rgb(128, 128, 128, 0.3);
+  background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
-  border-color: whitesmoke;
+  border-color: rgb(128, 128, 128, 0.1);;
   border-width: 5px;
   border-radius: 10px;
   padding: 1%;
@@ -474,11 +475,12 @@ li {
 }
 
 .ammo-slot {
-  background-color: rgb(128, 128, 128, 0.3);
+  background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
-  border-color: whitesmoke;
+  border-color: rgb(128, 128, 128, 0.1);
   border-width: 5px;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 1%;
   width: 50px;
   height: 100px;
@@ -490,11 +492,12 @@ li {
 }
 
 .tool-slot {
-  background-color: rgb(128, 128, 128, 0.3);
+  background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
-  border-color: whitesmoke;
+  border-color: rgb(128, 128, 128, 0.1);;
   border-width: 5px;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 0.5%;
   width: 100px;
   height: 125px;
@@ -801,12 +804,16 @@ li {
   width: 700px;
   height: 600px;
   background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-radius: 12px;
+  border-style: solid;
+  border-color: rgb(128, 128, 128, 0.1);;
+  border-width: 5px;
+  border-radius: 10px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Khula:700);

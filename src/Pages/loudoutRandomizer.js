@@ -78,7 +78,7 @@ const LoudoutRandomizer = () => {
         const loadingCircle = document.querySelector('.loading-circle');
         let load = 0;
 
-        const myInterval = setInterval(count, 120);
+        const myInterval = setInterval(count, 140);
         function count() {
             if (load === 100) {
                 setGenerating(false);
@@ -213,7 +213,7 @@ const LoudoutRandomizer = () => {
         setConsumableThree('');
         setConsumableFour('');
 
-        let timeoutStart = 2000;
+        let timeoutStart = 1000;
 
         //Roll Weapons
         let randomWeaponOne = '';
