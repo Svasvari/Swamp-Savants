@@ -38,7 +38,6 @@ function App() {
     setScreenID(1);
   }
   const handleDot2 = (screenID) => {
-    let background2 = document.getElementById('background2');
     let dot1 = document.getElementById('dot1');
     let dot2 = document.getElementById('dot2');
     let dot3 = document.getElementById('dot3');
@@ -48,8 +47,7 @@ function App() {
     dot1.setAttribute("style", "background:white");
     dot2.setAttribute("style", "background:red");
     dot3.setAttribute("style", "background:white");
-    screen1.style.transform = "translateY(-100%)";
-    screen2.style.transform = "translateY(0%)";
+
 
     //From screen3 to screen 2
     if (screenID === 3) {
@@ -60,11 +58,9 @@ function App() {
       screen2.style.opacity = "100";
       screen2.style.transform = "translateY(0%)";
       screen1.style.transform = "translateY(-100%)";
-      background2.style.transform = "translateY(0%)";
-
-
     }
-
+    screen2.style.transform = "translateY(0%)";
+    screen3.style.transform = "translateY(100%)";
 
     setScreenID(2);
   }
@@ -90,10 +86,6 @@ function App() {
       screen2.style.transform = "translateY(-100%)";
       screen3.style.transform = "translateY(0%)";
     }
-
-
-
-
     setScreenID(3);
   }
 
@@ -111,15 +103,11 @@ function App() {
           <li className="parent"><a className="link" href="/contact">Contact</a></li>
         </ul>
       </nav>
-
-
-      <div id='background2'>
-        <div id="page2">
-          <LoudoutRandomizer />
-        </div>
-        <div id="page3">
-          <PrestigeRoulette />
-        </div>
+      <div id="page2">
+        <LoudoutRandomizer />
+      </div>
+      <div id="page3">
+        <PrestigeRoulette />
       </div>
       <div id="page1">
         <Landing />

@@ -85,7 +85,6 @@ const Landing = () => {
                     <div className="img" id="img-3"></div>
                 </li>
             </ul>
-
         </div>
 
     );

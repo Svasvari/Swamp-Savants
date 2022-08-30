@@ -295,6 +295,9 @@ const LoudoutRandomizer = () => {
     return (
 
         <div className="Deck">
+            <div className="scroll-indicator">
+                <div className="top"></div>
+            </div>
             <h3 className="loudout-title">
                 <span role="img">♢</span>Loudout Randomizer<span role="img">♢</span>
                 <h4 className="loudout-subtitle">
@@ -362,8 +365,11 @@ const LoudoutRandomizer = () => {
             </div>
             <div className="loading-box">
                 <div className="loading-circle">
-                    <p className="loading-count" style={generating ? {color:'red'} : {color:'white'}} onClick={() => roll()}><span id="loadingNumber">{loadingText}</span></p>
+                    <p className="loading-count" style={generating ? { color: 'red' } : { color: 'white' }} onClick={() => roll()}><span id="loadingNumber">{loadingText}</span></p>
                 </div>
+            </div>
+            <div className="scroll-indicator">
+                <div className="bottom"></div>
             </div>
         </div>
 
