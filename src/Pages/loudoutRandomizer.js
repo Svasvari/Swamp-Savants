@@ -73,8 +73,8 @@ const LoudoutRandomizer = () => {
 
     //Loader Logic
     const [loadingText, setLoadingText] = useState('GENERATE');
+    const [repeat, setRepeat] = useState(false);
     const updateLoader = () => {
-        const loadingNumber = document.querySelector('#loadingNumber');
         const loadingCircle = document.querySelector('.loading-circle');
         let load = 0;
 
@@ -82,7 +82,8 @@ const LoudoutRandomizer = () => {
         function count() {
             if (load === 100) {
                 setGenerating(false);
-                setLoadingText('GENERATE');
+                setLoadingText(<img className='repeat' src='https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661865924/Tarot%20Cards/repeat_sor1y0.png' alt='' />);
+                setRepeat(true);
                 clearInterval(myInterval);
             } else {
                 load += (load < 100);
@@ -141,6 +142,7 @@ const LoudoutRandomizer = () => {
     //Generate Loudout
     const roll = () => {
         setGenerating(true);
+        setRepeat(false);
         updateLoader();
         setWeaponOne('');
         setWeaponTwo('');
@@ -365,7 +367,10 @@ const LoudoutRandomizer = () => {
             </div>
             <div className="loading-box">
                 <div className="loading-circle">
-                    <p className="loading-count" style={generating ? { color: 'red' } : { color: 'white' }} onClick={() => roll()}><span id="loadingNumber">{loadingText}</span></p>
+                    {repeat === false ? 
+                    <p className="loading-count" style={generating ? { color: 'red' } : {}} onClick={ generating ? () => {} : () => roll()}><span id="loadingNumber">{loadingText}</span></p> 
+                    :
+                    <p className="loading-count-two" style={generating ? { color: 'red' } : {}} onClick={ generating ? () => {} : () => roll()}><span id="loadingNumber">{loadingText}</span></p> }
                 </div>
             </div>
             <div className="scroll-indicator">

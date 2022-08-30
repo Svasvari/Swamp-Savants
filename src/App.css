@@ -694,14 +694,55 @@ li {
   font-size: 12px;
   font-weight: bold;
 }
+.loading-count-two {
+  content: ' ';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 3px;
+  left: 3px;
+  min-width: 274px;
+  height: 274px;
+  border-radius: 200px;
+  background: #1D1E22;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.75) inset, -4px -4px 16px rgba(255, 255, 255, 0.1) inset;
+  animation: spin 1s infinite linear reverse;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
 
 .loading-count:hover {
   color: red;
 }
+.loading-count-two:hover {
+  color: red;
+  animation: spin 100s linear infinite;
+}
+
+.repeat {
+  max-height: 100px;
+  max-width: 100px;
+  transform: scaleX(-1);
+  filter: contrast(0%);
+}
+
+.repeat:hover {
+  animation: a 1000s linear infinite;
+}
 
 .loading-count #loadingNumber {
   font-size: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 
 /* Scroll Indicator */
