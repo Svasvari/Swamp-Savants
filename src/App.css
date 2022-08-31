@@ -4,6 +4,10 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #222;
   background-size: cover;
@@ -495,7 +499,8 @@ li {
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
-  border-color: rgb(128, 128, 128, 0.1);;
+  border-color: rgb(128, 128, 128, 0.1);
+  ;
   border-width: 5px;
   border-radius: 12px;
   width: 100px;
@@ -811,7 +816,8 @@ li {
   justify-content: center;
   border-radius: 12px;
   border-style: solid;
-  border-color: rgb(128, 128, 128, 0.1);;
+  border-color: rgb(128, 128, 128, 0.1);
+  ;
   border-width: 5px;
   border-radius: 10px;
 }
@@ -842,7 +848,98 @@ li {
   left: 10px;
 }
 
+/* Left Container */
+.left-container {
+  position: absolute;
+  top: 10%;
+  right: 120%;
+  width: 700px;
+  height: 950px;
+  background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: rgb(128, 128, 128, 0.1);
+  overflow: hidden;
+  border-width: 5px;
+  border-radius: 10px;
+}
+
+.options-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
 /* TEST */
 .test {
   color: #fff;
+}
+
+.checkbox {
+  height: 1.5em;
+  width: 1.5em;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: .10s;
+  border-radius: 4em;
+  accent-color: red;
+}
+
+.exclusion {
+  color: red;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(128, 128, 128, 0.1);
+  width: 300px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 300px;
+  max-height: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  overflow: scroll;
+}
+
+.drop-form {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+}
+
+.dropdown-content p {
+  color: black;
+  font-size: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-left: 1%;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

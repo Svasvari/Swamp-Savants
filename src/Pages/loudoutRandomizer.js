@@ -1,5 +1,6 @@
-import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
+
 import React, { useRef, useEffect, useState } from "react";
+import $ from 'jquery'
 
 const LoudoutRandomizer = () => {
 
@@ -24,8 +25,6 @@ const LoudoutRandomizer = () => {
         { name: 'Lebel 1886 Aperture', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888788/Tarot%20Cards/lebel-apeture_huzfek.png' },
         { name: 'Lebel 1886 Marksman', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], scope: 'marksman', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661883811/Tarot%20Cards/lebel_marksman.jpeg_yvfcyq.png' },
         { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888684/Tarot%20Cards/lebel-talon_mgx3gs.png' },
-
-
     ];
 
     const tools = [
@@ -381,13 +380,13 @@ const LoudoutRandomizer = () => {
                 </h4>
             </h3>
             <div className="main-panel-container">
-                <div className="options-container">
+                {/* <div className="options-container">
                     <button onClick={() => setFixedMedkit(!fixedMedkit)}>{fixedMedkit ? 'Disable Fixed Medkit' : 'Enable Fixed Medkit '}</button>
                     <button onClick={() => setFixedMeleeTool(!fixedMeleeTool)}>{fixedMeleeTool ? 'Disable Fixed Melee Tool' : 'Enable Fixed Melee Tool '}</button>
                     <button onClick={() => setCustomAmmo(!customAmmo)}>{customAmmo ? 'Disable Custom Ammo' : 'Enable Custom Ammo '}</button>
                     <button onClick={() => setQuartermaster(!quartermaster)}>{quartermaster ? 'Disable Quartermaster' : 'Enable Quartermaster '}</button>
                     <button onClick={() => handleDisableScopes()}>{disableScopes ? 'Enable Scopes' : 'Disable Scopes'}</button>
-                </div>
+                </div> */}
                 <div className="loudout-container">
                     <h4 className="test">Primary Weapon</h4>
                     <div className="weapon-slot-container">
@@ -409,7 +408,7 @@ const LoudoutRandomizer = () => {
                     </div>
                     <h4 className="test">Tools</h4>
                     <div className="tool-slot-container">
-                    <div className="tool-slot" style={(repeat && generating) || toolOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || toolOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && toolOne === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="tool-slot" style={(repeat && generating) || toolTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
@@ -463,7 +462,74 @@ const LoudoutRandomizer = () => {
 
                 </div>
             </div>
-
+            <div className="left-container">
+                <div className="options-box">
+                    <div className="form">
+                        <h4>Enable Custom Ammo</h4>
+                        <input type={'checkbox'} className='checkbox' onClick={() => setCustomAmmo(!customAmmo)} />
+                    </div>
+                    <div className="form">
+                        <h4>Enable Quartermaster</h4>
+                        <input type={'checkbox'} className='checkbox' onClick={() => setQuartermaster(!quartermaster)} />
+                    </div>
+                    <div className="form">
+                        <h4>Enable Fixed Medkit</h4>
+                        <input type={'checkbox'} className='checkbox' onClick={() => setFixedMedkit(!fixedMedkit)} />
+                    </div>
+                    <div className="form">
+                        <h4>Enable Fixed Melee</h4>
+                        <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
+                    </div>
+                </div>
+                <div className="options-box">
+                    <h4 className="exclusion"><span>EXCLUSIONS</span></h4>
+                    <h4 class="dropdown">
+                        <h5>Long Ammo</h5>
+                        <div class="dropdown-content">
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Aperture</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Talon</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                            <div className="drop-form">
+                                <input type={'checkbox'} className='checkbox' />
+                                <p>Lebel 1886 Marksman</p>
+                            </div>
+                        </div>
+                    </h4>
+                </div>
+            </div>
 
             <div className="scroll-indicator">
                 <div className="bottom"></div>
