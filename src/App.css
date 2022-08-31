@@ -471,7 +471,7 @@ li {
   width: 500px;
   height: 100px;
   margin-bottom: 3%;
-  margin-right: 3%;
+  margin-right: 2%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -487,6 +487,11 @@ li {
   border-radius: 12px;
   width: 50px;
   height: 100px;
+  margin-left: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 30%;
   background-size: cover;
 }
 
