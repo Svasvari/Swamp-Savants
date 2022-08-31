@@ -909,16 +909,21 @@ li {
   text-align: center;
   color: #fff;
   background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   width: 300px;
+  margin: 1%;
+  cursor: pointer;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  left: 100%;
+  top: 0%;
   background-color: #f9f9f9;
   width: 300px;
   max-height: 300px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   padding: 12px 16px;
   z-index: 1;
   overflow: scroll;
@@ -940,6 +945,43 @@ li {
   margin-left: 1%;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown:hover  {
+  background-color: rgb(128, 128, 128, 0.5);
+}
+
+.right-col {
+  position: absolute;
+  top: 41%;
+  left: 54%;
+  width: 300px;
+  height: 508px;
+  background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-style: solid;
+  border-color: rgb(128, 128, 128, 0.1);
+  padding: 1%;
+  border-width: 5px;
+  overflow-y: scroll;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.right-col p {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 230px;
+  margin-left: 1%;
 }

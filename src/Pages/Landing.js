@@ -68,7 +68,6 @@ const Landing = () => {
     }, []);
 
 
-
     return (
         <div id="parallax">
             <ul ref={list} id="scene" data-friction-x="0.03" data-friction-y="0.05">

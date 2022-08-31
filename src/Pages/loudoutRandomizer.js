@@ -141,6 +141,9 @@ const LoudoutRandomizer = () => {
     const [c3, setC3] = useState('');
     const [c4, setC4] = useState('');
 
+    //Filters
+    const [activeFilter, setActiveFilter] = useState('');
+
 
     //FUNCTIONS/////////////////////////////////////////////////////////////////////////////
 
@@ -483,51 +486,100 @@ const LoudoutRandomizer = () => {
                 </div>
                 <div className="options-box">
                     <h4 className="exclusion"><span>EXCLUSIONS</span></h4>
-                    <h4 class="dropdown">
-                        <h5>Long Ammo</h5>
-                        <div class="dropdown-content">
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Aperture</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Talon</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
-                            <div className="drop-form">
-                                <input type={'checkbox'} className='checkbox' />
-                                <p>Lebel 1886 Marksman</p>
-                            </div>
+                    <div className="left-col">
+                        <div className="row">
+                            <h4 class="dropdown" onClick={() => {setActiveFilter('compact')}} style={activeFilter === 'compact' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                                <h5>Compact Ammo</h5>
+                            </h4>
+                            <h4 class="dropdown" onClick={() => {setActiveFilter('medium')}} style={activeFilter === 'medium' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                                <h5>Medium Ammo</h5>
+                            </h4>
                         </div>
-                    </h4>
+                        <div className="row">
+                            <h4 class="dropdown" onClick={() => {setActiveFilter('long')}} style={activeFilter === 'long' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                                <h5>Long Ammo</h5>
+                            </h4>
+                            <h4 class="dropdown" onClick={() => {setActiveFilter('special')}} style={activeFilter === 'special' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                                <h5>Special Ammo</h5>
+                            </h4>
+                        </div>
+                        <div className="row">
+                            <h4 class="dropdown" onClick={() => {setActiveFilter('tools')}} style={activeFilter === 'tools' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                                <h5>Tools</h5>
+                            </h4>
+                            <h4 class="dropdown" onClick={() => {setActiveFilter('consumables')}} style={activeFilter === 'consumables' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                                <h5>Consumables</h5>
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="right-col">
+                        {activeFilter === 'compact' ?
+                            <div className="" >
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Aperture</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Talon</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' />
+                                    <p>Lebel 1886 Marksman</p>
+                                </div>
+                            </div>
+                            :
+                            ''
+                            }
+                    </div>
                 </div>
             </div>
 
