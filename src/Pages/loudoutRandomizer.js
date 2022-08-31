@@ -4,74 +4,206 @@ import $ from 'jquery'
 
 const LoudoutRandomizer = () => {
 
+    //Default Ammo Types
+    const COMPACT = 'compact';
+    const MEDIUM = 'medium';
+    const LONG = 'long';
+    const SHOTGUN = 'shotgun';
+    const SPECIAL = 'special';
+    const MELEE = 'melee';
+
+    //Special Ammo Types
+    const NONE = '';
+    const INCENDIARY = 'Incendiary';
+    const HIGH_VELOCITY = 'High Velocity';
+    const SPITZER = 'Spitzer';
+    const DUMDUM = 'Dumdum';
+    const FMJ = 'FMJ';
+    const EXPLOSIVE = 'Explosive';
+    const POISON = 'Poison';
+    const FLECHETTE = 'Flechette';
+    const STARSHELL = 'Starshell';
+    const DRAGON_BREATH = 'Dragon Breath';
+    const SLUG = 'Slug';
+    const PENNY_SHOT = 'Penny Shot'
+
+    const DEADEYE = 'Deadeye';
+    const MARKSMAN = 'Marksman';
+    const SNIPER = 'Sniper';
+
+    //Small Slot Weapons
     const weaponsSmall = [
-        { name: 'Bornheim No. 3', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889146/Tarot%20Cards/borneheim-no3_vctocq.png' },
-        { name: 'Bornheim No. 3 Extended', size: 'S', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889055/Tarot%20Cards/bornheim-extended_ktju8j.png' },
-        { name: 'Caldwell Conversion Uppercut', size: 'S', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Explosive'], image: '' },
-        { name: 'Caldwell Pax', size: 'S', defaultAmmo: 'Medium', specialAmmo: ['', 'Incendiary', 'Dumdum'], image: '' },
-        { name: 'Caldwell Pax Claw', size: 'S', defaultAmmo: 'Medium', specialAmmo: ['', 'Incendiary', 'Dumdum'], image: '' },
-        { name: 'Scottfield Model 3', size: 'S', defaultAmmo: 'Medium', specialAmmo: ['', 'Incendiary', 'FMJ'], image: '' },
+        { name: 'Bornheim No. 3', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, INCENDIARY, HIGH_VELOCITY], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889146/Tarot%20Cards/borneheim-no3_vctocq.png' },
+        { name: 'Bornheim No. 3 Extended', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, INCENDIARY, HIGH_VELOCITY], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889055/Tarot%20Cards/bornheim-extended_ktju8j.png' },
+        { name: 'Caldwell 92 New Army', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, DUMDUM, FMJ], image: '' },
+        { name: 'Caldwell Conversion Chain Pistol', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, DUMDUM, FMJ], image: '' },
+        { name: 'Caldwell Conversion Pistol', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, DUMDUM, FMJ], image: '' },
+        { name: 'Caldwell Conversion Uppercut', size: 'S', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, EXPLOSIVE], image: '' },
+        { name: 'Caldwell Pax', size: 'S', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, DUMDUM], image: '' },
+        { name: 'Caldwell Pax Claw', size: 'S', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, DUMDUM], image: '' },
+        { name: 'Cavalry Saber', size: 'S', defaultAmmo: MELEE, specialAmmo: [NONE], image: '' },
+        { name: 'Dolch 96', size: 'S', defaultAmmo: SPECIAL, specialAmmo: [NONE], image: '' },
+        { name: 'Hand Crossbow', size: 'S', defaultAmmo: SPECIAL, specialAmmo: [[NONE, 'Poison Bolt', 'Chaos Bolt', 'Choke Bolt'], [NONE, 'Poison Bolt', 'Chaos Bolt', 'Choke Bolt']], image: '' },
+        { name: 'LeMat Mark II', size: 'S', defaultAmmo: COMPACT, secondaryAmmo: SHOTGUN, specialAmmo: [[NONE, INCENDIARY, FMJ], [NONE, STARSHELL, DRAGON_BREATH, SLUG]], image: '' },
+        { name: 'Machete', size: 'S', defaultAmmo: MELEE, specialAmmo: [NONE], image: '' },
+        { name: 'Nagant M1895', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Officer', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Officer Brawler', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Silencer', size: 'S', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Scottfield Model 3', size: 'S', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Scottfield Model 3 Brawler', size: 'S', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Scottfield Model 3 Spitfire', size: 'S', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Scottfield Model 3 Swift', size: 'S', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Sparks Pistol', size: 'S', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], image: '' },
     ];
 
+    //Weapon Pairs
+    const weaponsDual = [
+        { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, INCENDIARY, HIGH_VELOCITY], image: '' },
+        { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, INCENDIARY, HIGH_VELOCITY], image: '' },
+        { name: 'Caldwell 92 New Army Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, DUMDUM, FMJ], image: '' },
+        { name: 'Caldwell Conversion Chain Pistol Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, DUMDUM, FMJ], image: '' },
+        { name: 'Caldwell Conversion Pistol Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, DUMDUM, FMJ], image: '' },
+        { name: 'Caldwell Conversion Uppercut Pair', size: 'M', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, EXPLOSIVE], image: '' },
+        { name: 'Caldwell Pax Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, DUMDUM], image: '' },
+        { name: 'Caldwell Pax Claw Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, DUMDUM], image: '' },
+        { name: 'Dolch 96 Pair', size: 'M', defaultAmmo: SPECIAL, specialAmmo: [NONE], image: '' },
+        { name: 'LeMat Mark II Pair', size: 'M', defaultAmmo: COMPACT, secondaryAmmo: SHOTGUN, specialAmmo: [[NONE, INCENDIARY, FMJ], [NONE, STARSHELL, DRAGON_BREATH, SLUG]], image: '' },
+        { name: 'Nagant M1895 Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Officer Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Officer Brawler Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Silencer Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Scottfield Model 3 Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Scottfield Model 3 Brawler Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Scottfield Model 3 Spitfire Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Scottfield Model 3 Swift Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Sparks Pistol Pair', size: 'M', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], image: '' },
+    ];
+
+    //Medium Slot Weapons
     const weaponsMedium = [
-        { name: 'Bornheim No. 3 Match', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887574/Tarot%20Cards/bornheim_match_mdngtb.jpg' },
-        // { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
-        // { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: 'Compact', specialAmmo: ['', 'Incendiary', 'High Velocity'], image: '' },
+        { name: 'Bornheim No. 3 Match', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, INCENDIARY, HIGH_VELOCITY], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887574/Tarot%20Cards/bornheim_match_mdngtb.jpg' },
+        { name: 'Caldwell Rival 78 Handcannon', size: 'M', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Combat Axe', size: 'M', defaultAmmo: MELEE, specialAmmo: [NONE], image: '' },
+        { name: 'Dolch 96 Percision', size: 'M', defaultAmmo: SPECIAL, specialAmmo: [NONE], image: '' },
+        { name: 'Hunting Bow', size: 'M', defaultAmmo: SPECIAL, specialAmmo: [[NONE, 'Poison Arrow', 'Concertina Arrow', 'Frag Arrow'], [NONE, 'Poison Arrow', 'Concertina Arrow', 'Frag Arrow']], image: '' },
+        { name: 'Mosin-Nagant M1891 Obrez', size: 'M', defaultAmmo: LONG, specialAmmo: [NONE, SPITZER, INCENDIARY], image: '' },
+        { name: 'Mosin-Nagant M1891 Obrez Drum', size: 'M', defaultAmmo: LONG, specialAmmo: [NONE, SPITZER, INCENDIARY], image: '' },
+        { name: 'Mosin-Nagant M1891 Obrez Mace', size: 'M', defaultAmmo: LONG, specialAmmo: [NONE, SPITZER, INCENDIARY], image: '' },
+        { name: 'Nagant M1895 Deadeye', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], scope: DEADEYE, image: '' },
+        { name: 'Nagant M1895 Precision', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Romero 77 Handcannon', size: 'M', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT], [NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], image: '' },
+        { name: 'Romero 77 Hatchet', size: 'M', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT], [NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], image: '' },
+        { name: 'Scottfield Model 3 Precision', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ], image: '' },
+        { name: 'Specter 1882 Compact', size: 'M', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, DRAGON_BREATH, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Springfield 1886 Compact', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, DUMDUM, EXPLOSIVE], [NONE, DUMDUM, EXPLOSIVE]], image: '' },
+        { name: 'Springfield 1886 Compact Deadeye', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, DUMDUM, EXPLOSIVE], [NONE, DUMDUM, EXPLOSIVE]], scope: DEADEYE, image: '' },
+        { name: 'Springfield 1886 Compact Striker', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, DUMDUM, EXPLOSIVE], [NONE, DUMDUM, EXPLOSIVE]], image: '' },
+        { name: 'Winfield 1887 Terminus Handcannon', size: 'M', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, DRAGON_BREATH, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Winfield M1873C Vandal', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873C Vandal Deadeye', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY],  scope: DEADEYE, image: '' },
+        { name: 'Winfield M1873C Vandal Striker', size: 'M', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
     ];
 
+    //Large Slot Weapons
     const weaponsLarge = [
-        // { name: 'Berthier Mle 1892', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: '' },
-        { name: 'Lebel 1886', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888932/Tarot%20Cards/lebel_fxon4g.png' },
-        { name: 'Lebel 1886 Aperture', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888788/Tarot%20Cards/lebel-apeture_huzfek.png' },
-        { name: 'Lebel 1886 Marksman', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], scope: 'marksman', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661883811/Tarot%20Cards/lebel_marksman.jpeg_yvfcyq.png' },
-        { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: 'Long', specialAmmo: ['', 'Incendiary', 'Spitzer'], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888684/Tarot%20Cards/lebel-talon_mgx3gs.png' },
+        { name: 'Berthier Mle 1892', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: '' },
+        { name: 'Berthier Mle 1892 Deadeye', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], scope: DEADEYE, image: '' },
+        { name: 'Berthier Mle 1892 Riposte', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: '' },
+        { name: 'Bomb Lance', size: 'L', defaultAmmo: SPECIAL, specialAmmo: [NONE], image: '' },
+        { name: 'Caldwell Rival 78', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Crossbow', size: 'L', defaultAmmo: SPECIAL, specialAmmo: [[NONE, 'Explosive Bolt', 'Shot Bolt'], [NONE, 'Explosive Bolt', 'Shot Bolt']], image: '' },
+        { name: 'Crown & King Auto-5', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [NONE, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Lebel 1886', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888932/Tarot%20Cards/lebel_fxon4g.png' },
+        { name: 'Lebel 1886 Aperture', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888788/Tarot%20Cards/lebel-apeture_huzfek.png' },
+        { name: 'Lebel 1886 Marksman', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], scope: MARKSMAN, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661883811/Tarot%20Cards/lebel_marksman.jpeg_yvfcyq.png' },
+        { name: 'Lebel 1886 Talon', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888684/Tarot%20Cards/lebel-talon_mgx3gs.png' },
+        { name: 'Martini-Henry IC1', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, FMJ, EXPLOSIVE], [NONE, INCENDIARY, FMJ, EXPLOSIVE]], image: '' },
+        { name: 'Martini-Henry IC1 Deadeye', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, FMJ, EXPLOSIVE], [NONE, INCENDIARY, FMJ, EXPLOSIVE]], scope: DEADEYE, image: '' },
+        { name: 'Martini-Henry IC1 Marksman', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, FMJ, EXPLOSIVE], [NONE, INCENDIARY, FMJ, EXPLOSIVE]], scope: MARKSMAN, image: '' },
+        { name: 'Martini-Henry IC1 Riposte', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, FMJ, EXPLOSIVE], [NONE, INCENDIARY, FMJ, EXPLOSIVE]], image: '' },
+        { name: 'Mosin-Nagant M1891', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: '' },
+        { name: 'Mosin-Nagant M1891 Avtomat', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: '' },
+        { name: 'Mosin-Nagant M1891 Bayonet', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], image: '' },
+        { name: 'Mosin-Nagant M1891 Sniper', size: 'L', defaultAmmo: LONG, specialAmmo: [NONE, INCENDIARY, SPITZER], scope: SNIPER, image: '' },
+        { name: 'Nagant M1895 Officer Carbine', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], image: '' },
+        { name: 'Nagant M1895 Officer Carbine Deadeye', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, POISON, HIGH_VELOCITY], scope: DEADEYE, image: '' },
+        { name: 'Nitro Express Rifle', size: 'L', defaultAmmo: SPECIAL, specialAmmo: [NONE, 'Shredder', EXPLOSIVE], image: '' },
+        { name: 'Romero 77', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT], [NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], image: '' },
+        { name: 'Sparks LRR', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], image: '' },
+        { name: 'Sparks LRR Silencer', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], image: '' },
+        { name: 'Sparks LRR  Sniper', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]],  scope: SNIPER, image: '' },
+        { name: 'Specter 1882', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, DRAGON_BREATH, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Specter 1882 Bayonet', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, DRAGON_BREATH, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Springfield 1886', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [[NONE, DUMDUM, EXPLOSIVE], [NONE, DUMDUM, EXPLOSIVE]], image: '' },
+        { name: 'Springfield 1886 Marksman', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [[NONE, DUMDUM, EXPLOSIVE], [NONE, DUMDUM, EXPLOSIVE]], scope: MARKSMAN, image: '' },
+        { name: 'Vetterli 71 Karabiner', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ, HIGH_VELOCITY], image: '' },
+        { name: 'Vetterli 71 Karabiner Bayonet', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ, HIGH_VELOCITY], image: '' },
+        { name: 'Vetterli 71 Karabiner Deadeye', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ, HIGH_VELOCITY], scope: DEADEYE, image: '' },
+        { name: 'Vetterli 71 Karabiner Marksman', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ, HIGH_VELOCITY], scope: MARKSMAN, image: '' },
+        { name: 'Vetterli 71 Karabiner Silencer', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, INCENDIARY, FMJ, HIGH_VELOCITY], image: '' },
+        { name: 'Winfield 1887 Terminus', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [NONE, FLECHETTE, DRAGON_BREATH, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Winfield 1893 Slate', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [NONE, SLUG, PENNY_SHOT], image: '' },
+        { name: 'Winfield M1873', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873 Aperture', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873 Musket Bayonet', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873 Swift', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873 Talon', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873C', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1873C Marksman', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], scope: MARKSMAN, image: '' },
+        { name: 'Winfield M1873C Silencer', size: 'L', defaultAmmo: COMPACT, specialAmmo: [NONE, FMJ, HIGH_VELOCITY, INCENDIARY], image: '' },
+        { name: 'Winfield M1876 Centennial', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, FMJ, POISON], image: '' },
+        { name: 'Winfield M1876 Centennial Sniper', size: 'L', defaultAmmo: MEDIUM, specialAmmo: [NONE, FMJ, POISON], scope: SNIPER, image: '' },
     ];
 
+    //Tools
     const tools = [
-        { name: 'Alert Trip Mine', image: '' },
-        { name: 'Blank Fire Decoys', image: '' },
+        { name: 'Alert Trip Mine', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957236/Tarot%20Cards/alert-mine_cw742u.png' },
+        { name: 'Blank Fire Decoys', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956646/Tarot%20Cards/blankfire-decoys_wctalu.png' },
         { name: 'Choke Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891054/Tarot%20Cards/choke-bomb_h1ugv8.png' },
         { name: 'Concertina Trip Mine', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890746/Tarot%20Cards/concertina-mine_uwkm7u.png' },
-        { name: 'Decoy Fuses', image: '' },
+        { name: 'Decoy Fuses', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957238/Tarot%20Cards/decoy-fuses_y8cq36.png' },
         { name: 'Decoys', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890748/Tarot%20Cards/decoys_gernzt.png' },
         { name: 'Dusters', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891055/Tarot%20Cards/dusters_okdzh4.png' },
         { name: 'Electric Lamp', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890752/Tarot%20Cards/lamp_uyszss.png' },
         { name: 'First Aid Kit', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890339/Tarot%20Cards/medkit_x1pqx5.png' },
-        { name: 'Flare Pistol', image: '' },
-        { name: 'Fusees', image: '' },
+        { name: 'Flare Pistol', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957240/Tarot%20Cards/flare-pistol_jedtqh.png' },
+        { name: 'Fusees', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956595/Tarot%20Cards/fusee_yvsbvf.png' },
         { name: 'Heavy Knife', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890333/Tarot%20Cards/heavy-knife_uxnh6n.png' },
         { name: 'Knife', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891068/Tarot%20Cards/knife_xbrvxb.png' },
         { name: 'Knuckle Knife', type: 'melee', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890750/Tarot%20Cards/knuckle-knife_ijtllt.png' },
-        { name: 'Poison Trip Mine', image: '' },
+        { name: 'Poison Trip Mine', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956605/Tarot%20Cards/poison-mine_ajvdgf.png' },
         { name: 'Quad Derringer', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890330/Tarot%20Cards/derringer_z0pbny.png' },
         { name: 'Spyglass', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889783/Tarot%20Cards/spyglass_gzeu0h.png' },
+        { name: 'Throwing Axes', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957569/Tarot%20Cards/throwing-axes_lmveng.png' },
         { name: 'Throwing Knives', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890346/Tarot%20Cards/throwing-knives_yfmt0q.png' },
     ];
 
+    //Consumables
     const consumables = [
         { name: 'Ammo Box', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891052/Tarot%20Cards/ammo-box_inhglj.png' },
-        { name: 'Antidote Shot', image: '' },
+        { name: 'Antidote Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957300/Tarot%20Cards/poison-shot_pgid9o.png' },
         { name: 'Big Dynamite Bundle', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890739/Tarot%20Cards/big-dynamite-bundle_m8ujd6.png' },
-        { name: 'Chaos Bomb', image: '' },
-        { name: 'Concertina Bomb', image: '' },
+        { name: 'Chaos Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956638/Tarot%20Cards/chaos-bomb_k0kbp1.png' },
+        { name: 'Concertina Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957245/Tarot%20Cards/concertina-bomb_ivbxwk.png' },
         { name: 'Dynamite Bundle', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890741/Tarot%20Cards/dynamite-bundle_fubjxp.png' },
         { name: 'Dynamite Stick', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891060/Tarot%20Cards/dynamite-stick_rhwho9.png' },
         { name: 'Fire Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890331/Tarot%20Cards/firebomb_xkroes.png' },
-        { name: 'Flash Bomb', image: '' },
+        { name: 'Flash Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957571/Tarot%20Cards/flash-bomb_psqfkp.png' },
         { name: 'Frag Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890743/Tarot%20Cards/frag_eqe339.png' },
-        { name: 'Hellfire Bomb', image: '' },
-        { name: 'Hive Bomb', image: '' },
+        { name: 'Hellfire Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957296/Tarot%20Cards/hellfire-bomb_asv4m4.png' },
+        { name: 'Hive Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661957242/Tarot%20Cards/hive-bomb_thfmlh.png' },
         { name: 'Liquid Fire Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890338/Tarot%20Cards/liquid-firebomb_h6iioi.png' },
         { name: 'Poison Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891090/Tarot%20Cards/poison-bomb_mi0ohq.png' },
-        { name: 'Regeneration Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889795/Tarot%20Cards/regen-shot_wct8jk.png' },
+        { name: 'Regeneration Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956659/Tarot%20Cards/regen-shot_ggiihh.png' },
         { name: 'Stamina Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661889797/Tarot%20Cards/stam-shot_dv2aun.png' },
         { name: 'Sticky Bomb', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890756/Tarot%20Cards/sticky_xifdeg.png' },
         { name: 'Vitality Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890342/Tarot%20Cards/vitality-shot_zblhw9.png' },
         { name: 'Waxed Dynamite Stick', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661891065/Tarot%20Cards/wax-stick_r7zmqg.png' },
-        { name: 'Weak Antidote Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888577/Tarot%20Cards/weak-antidote-shot_ll5fj2.png' },
+        { name: 'Weak Antidote Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956682/Tarot%20Cards/weak-antidote-shot_g19nsy.png' },
         { name: 'Weak Regeneration Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661890377/Tarot%20Cards/weak-regen-shot_sruqvx.png' },
-        { name: 'Weak Stamina Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661888391/Tarot%20Cards/weak-stam-shot_akwoxo.png' },
-        { name: 'Weak Vitality Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661887961/Tarot%20Cards/weak-vitality-Shot_rt5fls.png' },
+        { name: 'Weak Stamina Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956668/Tarot%20Cards/weak-stam-shot_yrudqa.png' },
+        { name: 'Weak Vitality Shot', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661956675/Tarot%20Cards/weak-vitality-Shot_tj78le.png' },
     ];
 
     //Loader Logic
@@ -99,8 +231,8 @@ const LoudoutRandomizer = () => {
     //STATES///////////////////////////////////////////////////////////////////////////////
 
     //Main States
-    const weaponsMasterList = [].concat(weaponsSmall, weaponsMedium, weaponsLarge);
-    const [weaponsPool, setWeaponsPool] = useState([].concat(weaponsSmall, weaponsMedium, weaponsLarge));
+    const weaponsMasterList = [].concat(weaponsSmall, weaponsMedium, weaponsDual, weaponsLarge);
+    const [weaponsPool, setWeaponsPool] = useState([].concat(weaponsSmall, weaponsMedium, weaponsDual, weaponsLarge));
     const [toolPool, setToolPool] = useState(tools);
     const [generating, setGenerating] = useState(false);
 
@@ -229,6 +361,7 @@ const LoudoutRandomizer = () => {
 
         if (quartermaster) {
             let largeWeapons = weaponsPool.filter((weapon) => weapon.size === 'L');
+            let mediumWeapons = weaponsPool.filter((weapon) => weapon.size === 'M');
 
             randomWeaponOne = largeWeapons[Math.floor(Math.random() * largeWeapons.length)];
             randomWeaponOneAmmo = customAmmo ? randomWeaponOne.specialAmmo[Math.floor(Math.random() * randomWeaponOne.specialAmmo.length)] : '';
@@ -238,7 +371,7 @@ const LoudoutRandomizer = () => {
                 setWeaponOneAmmo(randomWeaponOneAmmo);
             }, timeoutStart + 1000);
 
-            randomWeaponTwo = weaponsMedium[Math.floor(Math.random() * weaponsMedium.length)];
+            randomWeaponTwo = mediumWeapons[Math.floor(Math.random() * mediumWeapons.length)];
             randomWeaponTwoAmmo = customAmmo ? randomWeaponTwo.specialAmmo[Math.floor(Math.random() * randomWeaponTwo.specialAmmo.length)] : '';
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
@@ -488,26 +621,26 @@ const LoudoutRandomizer = () => {
                     <h4 className="exclusion"><span>EXCLUSIONS</span></h4>
                     <div className="left-col">
                         <div className="row">
-                            <h4 class="dropdown" onClick={() => {setActiveFilter('compact')}} style={activeFilter === 'compact' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter('compact') }} style={activeFilter === 'compact' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Compact Ammo</h5>
                             </h4>
-                            <h4 class="dropdown" onClick={() => {setActiveFilter('medium')}} style={activeFilter === 'medium' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter('medium') }} style={activeFilter === 'medium' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Medium Ammo</h5>
                             </h4>
                         </div>
                         <div className="row">
-                            <h4 class="dropdown" onClick={() => {setActiveFilter('long')}} style={activeFilter === 'long' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter('long') }} style={activeFilter === 'long' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Long Ammo</h5>
                             </h4>
-                            <h4 class="dropdown" onClick={() => {setActiveFilter('special')}} style={activeFilter === 'special' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter('special') }} style={activeFilter === 'special' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Special Ammo</h5>
                             </h4>
                         </div>
                         <div className="row">
-                            <h4 class="dropdown" onClick={() => {setActiveFilter('tools')}} style={activeFilter === 'tools' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Tools</h5>
                             </h4>
-                            <h4 class="dropdown" onClick={() => {setActiveFilter('consumables')}} style={activeFilter === 'consumables' ? {backgroundColor:'rgb(128, 128, 128, 0.5)'} : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Consumables</h5>
                             </h4>
                         </div>
@@ -578,7 +711,7 @@ const LoudoutRandomizer = () => {
                             </div>
                             :
                             ''
-                            }
+                        }
                     </div>
                 </div>
             </div>
