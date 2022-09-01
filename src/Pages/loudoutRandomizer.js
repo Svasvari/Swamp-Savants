@@ -304,6 +304,12 @@ const LoudoutRandomizer = () => {
 
     //Filters
     const [activeFilter, setActiveFilter] = useState('');
+    const [toggleCompactAll, setToggleCompactAll] = useState(false);
+    const [toggleMediumAll, setToggleMediumAll] = useState(false);
+    const [toggleLongAll, setToggleLongAll] = useState(false);
+    const [toggleShotgunAll, setToggleShotgunAll] = useState(false);
+    const [toggleSpecialAll, setToggleSpecialAll] = useState(false);
+    const [toggleMeleeAll, setToggleMeleeAll] = useState(false);
 
 
     //FUNCTIONS/////////////////////////////////////////////////////////////////////////////
@@ -364,6 +370,7 @@ const LoudoutRandomizer = () => {
         if (category === 'weapon') {
             if (checkbox.checked) {
                 setWeaponsPool(weaponsPool.filter((item) => item.name !== id));
+                console.log(weaponsPool)
             } else {
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.name === id)));
             }
@@ -380,7 +387,113 @@ const LoudoutRandomizer = () => {
                 setConsumablePool([].concat(consumablePool, consumables.filter((item) => item.name === id)));
             }
         }
+    }
 
+    const excludeAll = (type, id) => {
+        let checkbox = document.getElementById(id);
+        if (type === COMPACT) {
+            let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            if (checkbox.checked) {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = true;
+                }
+                setToggleCompactAll(true);
+                setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== COMPACT));
+            } else {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = false;
+                }
+                setToggleCompactAll(false);
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === COMPACT)));
+            }
+        } else if (type === MEDIUM) {
+            let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            if (checkbox.checked) {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = true;
+                }
+                setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== MEDIUM));
+                setToggleMediumAll(true);
+            } else {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = false;
+                }
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === MEDIUM)));
+                setToggleMediumAll(false);
+            }
+        } else if (type === LONG) {
+            let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            if (checkbox.checked) {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = true;
+                }
+                setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== LONG));
+                setToggleLongAll(true);
+            } else {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = false;
+                }
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === LONG)));
+                setToggleLongAll(false);
+            }
+        } else if (type === SHOTGUN) {
+            let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            if (checkbox.checked) {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = true;
+                }
+                setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== SHOTGUN));
+                setToggleShotgunAll(true);
+            } else {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = false;
+                }
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === SHOTGUN)));
+                setToggleShotgunAll(false);
+            }
+        } else if (type === SPECIAL) {
+            let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            if (checkbox.checked) {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = true;
+                }
+                setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== SPECIAL));
+                setToggleSpecialAll(true);
+            } else {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = false;
+                }
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === SPECIAL)));
+                setToggleSpecialAll(false);
+            }
+        } else if (type === MELEE) {
+            let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            if (checkbox.checked) {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = true;
+                }
+                setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== MELEE));
+                setToggleMeleeAll(true);
+            } else {
+                for(let i = 0; i < tempArr.length; i++) {
+                    checkbox = document.getElementById(tempArr[i].name);
+                    checkbox.checked = false;
+                }
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === MELEE)));
+                setToggleMeleeAll(false);
+            }
+        }
     }
 
     //Generate Loudout
@@ -710,7 +823,7 @@ const LoudoutRandomizer = () => {
                         <input type={'checkbox'} className='checkbox' onClick={() => setFixedMedkit(!fixedMedkit)} />
                     </div>
                     <div className="form">
-                        <h4>Enable Fixed Melee</h4>
+                        <h4>Enable Fixed Melee Tool</h4>
                         <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
                     </div>
                 </div>
@@ -723,42 +836,128 @@ const LoudoutRandomizer = () => {
                         <h4 class="dropdown" onClick={() => { setActiveFilter(MEDIUM) }} style={activeFilter === MEDIUM ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                             <h5>Medium Ammo</h5>
                         </h4>
-                        <div className="row">
-                            <h4 class="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Long Ammo</h5>
-                            </h4>
-                            <h4 class="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Shotgun Ammo</h5>
-                            </h4>
-                        </div>
-                        <div className="row">
-                            <h4 class="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Special Ammo</h5>
-                            </h4>
-                            <h4 class="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Melee</h5>
-                            </h4>
-                        </div>
-                        <div className="row">
-                            <h4 class="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Tools</h5>
-                            </h4>
-                            <h4 class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Consumables</h5>
-                            </h4>
-                        </div>
+
+                        <h4 class="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Long Ammo</h5>
+                        </h4>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Shotgun Ammo</h5>
+                        </h4>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Special Ammo</h5>
+                        </h4>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Melee</h5>
+                        </h4>
+
+                        <h4 class="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Tools</h5>
+                        </h4>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Consumables</h5>
+                        </h4>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter('Misc') }} style={activeFilter === 'Misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Misc.</h5>
+                        </h4>
                     </div>
                     <div className="right-col">
                         <div className="" >
-                            {activeFilter !== ('tools' || 'consumables') ?
-                                weaponsMasterList.filter((item) => item.defaultAmmo === activeFilter).map((element) => element.name).sort().map((element) => {
+                            <div className='info-page' style={activeFilter === COMPACT ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={COMPACT} onClick={() => excludeAll(COMPACT, COMPACT)} />
+                                    <p>{toggleCompactAll ? 'None' : 'All'}</p>
+                                </div>
+                                {weaponsMasterList.filter((item) => item.defaultAmmo === COMPACT).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div className="drop-form">
-                                            <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
-                                            <p>{element}</p>
-                                        </div>)
-                                })
-                                : ''}
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                                <p>{element}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === MEDIUM ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={MEDIUM} onClick={() => excludeAll(MEDIUM, MEDIUM)} />
+                                    <p>{toggleMediumAll ? 'None' : 'All'}</p>
+                                </div>
+                                {weaponsMasterList.filter((item) => item.defaultAmmo === MEDIUM).map((element) => element.name).sort().map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                                <p>{element}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === LONG ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={LONG} onClick={() => excludeAll(LONG, LONG)} />
+                                    <p>{toggleLongAll ? 'None' : 'All'}</p>
+                                </div>
+                                {weaponsMasterList.filter((item) => item.defaultAmmo === LONG).map((element) => element.name).sort().map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                                <p>{element}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === SHOTGUN ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={SHOTGUN} onClick={() => excludeAll(SHOTGUN, SHOTGUN)} />
+                                    <p>{toggleShotgunAll ? 'None' : 'All'}</p>
+                                </div>
+                                {weaponsMasterList.filter((item) => item.defaultAmmo === SHOTGUN).map((element) => element.name).sort().map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                                <p>{element}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === SPECIAL ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={SPECIAL} onClick={() => excludeAll(SPECIAL, SPECIAL)} />
+                                    <p>{toggleSpecialAll ? 'None' : 'All'}</p>
+                                </div>
+                                {weaponsMasterList.filter((item) => item.defaultAmmo === SPECIAL).map((element) => element.name).sort().map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                                <p>{element}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === MELEE ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={MELEE} onClick={() => excludeAll(MELEE, MELEE)} />
+                                    <p>{toggleMeleeAll ? 'None' : 'All'}</p>
+                                </div>
+                                {weaponsMasterList.filter((item) => item.defaultAmmo === MELEE).map((element) => element.name).sort().map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                                <p>{element}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                             {activeFilter === 'tools' ?
                                 tools.map((element) => {
                                     return (
@@ -776,6 +975,35 @@ const LoudoutRandomizer = () => {
                                             <p>{element.name}</p>
                                         </div>)
                                 })
+                                : ''}
+                            {activeFilter === 'Misc' ?
+                                <div>
+                                    <div className="drop-form">
+                                        <p>- Scopes -</p>
+                                    </div>
+                                    <div className="drop-form">
+                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
+                                        <p>Deadeye Scopes</p>
+                                    </div>
+                                    <div className="drop-form">
+                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
+                                        <p>Marksman Scopes</p>
+                                    </div>
+                                    <div className="drop-form">
+                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
+                                        <p>Sniper Scopes</p>
+                                    </div>
+                                    <div className="drop-form">
+                                        <p></p>
+                                    </div>
+                                    <div className="drop-form">
+                                        <p>- Other -</p>
+                                    </div>
+                                    <div className="drop-form">
+                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
+                                        <p>Weapon Pairs</p>
+                                    </div>
+                                </div>
                                 : ''}
                         </div>
                     </div>

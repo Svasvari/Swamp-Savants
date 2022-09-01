@@ -814,7 +814,7 @@ li {
 /* Text Output */
 .info-box {
   width: 700px;
-  height: 600px;
+  height: 650px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -861,7 +861,7 @@ li {
   top: 10%;
   right: 120%;
   width: 700px;
-  height: 950px;
+  height: 1000px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -938,6 +938,10 @@ li {
   overflow: scroll;
 }
 
+.info-page {
+  position: absolute;
+}
+
 .drop-form {
   display: flex;
   align-items: center;
@@ -960,10 +964,10 @@ li {
 
 .right-col {
   position: absolute;
-  top: 41%;
+  top: 37.5%;
   left: 52%;
   width: 320px;
-  height: 525px;
+  height: 593px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -992,7 +996,7 @@ li {
   height: 525px;
   position: absolute;
   right: 47%;
-  top:  42.5%;
+  top:  39%;
   z-index: 200;
 }
 
