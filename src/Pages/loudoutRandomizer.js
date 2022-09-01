@@ -161,24 +161,24 @@ const LoudoutRandomizer = () => {
     const specialAmmoImages = [
         { name: INCENDIARY, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/incendiary_ervwwg.png' },
         { name: HIGH_VELOCITY, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/high-velocity_j5va1a.png' },
-        { name: SPITZER, image: '' },
+        { name: SPITZER, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/spitzer_h5mt8a.png' },
         { name: DUMDUM, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/dumdum_rno0w5.png' },
         { name: FMJ, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/fmj_ddafsr.png' },
-        { name: POISON, image: '' },
-        { name: EXPLOSIVE, image: '' },
+        { name: POISON, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/poison-ammo_rj7flv.png' },
+        { name: EXPLOSIVE, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/explosive-ammo_dtjyeh.png' },
         { name: SLUG, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/slug_fchcjd.png' },
-        { name: STARSHELL, image: '' },
-        { name: DRAGON_BREATH, image: '' },
+        { name: STARSHELL, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/starshell_le3acs.png' },
+        { name: DRAGON_BREATH, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/dragon-breath_bbhdkx.png' },
         { name: FLECHETTE, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/flechette_lwckx8.png' },
         { name: PENNY_SHOT, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/pennyshot_e1wvfn.png' },
-        { name: 'Poison Bolt', image: '' },
-        { name: 'Chaos Bolt', image: '' },
-        { name: 'Choke Bolt', image: '' },
-        { name: 'Poison Arrow', image: '' },
-        { name: 'Concertina Arrow', image: '' },
-        { name: 'Frag Arrow', image: '' },
-        { name: 'Shot Bolt', image: '' },
-        { name: 'Explosive Bolt', image: '' },
+        { name: 'Poison Bolt', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/poison-bolt_q2qizk.png' },
+        { name: 'Chaos Bolt', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/chaos-bolt_i0u66d.png' },
+        { name: 'Choke Bolt', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/choke-bolt_wsur6o.png' },
+        { name: 'Poison Arrow', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/poison-arrow_s55tso.png' },
+        { name: 'Concertina Arrow', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/concertina-arrow_ikdyo2.png' },
+        { name: 'Frag Arrow', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/frag-arrow_wtbgbt.png' },
+        { name: 'Shot Bolt', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/shot-bolt_utygan.png' },
+        { name: 'Explosive Bolt', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662068487/Tarot%20Cards/explosive-xbow_xg9dlh.png' },
         { name: 'Shredder', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661973456/Tarot%20Cards/dumdum_rno0w5.png' },
     ];
 
@@ -861,18 +861,38 @@ const LoudoutRandomizer = () => {
             <div className="left-container">
                 <div className="options-box">
                     <div className="form">
+                        <div class="infoHelp">
+                            <div class="infoHelpDropdown">
+                                <p>Weapon ammo type will be randomized</p>
+                            </div>
+                        </div>
                         <h4>Enable Custom Ammo</h4>
                         <input type={'checkbox'} className='checkbox' onClick={() => setCustomAmmo(!customAmmo)} />
                     </div>
                     <div className="form">
+                        <div class="infoHelp">
+                            <div class="infoHelpDropdown">
+                                <p>Loudout will always contain one large slot and one medium slot weapon</p>
+                            </div>
+                        </div>
                         <h4>Enable Quartermaster</h4>
                         <input type={'checkbox'} className='checkbox' onClick={() => setQuartermaster(!quartermaster)} />
                     </div>
                     <div className="form">
+                        <div class="infoHelp">
+                            <div class="infoHelpDropdown">
+                                <p>Loudout will always contain a First Aid Kit</p>
+                            </div>
+                        </div>
                         <h4>Enable Fixed Medkit</h4>
                         <input type={'checkbox'} className='checkbox' onClick={() => setFixedMedkit(!fixedMedkit)} />
                     </div>
                     <div className="form">
+                        <div class="infoHelp">
+                            <div class="infoHelpDropdown">
+                                <p>Loudout will always contain a melee tool</p>
+                            </div>
+                        </div>
                         <h4>Enable Fixed Melee Tool</h4>
                         <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
                     </div>
