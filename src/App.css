@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   background-color: #222;
   background-size: cover;
@@ -18,6 +19,7 @@ body {
   flex-direction: column;
   justify-content: start;
   height: 100vh;
+  width: 100vw;
 }
 
 .main {}
@@ -199,16 +201,16 @@ li a {
 /* SLider */
 .slider .navigations {
   position: absolute;
-  min-width: 10vw;
-  min-height: 100vh;
-  height: 500px;
-  top: 50vh;
+  min-width: 3vw;
+  height: 100%;
+  top: 45vh;
   left: 1vw;
   z-index: 1001;
 }
 
 .slider .navigations .dots {
   height: 100%;
+  width: 100%;
   padding: 0px 0px;
   display: flex;
   flex-direction: column;
@@ -221,7 +223,7 @@ li a {
   transition: 0.3s;
   background: #fff;
   border-radius: 50%;
-  margin: 5%;
+  margin: 15%;
 }
 
 #dot1 {
@@ -909,14 +911,16 @@ li {
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   width: 300px;
-  margin: 1%;
+  height: 55px;
+  margin-left: 5%;
+  margin-top: -4.5%;
   cursor: pointer;
 }
 
@@ -957,9 +961,9 @@ li {
 .right-col {
   position: absolute;
   top: 41%;
-  left: 54%;
-  width: 300px;
-  height: 508px;
+  left: 52%;
+  width: 320px;
+  height: 525px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -970,6 +974,7 @@ li {
   padding: 1%;
   border-width: 5px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .example::-webkit-scrollbar {
@@ -981,12 +986,24 @@ li {
   scrollbar-width: none;  /* Firefox */
 }
 
+.left-col {
+  margin-right: 3%;
+  width: 320px;
+  height: 525px;
+  position: absolute;
+  right: 47%;
+  top:  42.5%;
+  z-index: 200;
+}
+
 .right-col p {
   color: white;
   font-family: 'Lato', sans-serif;
   letter-spacing: 2px;
   font-size: 12px;
   font-weight: bold;
-  min-width: 230px;
+  min-width: 100%;
   margin-left: 1%;
+  display: flex;
+  align-items: center;
 }

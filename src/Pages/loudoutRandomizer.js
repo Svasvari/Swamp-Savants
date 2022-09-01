@@ -129,7 +129,7 @@ const LoudoutRandomizer = () => {
         { name: 'Nagant M1895 Officer Carbine Deadeye', size: 'L', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], scope: DEADEYE, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971788/Tarot%20Cards/carbine-deadeye_u2a8hf.png' },
         { name: 'Nitro Express Rifle', size: 'L', defaultAmmo: SPECIAL, specialAmmo: [[NONE, 'Shredder', EXPLOSIVE]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971788/Tarot%20Cards/nitro_btapmr.png' },
         { name: 'Romero 77', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT], [NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971788/Tarot%20Cards/romero-base_lsmqpf.png' },
-        { name: 'Romero 77 Alamo', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT], [NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971788/Tarot%20Cards/alamo_k5cgun.png' },
+        { name: 'Romero 77 Alamo', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971788/Tarot%20Cards/alamo_k5cgun.png' },
         { name: 'Romero 77 Talon', size: 'L', defaultAmmo: SHOTGUN, specialAmmo: [[NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT], [NONE, STARSHELL, DRAGON_BREATH, SLUG, PENNY_SHOT]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971788/Tarot%20Cards/romero-talon_ptscju.png' },
         { name: 'Sparks LRR', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971789/Tarot%20Cards/sparks-base_qdjarj.png' },
         { name: 'Sparks LRR Silencer', size: 'L', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661971789/Tarot%20Cards/sparks-silenced_r2ry1j.png' },
@@ -260,6 +260,7 @@ const LoudoutRandomizer = () => {
     const weaponsMasterList = [].concat(weaponsSmall, weaponsMedium, weaponsDual, weaponsLarge);
     const [weaponsPool, setWeaponsPool] = useState([].concat(weaponsSmall, weaponsMedium, weaponsDual, weaponsLarge));
     const [toolPool, setToolPool] = useState(tools);
+    const [consumablePool, setConsumablePool] = useState(consumables);
     const [generating, setGenerating] = useState(false);
 
     //Toggle Options
@@ -281,7 +282,7 @@ const LoudoutRandomizer = () => {
     const [toolOne, setToolOne] = useState('');
     const [toolTwo, setToolTwo] = useState('');
     const [toolThree, setToolThree] = useState('');
-    const [toolFour, setToolFour] = useState('N/A');
+    const [toolFour, setToolFour] = useState('');
 
     //Consumables
     const [consumableOne, setConsumableOne] = useState('');
@@ -356,6 +357,30 @@ const LoudoutRandomizer = () => {
             let target = document.getElementById(idArray[i]);
             target.innerHTML = "";
         }
+    }
+
+    const exclude = (category, id) => {
+        let checkbox = document.getElementById(id);
+        if (category === 'weapon') {
+            if (checkbox.checked) {
+                setWeaponsPool(weaponsPool.filter((item) => item.name !== id));
+            } else {
+                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.name === id)));
+            }
+        } else if (category === 'tool') {
+            if (checkbox.checked) {
+                setToolPool(toolPool.filter((item) => item.name !== id));
+            } else {
+                setToolPool([].concat(toolPool, tools.filter((item) => item.name === id)));
+            }
+        } else if (category === 'consumable') {
+            if (checkbox.checked) {
+                setConsumablePool(consumablePool.filter((item) => item.name !== id));
+            } else {
+                setConsumablePool([].concat(consumablePool, consumables.filter((item) => item.name === id)));
+            }
+        }
+
     }
 
     //Generate Loudout
@@ -497,27 +522,33 @@ const LoudoutRandomizer = () => {
             }, timeoutStart + 3000);
         } else {
             randomToolOne = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
-            currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolOne.name);
+            if (randomToolOne !== undefined) {
+                currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolOne.name);
+            }
             setTimeout(() => {
                 setToolOne(randomToolOne);
-                consoleText(setT1, [randomToolOne.name], 't1', 't1c', ['white']);
+                consoleText(setT1, [randomToolOne !== undefined ? randomToolOne.name : ''], 't1', 't1c', ['white']);
             }, timeoutStart + 3000);
         }
         //Tool 2
         if (fixedMeleeTool) {
             let randomMeleeTools = toolPool.filter((tool) => tool.type === 'melee')
             randomToolTwo = randomMeleeTools[Math.floor(Math.random() * randomMeleeTools.length)];
-            currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
+            if (randomToolTwo !== undefined) {
+                currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
+            }
             setTimeout(() => {
                 setToolTwo(randomToolTwo);
-                consoleText(setT2, [randomToolTwo.name], 't2', 't2c', ['white']);
+                consoleText(setT2, [randomToolTwo !== undefined ? randomToolTwo.name : ''], 't2', 't2c', ['white']);
             }, timeoutStart + 4000);
         } else {
             randomToolTwo = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
-            currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
+            if (randomToolTwo !== undefined) {
+                currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolTwo.name);
+            }
             setTimeout(() => {
                 setToolTwo(randomToolTwo);
-                consoleText(setT2, [randomToolTwo.name], 't2', 't2c', ['white']);
+                consoleText(setT2, [randomToolTwo !== undefined ? randomToolTwo.name : ''], 't2', 't2c', ['white']);
             }, timeoutStart + 4000);
         }
         //Tool 3
@@ -543,14 +574,14 @@ const LoudoutRandomizer = () => {
         let randomConsumableFour = '';
 
         //Consumable One
-        randomConsumableOne = consumables[Math.floor(Math.random() * consumables.length)];
+        randomConsumableOne = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableOne(randomConsumableOne);
-            consoleText(setC1, [randomConsumableOne.name], 'c1', 'c1c', ['white']);
+            consoleText(setC1, [randomConsumableOne !== undefined ? randomConsumableOne.name : ''], 'c1', 'c1c', ['white']);
         }, timeoutStart + 7000);
 
         //Consumable Two
-        randomConsumableTwo = consumables[Math.floor(Math.random() * consumables.length)];
+        randomConsumableTwo = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableTwo(randomConsumableTwo);
             consoleText(setC2, [randomConsumableTwo.name], 'c2', 'c2c', ['white']);
@@ -558,7 +589,7 @@ const LoudoutRandomizer = () => {
 
 
         //Consumable Three
-        randomConsumableThree = consumables[Math.floor(Math.random() * consumables.length)];
+        randomConsumableThree = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableThree(randomConsumableThree);
             consoleText(setC3, [randomConsumableThree.name], 'c3', 'c3c', ['white']);
@@ -566,7 +597,7 @@ const LoudoutRandomizer = () => {
 
 
         //Consumable Four
-        randomConsumableFour = consumables[Math.floor(Math.random() * consumables.length)];
+        randomConsumableFour = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableFour(randomConsumableFour);
             consoleText(setC4, [randomConsumableFour.name], 'c4', 'c4c', ['white']);
@@ -610,31 +641,31 @@ const LoudoutRandomizer = () => {
                     </div>
                     <h4 className="test">Tools</h4>
                     <div className="tool-slot-container">
-                        <div className="tool-slot" style={(repeat && generating) || toolOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || toolOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne !== undefined ? toolOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && toolOne === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || toolTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo !== undefined ? toolTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && toolTwo === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolThree.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || toolThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree !== undefined ? toolThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && toolThree === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolFour.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || toolFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour !== undefined ? toolFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && toolFour === '' ? <div id="loader"></div> : ''}
                         </div>
                     </div>
                     <h4 className="test">Consumables</h4>
                     <div className="tool-slot-container">
-                        <div className="tool-slot" style={(repeat && generating) || consumableOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || consumableOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne !== undefined ? consumableOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && consumableOne === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || consumableTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo !== undefined ? consumableTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && consumableTwo === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableThree.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || consumableThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree !== undefined ? consumableThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && consumableThree === '' ? <div id="loader"></div> : ''}
                         </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableFour.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="tool-slot" style={(repeat && generating) || consumableFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour !== undefined ? consumableFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && consumableFour === '' ? <div id="loader"></div> : ''}
                         </div>
                     </div>
@@ -686,20 +717,26 @@ const LoudoutRandomizer = () => {
                 <div className="options-box">
                     <h4 className="exclusion"><span>EXCLUSIONS</span></h4>
                     <div className="left-col">
+                        <h4 class="dropdown" onClick={() => { setActiveFilter(COMPACT) }} style={activeFilter === COMPACT ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Compact Ammo</h5>
+                        </h4>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter(MEDIUM) }} style={activeFilter === MEDIUM ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h5>Medium Ammo</h5>
+                        </h4>
                         <div className="row">
-                            <h4 class="dropdown" onClick={() => { setActiveFilter('compact') }} style={activeFilter === 'compact' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Compact Ammo</h5>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Long Ammo</h5>
                             </h4>
-                            <h4 class="dropdown" onClick={() => { setActiveFilter('medium') }} style={activeFilter === 'medium' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Medium Ammo</h5>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Shotgun Ammo</h5>
                             </h4>
                         </div>
                         <div className="row">
-                            <h4 class="dropdown" onClick={() => { setActiveFilter('long') }} style={activeFilter === 'long' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                                <h5>Long Ammo</h5>
-                            </h4>
-                            <h4 class="dropdown" onClick={() => { setActiveFilter('special') }} style={activeFilter === 'special' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Special Ammo</h5>
+                            </h4>
+                            <h4 class="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Melee</h5>
                             </h4>
                         </div>
                         <div className="row">
@@ -712,72 +749,35 @@ const LoudoutRandomizer = () => {
                         </div>
                     </div>
                     <div className="right-col">
-                        {activeFilter === 'compact' ?
-                            <div className="" >
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Aperture</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Talon</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                                <div className="drop-form">
-                                    <input type={'checkbox'} className='checkbox' />
-                                    <p>Lebel 1886 Marksman</p>
-                                </div>
-                            </div>
-                            :
-                            ''
-                        }
+                        <div className="" >
+                            {activeFilter !== ('tools' || 'consumables') ?
+                                weaponsMasterList.filter((item) => item.defaultAmmo === activeFilter).map((element) => element.name).sort().map((element) => {
+                                    return (
+                                        <div className="drop-form">
+                                            <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
+                                            <p>{element}</p>
+                                        </div>)
+                                })
+                                : ''}
+                            {activeFilter === 'tools' ?
+                                tools.map((element) => {
+                                    return (
+                                        <div className="drop-form">
+                                            <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('tool', element.name)} />
+                                            <p>{element.name}</p>
+                                        </div>)
+                                })
+                                : ''}
+                            {activeFilter === 'consumables' ?
+                                consumables.map((element) => {
+                                    return (
+                                        <div className="drop-form">
+                                            <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('consumable', element.name)} />
+                                            <p>{element.name}</p>
+                                        </div>)
+                                })
+                                : ''}
+                        </div>
                     </div>
                 </div>
             </div>
