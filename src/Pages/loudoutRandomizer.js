@@ -310,6 +310,8 @@ const LoudoutRandomizer = () => {
     const [toggleShotgunAll, setToggleShotgunAll] = useState(false);
     const [toggleSpecialAll, setToggleSpecialAll] = useState(false);
     const [toggleMeleeAll, setToggleMeleeAll] = useState(false);
+    const [toggleToolAll, setToggleToolAll] = useState(false);
+    const [toggleConsumableAll, setToggleConsumableAll] = useState(false);
 
 
     //FUNCTIONS/////////////////////////////////////////////////////////////////////////////
@@ -394,14 +396,14 @@ const LoudoutRandomizer = () => {
         if (type === COMPACT) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
             if (checkbox.checked) {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = true;
                 }
                 setToggleCompactAll(true);
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== COMPACT));
             } else {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = false;
                 }
@@ -411,14 +413,14 @@ const LoudoutRandomizer = () => {
         } else if (type === MEDIUM) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
             if (checkbox.checked) {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = true;
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== MEDIUM));
                 setToggleMediumAll(true);
             } else {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = false;
                 }
@@ -428,14 +430,14 @@ const LoudoutRandomizer = () => {
         } else if (type === LONG) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
             if (checkbox.checked) {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = true;
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== LONG));
                 setToggleLongAll(true);
             } else {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = false;
                 }
@@ -445,14 +447,14 @@ const LoudoutRandomizer = () => {
         } else if (type === SHOTGUN) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
             if (checkbox.checked) {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = true;
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== SHOTGUN));
                 setToggleShotgunAll(true);
             } else {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = false;
                 }
@@ -462,14 +464,14 @@ const LoudoutRandomizer = () => {
         } else if (type === SPECIAL) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
             if (checkbox.checked) {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = true;
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== SPECIAL));
                 setToggleSpecialAll(true);
             } else {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = false;
                 }
@@ -479,19 +481,67 @@ const LoudoutRandomizer = () => {
         } else if (type === MELEE) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
             if (checkbox.checked) {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = true;
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== MELEE));
                 setToggleMeleeAll(true);
             } else {
-                for(let i = 0; i < tempArr.length; i++) {
+                for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
                     checkbox.checked = false;
                 }
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === MELEE)));
                 setToggleMeleeAll(false);
+            }
+        } else if (type === 'tool') {
+            if (checkbox.checked) {
+                for (let i = 0; i < tools.length; i++) {
+                    checkbox = document.getElementById(tools[i].name);
+                    checkbox.checked = true;
+                }
+                setToolPool([]);
+                setToggleToolAll(true);
+            } else {
+                for (let i = 0; i < tools.length; i++) {
+                    checkbox = document.getElementById(tools[i].name);
+                    checkbox.checked = false;
+                }
+                setToolPool(tools);
+                setToggleToolAll(false);
+            }
+        }
+        else if (type === 'consumable') {
+            if (checkbox.checked) {
+                for (let i = 0; i < consumables.length; i++) {
+                    checkbox = document.getElementById(consumables[i].name);
+                    checkbox.checked = true;
+                }
+                setConsumablePool([]);
+                setToggleConsumableAll(true);
+            } else {
+                for (let i = 0; i < consumables.length; i++) {
+                    checkbox = document.getElementById(consumables[i].name);
+                    checkbox.checked = false;
+                }
+                setConsumablePool(consumables);
+                setToggleConsumableAll(false);
+            }
+        } else if (type === 'misc') {
+            if (checkbox.checked) {
+                if (id === 'weaponPair') {
+
+                } else {
+                    setWeaponsPool(weaponsPool.filter((item) => item.scope !== id));
+                }
+            } else {
+                if (id === 'weaponPair') {
+
+                } else {
+                    setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.scope === id)));
+                }
+
             }
         }
     }
@@ -719,8 +769,8 @@ const LoudoutRandomizer = () => {
     }
 
     return (
-
         <div className="Deck">
+            {console.log(weaponsPool)}
             <div className="scroll-indicator">
                 <div className="top"></div>
             </div>
@@ -856,13 +906,13 @@ const LoudoutRandomizer = () => {
                         <h4 class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                             <h5>Consumables</h5>
                         </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter('Misc') }} style={activeFilter === 'Misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                        <h4 class="dropdown" onClick={() => { setActiveFilter('misc') }} style={activeFilter === 'misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                             <h5>Misc.</h5>
                         </h4>
                     </div>
                     <div className="right-col">
                         <div className="" >
-                            <div className='info-page' style={activeFilter === COMPACT ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                            <div className='info-page' style={activeFilter === COMPACT ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={COMPACT} onClick={() => excludeAll(COMPACT, COMPACT)} />
                                     <p>{toggleCompactAll ? 'None' : 'All'}</p>
@@ -878,7 +928,7 @@ const LoudoutRandomizer = () => {
                                     )
                                 })}
                             </div>
-                            <div className='info-page' style={activeFilter === MEDIUM ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                            <div className='info-page' style={activeFilter === MEDIUM ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={MEDIUM} onClick={() => excludeAll(MEDIUM, MEDIUM)} />
                                     <p>{toggleMediumAll ? 'None' : 'All'}</p>
@@ -894,7 +944,7 @@ const LoudoutRandomizer = () => {
                                     )
                                 })}
                             </div>
-                            <div className='info-page' style={activeFilter === LONG ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                            <div className='info-page' style={activeFilter === LONG ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={LONG} onClick={() => excludeAll(LONG, LONG)} />
                                     <p>{toggleLongAll ? 'None' : 'All'}</p>
@@ -910,7 +960,7 @@ const LoudoutRandomizer = () => {
                                     )
                                 })}
                             </div>
-                            <div className='info-page' style={activeFilter === SHOTGUN ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                            <div className='info-page' style={activeFilter === SHOTGUN ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={SHOTGUN} onClick={() => excludeAll(SHOTGUN, SHOTGUN)} />
                                     <p>{toggleShotgunAll ? 'None' : 'All'}</p>
@@ -926,7 +976,7 @@ const LoudoutRandomizer = () => {
                                     )
                                 })}
                             </div>
-                            <div className='info-page' style={activeFilter === SPECIAL ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                            <div className='info-page' style={activeFilter === SPECIAL ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={SPECIAL} onClick={() => excludeAll(SPECIAL, SPECIAL)} />
                                     <p>{toggleSpecialAll ? 'None' : 'All'}</p>
@@ -942,7 +992,7 @@ const LoudoutRandomizer = () => {
                                     )
                                 })}
                             </div>
-                            <div className='info-page' style={activeFilter === MELEE ? {visibility:'visible'} : {visibility: 'hidden'}}>
+                            <div className='info-page' style={activeFilter === MELEE ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={MELEE} onClick={() => excludeAll(MELEE, MELEE)} />
                                     <p>{toggleMeleeAll ? 'None' : 'All'}</p>
@@ -958,58 +1008,69 @@ const LoudoutRandomizer = () => {
                                     )
                                 })}
                             </div>
-                            {activeFilter === 'tools' ?
-                                tools.map((element) => {
-                                    return (
-                                        <div className="drop-form">
-                                            <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('tool', element.name)} />
-                                            <p>{element.name}</p>
-                                        </div>)
-                                })
-                                : ''}
-                            {activeFilter === 'consumables' ?
-                                consumables.map((element) => {
-                                    return (
-                                        <div className="drop-form">
-                                            <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('consumable', element.name)} />
-                                            <p>{element.name}</p>
-                                        </div>)
-                                })
-                                : ''}
-                            {activeFilter === 'Misc' ?
-                                <div>
-                                    <div className="drop-form">
-                                        <p>- Scopes -</p>
-                                    </div>
-                                    <div className="drop-form">
-                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
-                                        <p>Deadeye Scopes</p>
-                                    </div>
-                                    <div className="drop-form">
-                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
-                                        <p>Marksman Scopes</p>
-                                    </div>
-                                    <div className="drop-form">
-                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
-                                        <p>Sniper Scopes</p>
-                                    </div>
-                                    <div className="drop-form">
-                                        <p></p>
-                                    </div>
-                                    <div className="drop-form">
-                                        <p>- Other -</p>
-                                    </div>
-                                    <div className="drop-form">
-                                        <input type={'checkbox'} className='checkbox' onClick={() => exclude('Misc',)} />
-                                        <p>Weapon Pairs</p>
-                                    </div>
+                            <div className='info-page' style={activeFilter === 'tools' ? { visibility: 'visible' } : { visibility: 'hidden' }}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={'tool'} onClick={() => excludeAll('tool', 'tool')} />
+                                    <p>{toggleToolAll ? 'None' : 'All'}</p>
                                 </div>
-                                : ''}
+                                {tools.map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('tool', element.name)} />
+                                                <p>{element.name}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === 'consumables' ? { visibility: 'visible' } : { visibility: 'hidden' }}>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={'consumable'} onClick={() => excludeAll('consumable', 'consumable')} />
+                                    <p>{toggleConsumableAll ? 'None' : 'All'}</p>
+                                </div>
+                                {consumables.map((element) => {
+                                    return (
+                                        <div>
+                                            <div className="drop-form">
+                                                <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('consumable', element.name)} />
+                                                <p>{element.name}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className='info-page' style={activeFilter === 'misc' ? { visibility: 'visible' } : { visibility: 'hidden' }}>
+                                <div className="drop-form">
+                                    <p>- Scopes -</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={DEADEYE} onClick={() => excludeAll('misc', DEADEYE)} />
+                                    <p>Deadeye Scopes</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={MARKSMAN} onClick={() => excludeAll('misc', MARKSMAN)} />
+                                    <p>Marksman Scopes</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={SNIPER} onClick={() => excludeAll('misc', SNIPER)} />
+                                    <p>Sniper Scopes</p>
+                                </div>
+                                <div className="drop-form">
+                                    <p></p>
+                                </div>
+                                <div className="drop-form">
+                                    <p>- Other -</p>
+                                </div>
+                                <div className="drop-form">
+                                    <input type={'checkbox'} className='checkbox' id={'weaponPair'} onClick={() => excludeAll('misc', 'weaponPair')} />
+                                    <p>Weapon Pairs</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div className="scroll-indicator">
                 <div className="bottom"></div>
             </div>

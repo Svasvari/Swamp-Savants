@@ -468,7 +468,7 @@ li {
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
   border-color: rgb(128, 128, 128, 0.1);
-  border-width: 5px;
+  border-width: 3px;
   border-radius: 12px;
   width: 500px;
   height: 100px;
@@ -485,7 +485,7 @@ li {
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
   border-color: rgb(128, 128, 128, 0.1);
-  border-width: 5px;
+  border-width: 3px;
   border-radius: 12px;
   width: 50px;
   height: 100px;
@@ -508,7 +508,7 @@ li {
   border-style: solid;
   border-color: rgb(128, 128, 128, 0.1);
   ;
-  border-width: 5px;
+  border-width: 3px;
   border-radius: 12px;
   width: 100px;
   height: 125px;
