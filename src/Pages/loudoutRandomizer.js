@@ -781,157 +781,81 @@ const LoudoutRandomizer = () => {
                 </h4>
             </h3>
             <div className="main-panel-container">
-                <div className="loudout-container">
-                    <h4 className="test">Primary Weapon</h4>
-                    <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && weaponOne === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo.image === undefined && weaponOneAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? weaponOneAmmo2.image : weaponOneAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                        </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo2.image === undefined || weaponOneAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? '' : weaponOneAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                        </div>
-                    </div>
-                    <h4 className="test">Secondary Weapon</h4>
-                    <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo.image === undefined && weaponTwoAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? weaponTwoAmmo2.image : weaponTwoAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                        </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo2.image === undefined || weaponTwoAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? '' : weaponTwoAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                        </div>
-                    </div>
-                    <h4 className="test">Tools</h4>
-                    <div className="tool-slot-container">
-                        <div className="tool-slot" style={(repeat && generating) || toolOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne !== undefined ? toolOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolOne === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo !== undefined ? toolTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolTwo === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree !== undefined ? toolThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolThree === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour !== undefined ? toolFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolFour === '' ? <div id="loader"></div> : ''}
-                        </div>
-                    </div>
-                    <h4 className="test">Consumables</h4>
-                    <div className="tool-slot-container">
-                        <div className="tool-slot" style={(repeat && generating) || consumableOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne !== undefined ? consumableOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableOne === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo !== undefined ? consumableTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableTwo === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree !== undefined ? consumableThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableThree === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour !== undefined ? consumableFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableFour === '' ? <div id="loader"></div> : ''}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="right-container">
-                <div className="loading-box">
-                    <div className="loading-circle">
-                        {repeat === false ?
-                            <p className="loading-count" style={generating ? { color: 'red' } : {}} onClick={generating ? () => { } : () => roll()}><span id="loadingNumber">{loadingText}</span></p>
-                            :
-                            <p className="loading-count-two" style={generating ? { color: 'red' } : {}} onClick={generating ? () => { } : () => roll()}><span id="loadingNumber">{loadingText}</span></p>}
-                    </div>
-                </div>
-
-                <div className="info-box">
-                    <div className='console-container'>Primary Weapon:<span id='w1'>{w1}</span><div className='console-underscore' id='w1c'>&#95;</div></div>
-                    <div className='console-container'>Secondary Weapon:<span id='w2'>{w2}</span><div className='console-underscore' id='w2c'>&#95;</div></div>
-                    <div className='console-container'>Tool 1:<span id='t1'>{t1}</span><div className='console-underscore' id='t1c'>&#95;</div></div>
-                    <div className='console-container'>Tool 2:<span id='t2'>{t2}</span><div className='console-underscore' id='t2c'>&#95;</div></div>
-                    <div className='console-container'>Tool 3:<span id='t3'>{t3}</span><div className='console-underscore' id='t3c'>&#95;</div></div>
-                    <div className='console-container'>Tool 4:<span id='t4'>{t4}</span><div className='console-underscore' id='t4c'>&#95;</div></div>
-                    <div className='console-container'>Consumable 1:<span id='c1'>{c1}</span><div className='console-underscore' id='c1c'>&#95;</div></div>
-                    <div className='console-container'>Consumable 2:<span id='c2'>{c2}</span><div className='console-underscore' id='c2c'>&#95;</div></div>
-                    <div className='console-container'>Consumable 3:<span id='c3'>{c3}</span><div className='console-underscore' id='c3c'>&#95;</div></div>
-                    <div className='console-container'>Consumable 4:<span id='c4'>{c4}</span><div className='console-underscore' id='c4c'>&#95;</div></div>
-
-                </div>
-            </div>
-            <div className="left-container">
-                <div className="options-box">
-                    <div className="form">
-                        <div class="infoHelp">
-                            <div class="infoHelpDropdown">
-                                <p>Weapon ammo type will be randomized</p>
+                {/*LEFT CONTAINER*/}
+                <div className="left-container">
+                    <div className="options-box">
+                        <div className="form">
+                            <div class="infoHelp">
+                                <div class="infoHelpDropdown">
+                                    <p>Weapon ammo type will be randomized</p>
+                                </div>
                             </div>
+                            <p className="optionLarge">Enable Custom Ammo</p>
+                            <input type={'checkbox'} className='checkbox' onClick={() => setCustomAmmo(!customAmmo)} />
                         </div>
-                        <h4>Enable Custom Ammo</h4>
-                        <input type={'checkbox'} className='checkbox' onClick={() => setCustomAmmo(!customAmmo)} />
-                    </div>
-                    <div className="form">
-                        <div class="infoHelp">
-                            <div class="infoHelpDropdown">
-                                <p>Loudout will always contain one large slot and one medium slot weapon</p>
+                        <div className="form">
+                            <div class="infoHelp">
+                                <div class="infoHelpDropdown">
+                                    <p>Loudout will always contain one large slot and one medium slot weapon</p>
+                                </div>
                             </div>
+                            <p className="optionLarge">Enable Quartermaster</p>
+                            <input type={'checkbox'} className='checkbox' onClick={() => setQuartermaster(!quartermaster)} />
                         </div>
-                        <h4>Enable Quartermaster</h4>
-                        <input type={'checkbox'} className='checkbox' onClick={() => setQuartermaster(!quartermaster)} />
-                    </div>
-                    <div className="form">
-                        <div class="infoHelp">
-                            <div class="infoHelpDropdown">
-                                <p>Loudout will always contain a First Aid Kit</p>
+                        <div className="form">
+                            <div class="infoHelp">
+                                <div class="infoHelpDropdown">
+                                    <p>Loudout will always contain a First Aid Kit</p>
+                                </div>
                             </div>
+                            <p className="optionLarge">Enable Fixed Medkit</p>
+                            <input type={'checkbox'} className='checkbox' onClick={() => setFixedMedkit(!fixedMedkit)} />
                         </div>
-                        <h4>Enable Fixed Medkit</h4>
-                        <input type={'checkbox'} className='checkbox' onClick={() => setFixedMedkit(!fixedMedkit)} />
-                    </div>
-                    <div className="form">
-                        <div class="infoHelp">
-                            <div class="infoHelpDropdown">
-                                <p>Loudout will always contain a melee tool</p>
+                        <div className="form">
+                            <div class="infoHelp">
+                                <div class="infoHelpDropdown">
+                                    <p>Loudout will always contain a melee tool</p>
+                                </div>
                             </div>
+                            <p className="optionLarge">Enable Fixed Melee Tool</p>
+                            <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
                         </div>
-                        <h4>Enable Fixed Melee Tool</h4>
-                        <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
                     </div>
-                </div>
-                <div className="options-box">
                     <h4 className="exclusion"><span>EXCLUSIONS</span></h4>
-                    <div className="left-col">
-                        <h4 class="dropdown" onClick={() => { setActiveFilter(COMPACT) }} style={activeFilter === COMPACT ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Compact Ammo</h5>
-                        </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter(MEDIUM) }} style={activeFilter === MEDIUM ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Medium Ammo</h5>
-                        </h4>
+                    <div className="options-box2">
+                        <div className="left-col">
+                            <div class="dropdown" onClick={() => { setActiveFilter(COMPACT) }} style={activeFilter === COMPACT ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Compact Ammo</h5>
+                            </div>
+                            <div class="dropdown" onClick={() => { setActiveFilter(MEDIUM) }} style={activeFilter === MEDIUM ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Medium Ammo</h5>
+                            </div>
 
-                        <h4 class="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Long Ammo</h5>
-                        </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Shotgun Ammo</h5>
-                        </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Special Ammo</h5>
-                        </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Melee</h5>
-                        </h4>
+                            <div class="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Long Ammo</h5>
+                            </div>
+                            <div class="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Shotgun Ammo</h5>
+                            </div>
+                            <div class="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Special Ammo</h5>
+                            </div>
+                            <div class="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Melee</h5>
+                            </div>
 
-                        <h4 class="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Tools</h5>
-                        </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Consumables</h5>
-                        </h4>
-                        <h4 class="dropdown" onClick={() => { setActiveFilter('misc') }} style={activeFilter === 'misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
-                            <h5>Misc.</h5>
-                        </h4>
-                    </div>
-                    <div className="right-col">
-                        <div className="" >
+                            <div class="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Tools</h5>
+                            </div>
+                            <div class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Consumables</h5>
+                            </div>
+                            <div class="dropdown" onClick={() => { setActiveFilter('misc') }} style={activeFilter === 'misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                                <h5>Misc.</h5>
+                            </div>
+                        </div>
+                        <div className="right-col">
+
                             <div className='info-page' style={activeFilter === COMPACT ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={COMPACT} onClick={() => excludeAll(COMPACT, COMPACT)} />
@@ -1087,10 +1011,88 @@ const LoudoutRandomizer = () => {
                                     <p>Weapon Pairs</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+                {/* Loudout Container */}
+                <div className="loudout-container">
+                    <h4 className="test">Primary Weapon</h4>
+                    <div className="weapon-slot-container">
+                        <div className="weapon-slot" style={(repeat && generating) || weaponOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && weaponOne === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo.image === undefined && weaponOneAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? weaponOneAmmo2.image : weaponOneAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        </div>
+                        <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo2.image === undefined || weaponOneAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? '' : weaponOneAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        </div>
+                    </div>
+                    <h4 className="test">Secondary Weapon</h4>
+                    <div className="weapon-slot-container">
+                        <div className="weapon-slot" style={(repeat && generating) || weaponTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo.image === undefined && weaponTwoAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? weaponTwoAmmo2.image : weaponTwoAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        </div>
+                        <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo2.image === undefined || weaponTwoAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? '' : weaponTwoAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        </div>
+                    </div>
+                    <h4 className="test">Tools</h4>
+                    <div className="tool-slot-container">
+                        <div className="tool-slot" style={(repeat && generating) || toolOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne !== undefined ? toolOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolOne === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="tool-slot" style={(repeat && generating) || toolTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo !== undefined ? toolTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolTwo === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="tool-slot" style={(repeat && generating) || toolThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree !== undefined ? toolThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolThree === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="tool-slot" style={(repeat && generating) || toolFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour !== undefined ? toolFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && toolFour === '' ? <div id="loader"></div> : ''}
+                        </div>
+                    </div>
+                    <h4 className="test">Consumables</h4>
+                    <div className="tool-slot-container">
+                        <div className="tool-slot" style={(repeat && generating) || consumableOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne !== undefined ? consumableOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableOne === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="tool-slot" style={(repeat && generating) || consumableTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo !== undefined ? consumableTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableTwo === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="tool-slot" style={(repeat && generating) || consumableThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree !== undefined ? consumableThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableThree === '' ? <div id="loader"></div> : ''}
+                        </div>
+                        <div className="tool-slot" style={(repeat && generating) || consumableFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour !== undefined ? consumableFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            {generating && consumableFour === '' ? <div id="loader"></div> : ''}
+                        </div>
+                    </div>
+                </div>
+                {/* RIGHT CONTAINER */}
+                <div className="right-container">
+                    <div className="loading-box">
+                        <div className="loading-circle">
+                            {repeat === false ?
+                                <p className="loading-count" style={generating ? { color: 'red' } : {}} onClick={generating ? () => { } : () => roll()}><span id="loadingNumber">{loadingText}</span></p>
+                                :
+                                <p className="loading-count-two" style={generating ? { color: 'red' } : {}} onClick={generating ? () => { } : () => roll()}><span id="loadingNumber">{loadingText}</span></p>}
+                        </div>
+                    </div>
+                    <div className="info-box">
+                        <div className='console-container'>Primary Weapon:<span id='w1'>{w1}</span><div className='console-underscore' id='w1c'>&#95;</div></div>
+                        <div className='console-container'>Secondary Weapon:<span id='w2'>{w2}</span><div className='console-underscore' id='w2c'>&#95;</div></div>
+                        <div className='console-container'>Tool 1:<span id='t1'>{t1}</span><div className='console-underscore' id='t1c'>&#95;</div></div>
+                        <div className='console-container'>Tool 2:<span id='t2'>{t2}</span><div className='console-underscore' id='t2c'>&#95;</div></div>
+                        <div className='console-container'>Tool 3:<span id='t3'>{t3}</span><div className='console-underscore' id='t3c'>&#95;</div></div>
+                        <div className='console-container'>Tool 4:<span id='t4'>{t4}</span><div className='console-underscore' id='t4c'>&#95;</div></div>
+                        <div className='console-container'>Consumable 1:<span id='c1'>{c1}</span><div className='console-underscore' id='c1c'>&#95;</div></div>
+                        <div className='console-container'>Consumable 2:<span id='c2'>{c2}</span><div className='console-underscore' id='c2c'>&#95;</div></div>
+                        <div className='console-container'>Consumable 3:<span id='c3'>{c3}</span><div className='console-underscore' id='c3c'>&#95;</div></div>
+                        <div className='console-container'>Consumable 4:<span id='c4'>{c4}</span><div className='console-underscore' id='c4c'>&#95;</div></div>
+                    </div>
+                </div>
             </div>
+
             <div className="scroll-indicator">
                 <div className="bottom"></div>
             </div>

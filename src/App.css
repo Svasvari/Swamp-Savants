@@ -22,7 +22,9 @@ body {
   width: 100vw;
 }
 
-.main {}
+.main {
+  display: flex;
+}
 
 
 /* NAVBAR */
@@ -143,6 +145,8 @@ li a {
 /* Card Deck */
 .Deck {
   position: relative;
+  width: 60vw;
+  height: 100%;
 }
 
 .Deck h3 {
@@ -268,12 +272,12 @@ li a {
 #page2 {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   transform: translateY(100%);
   transition: transform 0.5s ease;
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   margin-top: 100px;
 }
@@ -428,7 +432,7 @@ li {
 /* Loudout Randomizer */
 .loudout-title {
   position: relative;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
 }
 
 .loudout-subtitle {
@@ -440,7 +444,7 @@ li {
 .main-panel-container {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .options-container {
@@ -457,6 +461,7 @@ li {
 
 .loudout-container {
   max-width: fit-content;
+  margin: 1%;
 }
 
 .weapon-slot-container {
@@ -689,9 +694,11 @@ li {
 
 /* Loading Circle */
 .right-container {
-  position: absolute;
+  /* position: fixed;
   top: 6%;
-  left: 120%;
+  left: 67%; */
+  max-width: 500px;
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
@@ -857,11 +864,11 @@ li {
 
 /* Left Container */
 .left-container {
-  position: absolute;
+  /* position: fixed;
   top: 10%;
-  right: 120%;
-  width: 700px;
-  height: 1000px;
+  left: 5%; */
+  min-width: 500px;
+  height: 800px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -873,6 +880,7 @@ li {
   overflow: hidden;
   border-width: 5px;
   border-radius: 10px;
+  padding: 0.5%;
 }
 
 .options-box {
@@ -881,7 +889,22 @@ li {
   justify-content: center;
   align-items: center;
   min-width: 100%;
-  max-width: 100%;
+}
+
+.optionLarge {
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.options-box2 {
+  display: flex;
+  justify-content: center;
+  min-width: 100%;
+  height: 100%;
 }
 
 .form {
@@ -908,6 +931,7 @@ li {
 
 .exclusion {
   color: red;
+  margin-top: 15%;
 }
 
 .dropdown {
@@ -917,10 +941,9 @@ li {
   color: #fff;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
-  width: 300px;
+  width: 100%;
   height: 55px;
-  margin-left: 5%;
-  margin-top: -4.5%;
+  margin-left: 1%;
   cursor: pointer;
 }
 
@@ -958,16 +981,17 @@ li {
   margin-left: 1%;
 }
 
-.dropdown:hover  {
+.dropdown:hover {
   background-color: rgb(128, 128, 128, 0.5);
 }
 
 .right-col {
-  position: absolute;
+  /* position: absolute;
   top: 37.5%;
-  left: 52%;
-  width: 320px;
-  height: 593px;
+  left: 52%; */
+  position: relative;
+  width: 100%;
+  height: 495px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -986,18 +1010,24 @@ li {
 }
 
 .example {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .left-col {
-  margin-right: 3%;
-  width: 320px;
-  height: 525px;
-  position: absolute;
-  right: 47%;
-  top:  39%;
-  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1%;
+  width: 100%;
+}
+
+.left-col h5 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: WhiteSmoke;
 }
 
 .right-col p {
@@ -1016,11 +1046,11 @@ li {
   background-image: url('https://res.cloudinary.com/dqcmy8k1n/image/upload/v1662070088/Tarot%20Cards/question-mark-circle-icon-1873794492_t70rch.png');
   background-size: cover;
   background-position: center;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   position: absolute;
   filter: brightness(200%);
-  left: 3%;
+  left: 2%;
 }
 
 .infoHelpDropdown {
@@ -1028,9 +1058,10 @@ li {
   position: absolute;
   top: 0%;
   left: 110%;
-  background-color: rgba(10, 10, 10, 1);;
+  background-color: rgba(10, 10, 10, 1);
+  ;
   width: max-content;
-  max-width: 500px;
+  max-width: 300px;
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   padding: 12px 16px;
   z-index: 1;
@@ -1041,7 +1072,7 @@ li {
   color: white;
   font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .infoHelp:hover .infoHelpDropdown {
