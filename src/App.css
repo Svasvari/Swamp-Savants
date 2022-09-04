@@ -15,9 +15,6 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   height: 100vh;
   width: 100vw;
 }
@@ -145,8 +142,7 @@ li a {
 /* Card Deck */
 .Deck {
   position: relative;
-  width: 60vw;
-  height: 100%;
+  /* background-color: chartreuse; */
 }
 
 .Deck h3 {
@@ -270,16 +266,18 @@ li a {
 }
 
 #page2 {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   transform: translateY(100%);
   transition: transform 0.5s ease;
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   z-index: 1000;
-  margin-top: 100px;
+  margin: 0 auto;
+  padding-top: 5%;
 }
 
 #page3 {
@@ -431,20 +429,19 @@ li {
 
 /* Loudout Randomizer */
 .loudout-title {
-  position: relative;
-  margin-bottom: 5%;
+  text-align: center;
 }
 
 .loudout-subtitle {
-  position: absolute;
-  top: 30px;
-  left: 50px;
+  text-align: center;
 }
 
 .main-panel-container {
   position: relative;
   display: flex;
   justify-content: space-between;
+  margin-top: 100px;
+  width: 100%;
 }
 
 .options-container {
@@ -460,8 +457,11 @@ li {
 }
 
 .loudout-container {
-  max-width: fit-content;
-  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 0%;
 }
 
 .weapon-slot-container {
@@ -478,6 +478,7 @@ li {
   width: 500px;
   height: 100px;
   margin-bottom: 3%;
+  margin-top: -3%;
   margin-right: 2%;
   display: flex;
   align-items: center;
@@ -495,6 +496,7 @@ li {
   width: 50px;
   height: 100px;
   margin-left: 1%;
+  margin-top: -3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -512,13 +514,12 @@ li {
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   border-style: solid;
   border-color: rgb(128, 128, 128, 0.1);
-  ;
   border-width: 3px;
   border-radius: 12px;
   width: 100px;
   height: 125px;
-  margin-right: 3%;
-  margin-bottom: 3%;
+  margin-right: 4.5%;
+  margin-top: -3%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -694,11 +695,12 @@ li {
 
 /* Loading Circle */
 .right-container {
-  /* position: fixed;
-  top: 6%;
-  left: 67%; */
-  max-width: 500px;
-
+  min-width: 500px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: rgb(17, 141, 250) */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
@@ -820,7 +822,7 @@ li {
 
 /* Text Output */
 .info-box {
-  width: 700px;
+  width: 500px;
   height: 650px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
@@ -831,7 +833,6 @@ li {
   border-radius: 12px;
   border-style: solid;
   border-color: rgb(128, 128, 128, 0.1);
-  ;
   border-width: 5px;
   border-radius: 10px;
 }
@@ -843,11 +844,11 @@ li {
 }
 
 .console-container {
-
+  width: 90%;
   text-transform: uppercase;
   font-family: 'Lato', sans-serif;
   letter-spacing: 5px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   text-align: center;
   display: block;
@@ -868,6 +869,7 @@ li {
   top: 10%;
   left: 5%; */
   min-width: 500px;
+  width: 100%;
   height: 800px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
@@ -881,6 +883,7 @@ li {
   border-width: 5px;
   border-radius: 10px;
   padding: 0.5%;
+  /* background-color: aqua; */
 }
 
 .options-box {
@@ -961,16 +964,6 @@ li {
   overflow: scroll;
 }
 
-.info-page {
-  position: absolute;
-}
-
-.drop-form {
-  display: flex;
-  align-items: center;
-  min-width: 100%;
-}
-
 .dropdown-content p {
   color: black;
   font-size: 10px;
@@ -1003,6 +996,16 @@ li {
   border-width: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.info-page {
+  position: absolute;
+}
+
+.drop-form {
+  display: flex;
+  align-items: center;
+  width: 90%;
 }
 
 .example::-webkit-scrollbar {

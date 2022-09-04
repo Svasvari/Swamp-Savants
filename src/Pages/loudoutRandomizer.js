@@ -372,7 +372,6 @@ const LoudoutRandomizer = () => {
         if (category === 'weapon') {
             if (checkbox.checked) {
                 setWeaponsPool(weaponsPool.filter((item) => item.name !== id));
-                console.log(weaponsPool)
             } else {
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.name === id)));
             }
@@ -586,88 +585,85 @@ const LoudoutRandomizer = () => {
             let mediumWeapons = weaponsPool.filter((weapon) => weapon.size === 'M');
 
             randomWeaponOne = largeWeapons[Math.floor(Math.random() * largeWeapons.length)];
-            randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[0][Math.floor(Math.random() * randomWeaponOne.specialAmmo[0].length)]))[0];
-            randomWeaponOneAmmo = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
-            if (randomWeaponOne.extraAmmo === true) {
-                randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[1][Math.floor(Math.random() * randomWeaponOne.specialAmmo[1].length)]))[0];
-                randomWeaponOneAmmo2 = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+            if (randomWeaponOne !== undefined) {
+                randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[0][Math.floor(Math.random() * randomWeaponOne.specialAmmo[0].length)]))[0];
+                randomWeaponOneAmmo = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+                if (randomWeaponOne.extraAmmo === true) {
+                    randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[1][Math.floor(Math.random() * randomWeaponOne.specialAmmo[1].length)]))[0];
+                    randomWeaponOneAmmo2 = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+                }
             }
             setTimeout(() => {
                 setWeaponOne(randomWeaponOne);
-                consoleText(setW1, [randomWeaponOne.name], 'w1', 'w1c', ['white']);
+                consoleText(setW1, [randomWeaponOne !== undefined ? randomWeaponOne.name : ''], 'w1', 'w1c', ['white']);
                 setWeaponOneAmmo(randomWeaponOneAmmo);
-                if (randomWeaponOne.extraAmmo === true) {
-                    setWeaponOneAmmo2(randomWeaponOneAmmo2);
-                }
+                setWeaponOneAmmo2(randomWeaponOneAmmo2);
             }, timeoutStart + 1000);
 
             randomWeaponTwo = mediumWeapons[Math.floor(Math.random() * mediumWeapons.length)];
-            randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[0][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[0].length)]))[0];
-            randomWeaponTwoAmmo = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
-            if (randomWeaponTwo.extraAmmo === true) {
-                randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[1][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[1].length)]))[0];
-                randomWeaponTwoAmmo2 = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+            if (randomWeaponTwo !== undefined) {
+                randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[0][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[0].length)]))[0];
+                randomWeaponTwoAmmo = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+                if (randomWeaponTwo.extraAmmo === true) {
+                    randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[1][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[1].length)]))[0];
+                    randomWeaponTwoAmmo2 = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+                }
             }
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
-                consoleText(setW2, [randomWeaponTwo.name], 'w2', 'w2c', ['white']);
+                consoleText(setW2, [randomWeaponTwo !== undefined ? randomWeaponTwo.name : ''], 'w2', 'w2c', ['white']);
                 setWeaponTwoAmmo(randomWeaponTwoAmmo);
-                if (randomWeaponTwo.extraAmmo === true) {
-                    setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
-                }
+                setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
             }, timeoutStart + 2000);
 
         } else {
             //Roll Weapon One
             randomWeaponOne = weaponsPool[Math.floor(Math.random() * weaponsPool.length)];
-            randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[0][Math.floor(Math.random() * randomWeaponOne.specialAmmo[0].length)]))[0];
-            randomWeaponOneAmmo = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
-            if (randomWeaponOne.extraAmmo === true) {
-                randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[1][Math.floor(Math.random() * randomWeaponOne.specialAmmo[1].length)]))[0];
-                randomWeaponOneAmmo2 = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+            if (randomWeaponOne !== undefined) {
+                randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[0][Math.floor(Math.random() * randomWeaponOne.specialAmmo[0].length)]))[0];
+                randomWeaponOneAmmo = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+                if (randomWeaponOne.extraAmmo === true) {
+                    randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[1][Math.floor(Math.random() * randomWeaponOne.specialAmmo[1].length)]))[0];
+                    randomWeaponOneAmmo2 = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+                }
             }
             setTimeout(() => {
                 setWeaponOne(randomWeaponOne);
-                consoleText(setW1, [randomWeaponOne.name], 'w1', 'w1c', ['white']);
-                setWeaponOneAmmo(randomWeaponOneAmmo);
-                if (randomWeaponOne.extraAmmo === true) {
-                    setWeaponOneAmmo2(randomWeaponOneAmmo2);
-                }
+                consoleText(setW1, [randomWeaponOne !== undefined ? randomWeaponOne.name : ''], 'w1', 'w1c', ['white']);
+                setWeaponOneAmmo2(randomWeaponOneAmmo2);
             }, timeoutStart + 1000);
 
 
             //Roll Weapon Two
             let weapon2Pool = [];
-            if (randomWeaponOne.size === 'L') {
-                weapon2Pool = weaponsPool.filter((weapon) => weapon.size === 'S');
-            } else if (randomWeaponOne.size === 'M') {
-                weapon2Pool = weaponsPool.filter((weapon) => weapon.size !== 'L');
-            } else if (randomWeaponOne.size === 'S') {
-                weapon2Pool = weaponsPool;
+            if (randomWeaponOne !== undefined) {
+                if (randomWeaponOne.size === 'L') {
+                    weapon2Pool = weaponsPool.filter((weapon) => weapon.size === 'S');
+                } else if (randomWeaponOne.size === 'M') {
+                    weapon2Pool = weaponsPool.filter((weapon) => weapon.size !== 'L');
+                } else if (randomWeaponOne.size === 'S') {
+                    weapon2Pool = weaponsPool;
+                }
             }
+
             randomWeaponTwo = weapon2Pool[Math.floor(Math.random() * weapon2Pool.length)];
-            randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[0][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[0].length)]))[0];
-            randomWeaponTwoAmmo = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
-            if (randomWeaponTwo.extraAmmo === true) {
-                randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[1][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[1].length)]))[0];
-                randomWeaponTwoAmmo2 = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+            if (randomWeaponTwo !== undefined) {
+                randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo !== undefined ? randomWeaponTwo.specialAmmo[0][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[0].length)] : ''))[0];
+                randomWeaponTwoAmmo = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+                if (randomWeaponTwo.extraAmmo === true) {
+                    randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo !== undefined ? randomWeaponTwo.specialAmmo[1][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[1].length)] : ''))[0];
+                    randomWeaponTwoAmmo2 = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+                }
             }
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
-                consoleText(setW2, [randomWeaponTwo.name], 'w2', 'w2c', ['white']);
+                consoleText(setW2, [randomWeaponTwo !== undefined ? randomWeaponTwo.name : ''], 'w2', 'w2c', ['white']);
                 setWeaponTwoAmmo(randomWeaponTwoAmmo);
-                if (randomWeaponTwo.extraAmmo === true) {
-                    setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
-                }
+                setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
             }, timeoutStart + 2000);
 
         }
 
-        console.log(randomWeaponOne.extraAmmo)
-        console.log('w1-1' + randomWeaponOneAmmo)
-        console.log('w1-2' + randomWeaponOneAmmo2)
-        console.log('w2-1' + randomWeaponTwoAmmo)
-        console.log('w2-2' + randomWeaponTwoAmmo2)
         //Roll Tools
         let randomToolOne = '';
         let randomToolTwo = '';
@@ -770,7 +766,6 @@ const LoudoutRandomizer = () => {
 
     return (
         <div className="Deck">
-            {console.log(weaponsPool)}
             <div className="scroll-indicator">
                 <div className="top"></div>
             </div>
@@ -855,7 +850,6 @@ const LoudoutRandomizer = () => {
                             </div>
                         </div>
                         <div className="right-col">
-
                             <div className='info-page' style={activeFilter === COMPACT ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                                 <div className="drop-form">
                                     <input type={'checkbox'} className='checkbox' id={COMPACT} onClick={() => excludeAll(COMPACT, COMPACT)} />
@@ -1017,9 +1011,10 @@ const LoudoutRandomizer = () => {
                 </div>
                 {/* Loudout Container */}
                 <div className="loudout-container">
+                    {console.log(weaponOne)}
                     <h4 className="test">Primary Weapon</h4>
                     <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponOne.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && weaponOne === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo.image === undefined && weaponOneAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? weaponOneAmmo2.image : weaponOneAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
@@ -1029,7 +1024,7 @@ const LoudoutRandomizer = () => {
                     </div>
                     <h4 className="test">Secondary Weapon</h4>
                     <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponTwo.image === undefined ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <div className="weapon-slot" style={(repeat && generating) || weaponTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo !== undefined ? weaponTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                             {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
                         </div>
                         <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo.image === undefined && weaponTwoAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? weaponTwoAmmo2.image : weaponTwoAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
