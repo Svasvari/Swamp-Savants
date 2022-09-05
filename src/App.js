@@ -6,7 +6,7 @@ import $ from 'jquery'
 
 import Landing from './Pages/Landing';
 import LoudoutRandomizer from './Pages/loudoutRandomizer';
-import PrestigeRoulette from './Pages/prestigeRoulette';
+import About from './Pages/About';
 
 function App() {
 
@@ -91,6 +91,7 @@ function App() {
 
   return (
     <div className='main'>
+      {console.log(screenID)}
       <nav className="navigationWrapper">
         <div className="logoWrapper" onClick={() => handleDot1(screenID)}>
           <span className="stylish">Swamp</span>
@@ -98,16 +99,14 @@ function App() {
         </div>
         <ul className="navigation">
           <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot2(screenID)}>Loadout Randomizer</li>
-          <li className={screenID === 1 ? ("parent") : ('parent2')}>Prestige Roulette</li>
-          <li className="parent"><a className="link" href="/about">About</a></li>
-          <li className="parent"><a className="link" href="/contact">Contact</a></li>
+          <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot3(screenID)}>About</li>
         </ul>
       </nav>
       <div id="page2">
         <LoudoutRandomizer />
       </div>
-      <div id="page3">
-        <PrestigeRoulette />
+      <div id="page3" >
+        <About />
       </div>
       <div id="page1">
         <Landing />
@@ -115,18 +114,36 @@ function App() {
           <div className="btn_fab" onClick={() => handleDot2(screenID)}>Enter</div>
         </div>
       </div>
-      <div class="slider">
-        <div class="items-group">
-          <div class="item">
+      <div className="scroll-indicator-top">
+        <div className="top" style={screenID === 1 ? { visibility: 'hidden' } : {}} onClick={() => {
+          if (screenID === 2) {
+            handleDot1(screenID);
+          } else if (screenID === 3) {
+            handleDot2(screenID);
+          }
+        }}></div>
+      </div>
+      <div className="scroll-indicator-bottom">
+        <div className="bottom" style={screenID !== 2 ? { visibility: 'hidden' } : {}} onClick={() => {
+          if (screenID === 1) {
+            handleDot2(screenID);
+          } else if (screenID === 2) {
+            handleDot3(screenID);
+          }
+        }}></div>
+      </div>
+      <div className="slider">
+        <div className="items-group">
+          <div className="item">
           </div>
-          <div class="item">
+          <div className="item">
           </div>
-          <div class="item">
+          <div className="item">
           </div>
         </div>
 
-        <div class="navigations">
-          <ul class="dots">
+        <div className="navigations">
+          <ul className="dots">
             <li id='dot1' onClick={() => { handleDot1(screenID) }} />
             <li id='dot2' onClick={() => handleDot2(screenID)} />
             <li id='dot3' onClick={() => handleDot3(screenID)} />

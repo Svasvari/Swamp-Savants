@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const LoudoutRandomizer = () => {
 
@@ -268,7 +268,6 @@ const LoudoutRandomizer = () => {
     //Toggle Options
     const [quartermaster, setQuartermaster] = useState(false);
     const [customAmmo, setCustomAmmo] = useState(false);
-    const [disableScopes, setDisableScopes] = useState(false);
     const [fixedMedkit, setFixedMedkit] = useState(false);
     const [fixedMeleeTool, setFixedMeleeTool] = useState(false);
 
@@ -317,17 +316,6 @@ const LoudoutRandomizer = () => {
 
 
     //FUNCTIONS/////////////////////////////////////////////////////////////////////////////
-
-    //Handle Toggle Scopes
-    const handleDisableScopes = () => {
-        setDisableScopes(!disableScopes);
-        if (!disableScopes) {
-            setWeaponsPool(weaponsPool.filter((weapon) => !weapon.scope));
-        } else {
-            let scopes = weaponsMasterList.filter((weapon) => weapon.scope);
-            setWeaponsPool([].concat(weaponsPool, scopes));
-        }
-    }
 
     //Info Box Code   
     function consoleText(go, words, id, consoleId, colors) {
@@ -774,9 +762,6 @@ const LoudoutRandomizer = () => {
 
     return (
         <div className="Deck">
-            <div className="scroll-indicator">
-                <div className="top"></div>
-            </div>
             <h3 className="loudout-title">
                 <span role="img">♢</span>Loudout Randomizer<span role="img">♢</span>
                 <h4 className="loudout-subtitle">
@@ -788,8 +773,8 @@ const LoudoutRandomizer = () => {
                 <div className="left-container">
                     <div className="options-box">
                         <div className="form">
-                            <div class="infoHelp">
-                                <div class="infoHelpDropdown">
+                            <div className="infoHelp">
+                                <div className="infoHelpDropdown">
                                     <p>Weapon ammo type will be randomized</p>
                                 </div>
                             </div>
@@ -797,8 +782,8 @@ const LoudoutRandomizer = () => {
                             <input type={'checkbox'} className='checkbox' onClick={() => setCustomAmmo(!customAmmo)} />
                         </div>
                         <div className="form">
-                            <div class="infoHelp">
-                                <div class="infoHelpDropdown">
+                            <div className="infoHelp">
+                                <div className="infoHelpDropdown">
                                     <p>Loudout will always contain one large slot and one medium slot weapon</p>
                                 </div>
                             </div>
@@ -806,8 +791,8 @@ const LoudoutRandomizer = () => {
                             <input type={'checkbox'} className='checkbox' onClick={() => setQuartermaster(!quartermaster)} />
                         </div>
                         <div className="form">
-                            <div class="infoHelp">
-                                <div class="infoHelpDropdown">
+                            <div className="infoHelp">
+                                <div className="infoHelpDropdown">
                                     <p>Loudout will always contain a First Aid Kit</p>
                                 </div>
                             </div>
@@ -815,8 +800,8 @@ const LoudoutRandomizer = () => {
                             <input type={'checkbox'} className='checkbox' onClick={() => setFixedMedkit(!fixedMedkit)} />
                         </div>
                         <div className="form">
-                            <div class="infoHelp">
-                                <div class="infoHelpDropdown">
+                            <div className="infoHelp">
+                                <div className="infoHelpDropdown">
                                     <p>Loudout will always contain a melee tool</p>
                                 </div>
                             </div>
@@ -827,33 +812,33 @@ const LoudoutRandomizer = () => {
                     <h4 className="exclusion"><span>EXCLUSIONS</span></h4>
                     <div className="options-box2">
                         <div className="left-col">
-                            <div class="dropdown" onClick={() => { setActiveFilter(COMPACT) }} style={activeFilter === COMPACT ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter(COMPACT) }} style={activeFilter === COMPACT ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Compact Ammo</h5>
                             </div>
-                            <div class="dropdown" onClick={() => { setActiveFilter(MEDIUM) }} style={activeFilter === MEDIUM ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter(MEDIUM) }} style={activeFilter === MEDIUM ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Medium Ammo</h5>
                             </div>
 
-                            <div class="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter(LONG) }} style={activeFilter === LONG ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Long Ammo</h5>
                             </div>
-                            <div class="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter(SHOTGUN) }} style={activeFilter === SHOTGUN ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Shotgun Ammo</h5>
                             </div>
-                            <div class="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter(SPECIAL) }} style={activeFilter === SPECIAL ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Special Ammo</h5>
                             </div>
-                            <div class="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter(MELEE) }} style={activeFilter === MELEE ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Melee</h5>
                             </div>
 
-                            <div class="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter('tools') }} style={activeFilter === 'tools' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Tools</h5>
                             </div>
-                            <div class="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter('consumables') }} style={activeFilter === 'consumables' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Consumables</h5>
                             </div>
-                            <div class="dropdown" onClick={() => { setActiveFilter('misc') }} style={activeFilter === 'misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
+                            <div className="dropdown" onClick={() => { setActiveFilter('misc') }} style={activeFilter === 'misc' ? { backgroundColor: 'rgb(128, 128, 128, 0.5)' } : {}}>
                                 <h5>Misc.</h5>
                             </div>
                         </div>
@@ -865,7 +850,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {weaponsFilterList.filter((item) => item.defaultAmmo === COMPACT).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
                                                 <p>{element}</p>
@@ -881,7 +866,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {weaponsFilterList.filter((item) => item.defaultAmmo === MEDIUM).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
                                                 <p>{element}</p>
@@ -897,7 +882,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {weaponsFilterList.filter((item) => item.defaultAmmo === LONG).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
                                                 <p>{element}</p>
@@ -913,7 +898,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {weaponsFilterList.filter((item) => item.defaultAmmo === SHOTGUN).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
                                                 <p>{element}</p>
@@ -929,7 +914,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {weaponsFilterList.filter((item) => item.defaultAmmo === SPECIAL).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
                                                 <p>{element}</p>
@@ -945,7 +930,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {weaponsFilterList.filter((item) => item.defaultAmmo === MELEE).map((element) => element.name).sort().map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element} onClick={() => exclude('weapon', element)} />
                                                 <p>{element}</p>
@@ -961,7 +946,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {tools.map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element.name}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('tool', element.name)} />
                                                 <p>{element.name}</p>
@@ -977,7 +962,7 @@ const LoudoutRandomizer = () => {
                                 </div>
                                 {consumables.map((element) => {
                                     return (
-                                        <div>
+                                        <div key={element.name}>
                                             <div className="drop-form">
                                                 <input type={'checkbox'} className='checkbox' id={element.name} onClick={() => exclude('consumable', element.name)} />
                                                 <p>{element.name}</p>
@@ -1094,10 +1079,6 @@ const LoudoutRandomizer = () => {
                         <div className='console-container'>Consumable 4:<span id='c4'>{c4}</span><div className='console-underscore' id='c4c'>&#95;</div></div>
                     </div>
                 </div>
-            </div>
-
-            <div className="scroll-indicator">
-                <div className="bottom"></div>
             </div>
         </div>
 
