@@ -58,25 +58,25 @@ const LoudoutRandomizer = () => {
 
     //Weapon Pairs
     const weaponsDual = [
-        { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, INCENDIARY, HIGH_VELOCITY]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967911/Tarot%20Cards/borneheim-no3-pair_mhjlsz.png' },
-        { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, INCENDIARY, HIGH_VELOCITY]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967911/Tarot%20Cards/bornheim-extended-pair_julyoo.png' },
-        { name: 'Caldwell 92 New Army Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, DUMDUM, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/new-army-pair_gwebjw.png' },
-        { name: 'Caldwell Conversion Chain Pistol Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, DUMDUM, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/conversion-chain_zy806q.png' },
-        { name: 'Caldwell Conversion Pistol Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, DUMDUM, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/conversion-base-pair_inwfqt.png' },
-        { name: 'Caldwell Conversion Uppercut Pair', size: 'M', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, EXPLOSIVE]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/uppercut-pair_ubejbp.png' },
-        { name: 'Caldwell Pax Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, DUMDUM]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/pax-base-pair_gtuzln.png' },
-        { name: 'Caldwell Pax Claw Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, DUMDUM]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/pax-claw-pair_nxw1pl.png' },
-        { name: 'Dolch 96 Pair', size: 'M', defaultAmmo: SPECIAL, specialAmmo: [[NONE]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/dolch96-pair_ibsdcc.png' },
-        { name: 'LeMat Mark II Pair', size: 'M', defaultAmmo: COMPACT, secondaryAmmo: SHOTGUN, specialAmmo: [[NONE, INCENDIARY, FMJ], [NONE, STARSHELL, DRAGON_BREATH, SLUG]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/lemat-pair_l00nhz.png' },
-        { name: 'Nagant M1895 Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/nagant-base-pair_j2cfv9.png' },
-        { name: 'Nagant M1895 Officer Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/nagant-officer-pair_jypurm.png' },
-        { name: 'Nagant M1895 Officer Brawler Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/nagant-officer-brawler-pair_jqdvhs.png' },
-        { name: 'Nagant M1895 Silencer Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/nagant-silencer-pair_a8srvq.png' },
-        { name: 'Scottfield Model 3 Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-base-pair_qjunmi.png' },
-        { name: 'Scottfield Model 3 Brawler Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-brawler-pair_tfeamh.png' },
-        { name: 'Scottfield Model 3 Spitfire Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-spitfire-pair_qpkxrj.png' },
-        { name: 'Scottfield Model 3 Swift Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-swift-pair_tuyee5.png' },
-        { name: 'Sparks Pistol Pair', size: 'M', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], extraAmmo: true, image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/sparks-pistol-pair_xfd9j8.png' },
+        { name: 'Bornheim No. 3 Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, INCENDIARY, HIGH_VELOCITY]], pair: true, baseWeapon: 'Bornheim No. 3', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967911/Tarot%20Cards/borneheim-no3-pair_mhjlsz.png' },
+        { name: 'Bornheim No. 3 Extended Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, INCENDIARY, HIGH_VELOCITY]], pair: true, baseWeapon: 'Bornheim No. 3 Extended', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967911/Tarot%20Cards/bornheim-extended-pair_julyoo.png' },
+        { name: 'Caldwell 92 New Army Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, DUMDUM, FMJ]], pair: true, baseWeapon: 'Caldwell 92 New Army', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/new-army-pair_gwebjw.png' },
+        { name: 'Caldwell Conversion Chain Pistol Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, DUMDUM, FMJ]], pair: true, baseWeapon: 'Caldwell Conversion Chain Pistol', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/conversion-chain_zy806q.png' },
+        { name: 'Caldwell Conversion Pistol Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, DUMDUM, FMJ]], pair: true, baseWeapon: 'Caldwell Conversion Pistol', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/conversion-base-pair_inwfqt.png' },
+        { name: 'Caldwell Conversion Uppercut Pair', size: 'M', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, EXPLOSIVE]], pair: true, baseWeapon: 'Caldwell Conversion Uppercut', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/uppercut-pair_ubejbp.png' },
+        { name: 'Caldwell Pax Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, DUMDUM]], pair: true, baseWeapon: 'Caldwell Pax', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/pax-base-pair_gtuzln.png' },
+        { name: 'Caldwell Pax Claw Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, DUMDUM]], pair: true, baseWeapon: 'Caldwell Pax Claw', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/pax-claw-pair_nxw1pl.png' },
+        { name: 'Dolch 96 Pair', size: 'M', defaultAmmo: SPECIAL, specialAmmo: [[NONE]], pair: true, baseWeapon: 'Dolch 96', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/dolch96-pair_ibsdcc.png' },
+        { name: 'LeMat Mark II Pair', size: 'M', defaultAmmo: COMPACT, secondaryAmmo: SHOTGUN, specialAmmo: [[NONE, INCENDIARY, FMJ], [NONE, STARSHELL, DRAGON_BREATH, SLUG]], extraAmmo: true, pair: true, baseWeapon: 'LeMat Mark II', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/lemat-pair_l00nhz.png' },
+        { name: 'Nagant M1895 Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], pair: true, baseWeapon: 'Nagant M1895', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/nagant-base-pair_j2cfv9.png' },
+        { name: 'Nagant M1895 Officer Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], pair: true, baseWeapon: 'Nagant M1895 Officer', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/nagant-officer-pair_jypurm.png' },
+        { name: 'Nagant M1895 Officer Brawler Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], pair: true, baseWeapon: 'Nagant M1895 Officer Brawler', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967706/Tarot%20Cards/nagant-officer-brawler-pair_jqdvhs.png' },
+        { name: 'Nagant M1895 Silencer Pair', size: 'M', defaultAmmo: COMPACT, specialAmmo: [[NONE, POISON, HIGH_VELOCITY]], pair: true, baseWeapon: 'Nagant M1895 Silencer', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967705/Tarot%20Cards/nagant-silencer-pair_a8srvq.png' },
+        { name: 'Scottfield Model 3 Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], pair: true, baseWeapon: 'Scottfield Model 3', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-base-pair_qjunmi.png' },
+        { name: 'Scottfield Model 3 Brawler Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], pair: true, baseWeapon: 'Scottfield Model 3 Brawler', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-brawler-pair_tfeamh.png' },
+        { name: 'Scottfield Model 3 Spitfire Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], pair: true, baseWeapon: 'Scottfield Model 3 Spitfire', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-spitfire-pair_qpkxrj.png' },
+        { name: 'Scottfield Model 3 Swift Pair', size: 'M', defaultAmmo: MEDIUM, specialAmmo: [[NONE, INCENDIARY, FMJ]], pair: true, baseWeapon: 'Scottfield Model 3 Swift', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/scott-swift-pair_tuyee5.png' },
+        { name: 'Sparks Pistol Pair', size: 'M', defaultAmmo: LONG, specialAmmo: [[NONE, INCENDIARY, POISON, FMJ], [NONE, INCENDIARY, POISON, FMJ]], extraAmmo: true, pair: true, baseWeapon: 'Sparks Pistol', image: 'https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661967704/Tarot%20Cards/sparks-pistol-pair_xfd9j8.png' },
     ];
 
     //Medium Slot Weapons
@@ -258,6 +258,8 @@ const LoudoutRandomizer = () => {
 
     //Main States
     const weaponsMasterList = [].concat(weaponsSmall, weaponsMedium, weaponsDual, weaponsLarge);
+    const weaponsFilterList = [].concat(weaponsSmall, weaponsMedium, weaponsLarge);
+    const [excludedPairs, setExcludedPairs] = useState([]);
     const [weaponsPool, setWeaponsPool] = useState([].concat(weaponsSmall, weaponsMedium, weaponsDual, weaponsLarge));
     const [toolPool, setToolPool] = useState(tools);
     const [consumablePool, setConsumablePool] = useState(consumables);
@@ -371,9 +373,15 @@ const LoudoutRandomizer = () => {
         let checkbox = document.getElementById(id);
         if (category === 'weapon') {
             if (checkbox.checked) {
-                setWeaponsPool(weaponsPool.filter((item) => item.name !== id));
+                weaponsPool.forEach((item) => {
+                    if (item.name === `${id} Pair`) {
+                        excludedPairs.push(item.name);
+                    }
+                });
+                setWeaponsPool(weaponsPool.filter((item) => item.name !== id && item.name !== `${id} Pair`));
             } else {
-                setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.name === id)));
+                setWeaponsPool([].concat(weaponsPool, document.getElementById('weaponPair').checked !== true ? weaponsDual.filter(item => item.name === `${id} Pair`) : weaponsDual.filter(item => item.name === 'N/A'), weaponsMasterList.filter((item) => item.name === id)));
+                excludedPairs.pop(excludedPairs.filter((item) => item.name === `${id} Pair`));
             }
         } else if (category === 'tool') {
             if (checkbox.checked) {
@@ -530,13 +538,13 @@ const LoudoutRandomizer = () => {
         } else if (type === 'misc') {
             if (checkbox.checked) {
                 if (id === 'weaponPair') {
-
+                    setWeaponsPool(weaponsPool.filter((item) => item.pair !== true));
                 } else {
                     setWeaponsPool(weaponsPool.filter((item) => item.scope !== id));
                 }
             } else {
                 if (id === 'weaponPair') {
-
+                    setWeaponsPool([].concat(weaponsPool, weaponsDual.filter((item) => excludedPairs.indexOf(item.name) === -1)));
                 } else {
                     setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.scope === id)));
                 }
@@ -855,7 +863,7 @@ const LoudoutRandomizer = () => {
                                     <input type={'checkbox'} className='checkbox' id={COMPACT} onClick={() => excludeAll(COMPACT, COMPACT)} />
                                     <p>{toggleCompactAll ? 'None' : 'All'}</p>
                                 </div>
-                                {weaponsMasterList.filter((item) => item.defaultAmmo === COMPACT).map((element) => element.name).sort().map((element) => {
+                                {weaponsFilterList.filter((item) => item.defaultAmmo === COMPACT).map((element) => element.name).sort().map((element) => {
                                     return (
                                         <div>
                                             <div className="drop-form">
@@ -871,7 +879,7 @@ const LoudoutRandomizer = () => {
                                     <input type={'checkbox'} className='checkbox' id={MEDIUM} onClick={() => excludeAll(MEDIUM, MEDIUM)} />
                                     <p>{toggleMediumAll ? 'None' : 'All'}</p>
                                 </div>
-                                {weaponsMasterList.filter((item) => item.defaultAmmo === MEDIUM).map((element) => element.name).sort().map((element) => {
+                                {weaponsFilterList.filter((item) => item.defaultAmmo === MEDIUM).map((element) => element.name).sort().map((element) => {
                                     return (
                                         <div>
                                             <div className="drop-form">
@@ -887,7 +895,7 @@ const LoudoutRandomizer = () => {
                                     <input type={'checkbox'} className='checkbox' id={LONG} onClick={() => excludeAll(LONG, LONG)} />
                                     <p>{toggleLongAll ? 'None' : 'All'}</p>
                                 </div>
-                                {weaponsMasterList.filter((item) => item.defaultAmmo === LONG).map((element) => element.name).sort().map((element) => {
+                                {weaponsFilterList.filter((item) => item.defaultAmmo === LONG).map((element) => element.name).sort().map((element) => {
                                     return (
                                         <div>
                                             <div className="drop-form">
@@ -903,7 +911,7 @@ const LoudoutRandomizer = () => {
                                     <input type={'checkbox'} className='checkbox' id={SHOTGUN} onClick={() => excludeAll(SHOTGUN, SHOTGUN)} />
                                     <p>{toggleShotgunAll ? 'None' : 'All'}</p>
                                 </div>
-                                {weaponsMasterList.filter((item) => item.defaultAmmo === SHOTGUN).map((element) => element.name).sort().map((element) => {
+                                {weaponsFilterList.filter((item) => item.defaultAmmo === SHOTGUN).map((element) => element.name).sort().map((element) => {
                                     return (
                                         <div>
                                             <div className="drop-form">
@@ -919,7 +927,7 @@ const LoudoutRandomizer = () => {
                                     <input type={'checkbox'} className='checkbox' id={SPECIAL} onClick={() => excludeAll(SPECIAL, SPECIAL)} />
                                     <p>{toggleSpecialAll ? 'None' : 'All'}</p>
                                 </div>
-                                {weaponsMasterList.filter((item) => item.defaultAmmo === SPECIAL).map((element) => element.name).sort().map((element) => {
+                                {weaponsFilterList.filter((item) => item.defaultAmmo === SPECIAL).map((element) => element.name).sort().map((element) => {
                                     return (
                                         <div>
                                             <div className="drop-form">
@@ -935,7 +943,7 @@ const LoudoutRandomizer = () => {
                                     <input type={'checkbox'} className='checkbox' id={MELEE} onClick={() => excludeAll(MELEE, MELEE)} />
                                     <p>{toggleMeleeAll ? 'None' : 'All'}</p>
                                 </div>
-                                {weaponsMasterList.filter((item) => item.defaultAmmo === MELEE).map((element) => element.name).sort().map((element) => {
+                                {weaponsFilterList.filter((item) => item.defaultAmmo === MELEE).map((element) => element.name).sort().map((element) => {
                                     return (
                                         <div>
                                             <div className="drop-form">
@@ -1011,7 +1019,7 @@ const LoudoutRandomizer = () => {
                 </div>
                 {/* Loudout Container */}
                 <div className="loudout-container">
-                    {console.log(weaponOne)}
+                    {console.log(weaponsPool)}
                     <h4 className="test">Primary Weapon</h4>
                     <div className="weapon-slot-container">
                         <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
