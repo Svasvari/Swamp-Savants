@@ -11,6 +11,12 @@ import About from './Pages/About';
 function App() {
 
   const [screenID, setScreenID] = useState(1);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  let doc = document.getElementById('menu-check');
+  if (doc) {
+    doc.checked = '';
+  }
 
   const handleDot1 = (screenID) => {
     let dot1 = document.getElementById('dot1');
@@ -89,18 +95,35 @@ function App() {
     setScreenID(3);
   }
 
+  window.onresize = (event) => {
+    setInnerWidth(window.innerWidth);
+  };
+
   return (
     <div className='main'>
-      {console.log(screenID)}
       <nav className="navigationWrapper">
         <div className="logoWrapper" onClick={() => handleDot1(screenID)}>
-          <span className="stylish">Swamp</span>
+          <span className="stylish" >Swamp</span>
           <span className="logo">Savant</span>
         </div>
-        <ul className="navigation">
-          <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot2(screenID)}>Loadout Randomizer</li>
-          <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot3(screenID)}>About</li>
-        </ul>
+        {window.innerWidth > 650 ?
+          <ul className="navigation">
+            <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot2(screenID)}>Loadout Randomizer</li>
+            <li className={screenID === 1 ? ("parent") : ('parent2')} onClick={() => handleDot3(screenID)}>About</li>
+          </ul>
+          :
+          <div id="menuToggle" >
+            <input id='menu-check' type="checkbox" />
+            <span style={screenID !== 1 ? { background: '#fff' } : {}}></span>
+            <span style={screenID !== 1 ? { background: '#fff' } : {}}></span>
+            <span style={screenID !== 1 ? { background: '#fff' } : {}}></span>
+            <ul id="menu">
+              <li onClick={() => { handleDot1(screenID) }}>Home</li>
+              <li onClick={() => handleDot2(screenID)}>Loudout Randomizer</li>
+              <li onClick={() => handleDot3(screenID)}>About</li>
+            </ul>
+          </div>
+        }
       </nav>
       <div id="page2">
         <LoudoutRandomizer />
