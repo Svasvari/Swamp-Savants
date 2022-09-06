@@ -145,7 +145,7 @@ li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 200px;
+  margin-top: -3%;
 }
 
 .Deck h3 {
@@ -729,7 +729,7 @@ li {
 /* Loading Circle */
 .right-container {
   min-width: 500px;
-  height: 800px;
+  height: 860px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -900,7 +900,7 @@ li {
 .left-container {
   min-width: 500px;
   width: 100%;
-  height: 810px;
+  height: 870px;
   background-color: rgb(128, 128, 128, 0.1);
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -963,7 +963,7 @@ li {
 
 .exclusion {
   color: red;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .dropdown {
@@ -1140,6 +1140,44 @@ li {
   opacity: 0%;
 }
 
+/* RANGE SLIDER */
+.hunter-rank {
+  color: white;
+}
+
+#range-slider {
+  width: 80%;
+  accent-color: red;
+}
+
+.slider-diamond {
+  position: absolute;
+  left: 90%;
+  width: 50px;
+  height: 50px;
+  margin: 0px auto;
+  border: 2px solid red;
+  transform: rotate(45deg);
+}
+
+.slider-output {
+  position: absolute;
+  left: 91%;
+  width: 40px;
+  color: red;
+  font-weight: bolder;
+  font-size: x-large;
+  text-align: center;
+}
+
+.slider-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
 /* Window Resize - Medium */
 @media screen and (max-width: 1700px) {
 
@@ -1157,6 +1195,16 @@ li {
 
 /* Window Resize - Small */
 @media screen and (max-width: 530px) {
+
+  .slider-diamond {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .slider-output {
+    left: 88%;
+    font-size: 12px;
+  }
 
   .slider .navigations {
     min-width: 3vw;
