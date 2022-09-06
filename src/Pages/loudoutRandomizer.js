@@ -1002,60 +1002,65 @@ const LoudoutRandomizer = () => {
                         </div>
                     </div>
                 </div>
+                <hr className='divider' />
                 {/* Loudout Container */}
-                <div className="loudout-container">
-                    {console.log(weaponsPool)}
-                    <h4 className="test">Primary Weapon</h4>
-                    <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && weaponOne === '' ? <div id="loader"></div> : ''}
+                <div className="loudout-outer-container">
+                    <div className="loudout-container">
+                        {console.log(weaponsPool)}
+                        <h4 className="test">Primary Weapon</h4>
+                        <div className="weapon-slot-container">
+                            <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && weaponOne === '' ? <div id="loader"></div> : ''}
+                                {/* <div id="loader"></div> */}
+                            </div>
+                            <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo.image === undefined && weaponOneAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? weaponOneAmmo2.image : weaponOneAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            </div>
+                            <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo2.image === undefined || weaponOneAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? '' : weaponOneAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            </div>
                         </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo.image === undefined && weaponOneAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? weaponOneAmmo2.image : weaponOneAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <h4 className="test">Secondary Weapon</h4>
+                        <div className="weapon-slot-container">
+                            <div className="weapon-slot" style={(repeat && generating) || weaponTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo !== undefined ? weaponTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo.image === undefined && weaponTwoAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? weaponTwoAmmo2.image : weaponTwoAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            </div>
+                            <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo2.image === undefined || weaponTwoAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? '' : weaponTwoAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                            </div>
                         </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo2.image === undefined || weaponOneAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? '' : weaponOneAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
+                        <h4 className="test">Tools</h4>
+                        <div className="tool-slot-container">
+                            <div className="tool-slot" style={(repeat && generating) || toolOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne !== undefined ? toolOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && toolOne === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="tool-slot" style={(repeat && generating) || toolTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo !== undefined ? toolTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && toolTwo === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="tool-slot" style={(repeat && generating) || toolThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree !== undefined ? toolThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && toolThree === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="tool-slot" style={(repeat && generating) || toolFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour !== undefined ? toolFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && toolFour === '' ? <div id="loader"></div> : ''}
+                            </div>
                         </div>
-                    </div>
-                    <h4 className="test">Secondary Weapon</h4>
-                    <div className="weapon-slot-container">
-                        <div className="weapon-slot" style={(repeat && generating) || weaponTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwo !== undefined ? weaponTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && weaponTwo === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo.image === undefined && weaponTwoAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? weaponTwoAmmo2.image : weaponTwoAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                        </div>
-                        <div className="ammo-slot" style={(repeat && generating) || (weaponTwoAmmo2.image === undefined || weaponTwoAmmo.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponTwoAmmo.image === undefined ? '' : weaponTwoAmmo2.image})`, borderColor: 'rgb(128, 128, 128)' }}>
-                        </div>
-                    </div>
-                    <h4 className="test">Tools</h4>
-                    <div className="tool-slot-container">
-                        <div className="tool-slot" style={(repeat && generating) || toolOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolOne !== undefined ? toolOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolOne === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolTwo !== undefined ? toolTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolTwo === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolThree !== undefined ? toolThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolThree === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || toolFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${toolFour !== undefined ? toolFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && toolFour === '' ? <div id="loader"></div> : ''}
-                        </div>
-                    </div>
-                    <h4 className="test">Consumables</h4>
-                    <div className="tool-slot-container">
-                        <div className="tool-slot" style={(repeat && generating) || consumableOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne !== undefined ? consumableOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableOne === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo !== undefined ? consumableTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableTwo === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree !== undefined ? consumableThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableThree === '' ? <div id="loader"></div> : ''}
-                        </div>
-                        <div className="tool-slot" style={(repeat && generating) || consumableFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour !== undefined ? consumableFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
-                            {generating && consumableFour === '' ? <div id="loader"></div> : ''}
+                        <h4 className="test">Consumables</h4>
+                        <div className="tool-slot-container">
+                            <div className="tool-slot" style={(repeat && generating) || consumableOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableOne !== undefined ? consumableOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && consumableOne === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="tool-slot" style={(repeat && generating) || consumableTwo === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableTwo !== undefined ? consumableTwo.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && consumableTwo === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="tool-slot" style={(repeat && generating) || consumableThree === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableThree !== undefined ? consumableThree.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && consumableThree === '' ? <div id="loader"></div> : ''}
+                            </div>
+                            <div className="tool-slot" style={(repeat && generating) || consumableFour === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${consumableFour !== undefined ? consumableFour.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
+                                {generating && consumableFour === '' ? <div id="loader"></div> : ''}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <hr className='divider' />
                 {/* RIGHT CONTAINER */}
                 <div className="right-container">
                     <div className="loading-box">
@@ -1080,6 +1085,7 @@ const LoudoutRandomizer = () => {
                     </div>
                 </div>
             </div>
+            <div style={{ color: 'rgb(245, 245, 245)', minHeight: '150px', minWidth: '100px', opacity: '20%' }} ></div>
         </div>
 
 
