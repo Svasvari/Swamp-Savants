@@ -597,6 +597,8 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
         setWeaponsPool(weaponsMasterList);
         setToolPool(tools);
         setConsumablePool(consumables);
+        document.getElementById('range-slider').value = 100;
+        setSliderValue(100);
     }
 
     const filterByRank = () => {
@@ -920,6 +922,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
 
     return (
         <div className="Deck">
+            {console.log(weaponsPool)}
             <div className="scroll-indicator-top">
                 <div className="top" onClick={() => handleDot1(2)}></div>
             </div>
