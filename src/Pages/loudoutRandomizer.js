@@ -437,7 +437,6 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             }
         } else if (type === LONG) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
-            console.log(tempArr)
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
@@ -1102,7 +1101,6 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                 {/* Loudout Container */}
                 <div className="loudout-outer-container">
                     <div className="loudout-container">
-                        {console.log(weaponsMasterList)}
                         <h4 className="test">Primary Weapon</h4>
                         <div className="weapon-slot-container">
                             <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
