@@ -398,14 +398,18 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setToggleCompactAll(true);
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== COMPACT));
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setToggleCompactAll(false);
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === COMPACT)));
@@ -415,31 +419,40 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== MEDIUM));
                 setToggleMediumAll(true);
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === MEDIUM)));
                 setToggleMediumAll(false);
             }
         } else if (type === LONG) {
             let tempArr = weaponsMasterList.filter(item => item.defaultAmmo === type)
+            console.log(tempArr)
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== LONG));
                 setToggleLongAll(true);
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === LONG)));
                 setToggleLongAll(false);
@@ -449,14 +462,18 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== SHOTGUN));
                 setToggleShotgunAll(true);
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === SHOTGUN)));
                 setToggleShotgunAll(false);
@@ -466,14 +483,18 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== SPECIAL));
                 setToggleSpecialAll(true);
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === SPECIAL)));
                 setToggleSpecialAll(false);
@@ -483,14 +504,18 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setWeaponsPool(weaponsPool.filter((item) => item.defaultAmmo !== MELEE));
                 setToggleMeleeAll(true);
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setWeaponsPool([].concat(weaponsPool, weaponsMasterList.filter((item) => item.defaultAmmo === MELEE)));
                 setToggleMeleeAll(false);
@@ -499,14 +524,18 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tools.length; i++) {
                     checkbox = document.getElementById(tools[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setToolPool([]);
                 setToggleToolAll(true);
             } else {
                 for (let i = 0; i < tools.length; i++) {
                     checkbox = document.getElementById(tools[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setToolPool(tools);
                 setToggleToolAll(false);
@@ -516,14 +545,18 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < consumables.length; i++) {
                     checkbox = document.getElementById(consumables[i].name);
-                    checkbox.checked = true;
+                    if(checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 setConsumablePool([]);
                 setToggleConsumableAll(true);
             } else {
                 for (let i = 0; i < consumables.length; i++) {
                     checkbox = document.getElementById(consumables[i].name);
-                    checkbox.checked = false;
+                    if(checkbox) {
+                        checkbox.checked = false;
+                    }
                 }
                 setConsumablePool(consumables);
                 setToggleConsumableAll(false);
@@ -816,6 +849,9 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
 
     return (
         <div className="Deck">
+            <div className="scroll-indicator-top">
+                <div className="top" onClick={() => handleDot1(2)}></div>
+            </div>
             <h3 className="loudout-title">
                 <span role="img">♢</span>Loudout Randomizer<span role="img">♢</span>
                 <h4 className="loudout-subtitle">
@@ -863,7 +899,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                             <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
                         </div>
                     </div>
-                    <h4><span style={{ color: 'white', fontSize: '16px' }}>BLOODLINE RANK</span></h4>
+                    <h4><span id='bloodline' style={{ color: 'white', fontSize: '16px' }}>BLOODLINE RANK</span></h4>
                     <div className="slider-form">
                         <input type="range" min="1" max="100" defaultValue='100' id='range-slider' onChange={() => filterByRank()} />
                         <div className="slider-diamond"></div>
@@ -1066,10 +1102,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                 {/* Loudout Container */}
                 <div className="loudout-outer-container">
                     <div className="loudout-container">
-                        {console.log(sliderValue)}
-                        {console.log(weaponsPool)}
-                        {console.log(removedRankWeapons)}
-                        {console.log(toolPool)}
+                        {console.log(weaponsMasterList)}
                         <h4 className="test">Primary Weapon</h4>
                         <div className="weapon-slot-container">
                             <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
@@ -1147,9 +1180,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                     </div>
                 </div>
             </div>
-            <div className="scroll-indicator-top">
-                <div className="top" onClick={() => handleDot1(2)}></div>
-            </div>
+            
             <div className="scroll-indicator-bottom">
                 <div className="bottom" onClick={() => handleDot3(2)}></div>
             </div>
