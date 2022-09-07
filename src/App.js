@@ -1,9 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Parallax from "parallax-js";
-import React, { useRef, useEffect, useState } from "react";
-import $ from 'jquery'
-
+import React, { useState } from "react";
 import Landing from './Pages/Landing';
 import LoudoutRandomizer from './Pages/loudoutRandomizer';
 import About from './Pages/About';

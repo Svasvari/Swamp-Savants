@@ -272,6 +272,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
     const [customAmmo, setCustomAmmo] = useState(false);
     const [fixedMedkit, setFixedMedkit] = useState(false);
     const [fixedMeleeTool, setFixedMeleeTool] = useState(false);
+    const [maxWeaponSize, setMaxWeaponSize] = useState(false);
 
     //Weapons
     const [weaponOne, setWeaponOne] = useState('');
@@ -398,7 +399,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -407,7 +408,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -419,7 +420,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -428,7 +429,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -440,7 +441,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -449,7 +450,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -461,7 +462,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -470,7 +471,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -482,7 +483,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -491,7 +492,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -503,7 +504,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -512,7 +513,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tempArr.length; i++) {
                     checkbox = document.getElementById(tempArr[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -523,7 +524,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < tools.length; i++) {
                     checkbox = document.getElementById(tools[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -532,7 +533,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < tools.length; i++) {
                     checkbox = document.getElementById(tools[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -544,7 +545,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             if (checkbox.checked) {
                 for (let i = 0; i < consumables.length; i++) {
                     checkbox = document.getElementById(consumables[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = true;
                     }
                 }
@@ -553,7 +554,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             } else {
                 for (let i = 0; i < consumables.length; i++) {
                     checkbox = document.getElementById(consumables[i].name);
-                    if(checkbox) {
+                    if (checkbox) {
                         checkbox.checked = false;
                     }
                 }
@@ -576,6 +577,26 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
 
             }
         }
+    }
+
+    const clearAllExclusions = () => {
+        let arr1 = [].concat(weaponsMasterList, tools, consumables)
+        let arr2 = [COMPACT, MEDIUM,  LONG, SHOTGUN, SPECIAL, MELEE, 'tool', 'consumable', DEADEYE, MARKSMAN, SNIPER, 'weaponPair'];
+        for(let i = 0; i < arr1.length; i++) {
+            let checkbox = document.getElementById(arr1[i].name);
+            if(checkbox) {
+                checkbox.checked = false;
+            }
+        }
+        for(let j = 0; j < arr2.length; j++) {
+            let checkbox = document.getElementById(arr2[j]);
+            if(checkbox) {
+                checkbox.checked = false;
+            }
+        }
+        setWeaponsPool(weaponsMasterList);
+        setToolPool(tools);
+        setConsumablePool(consumables);
     }
 
     const filterByRank = () => {
@@ -670,6 +691,57 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
             }, timeoutStart + 1000);
 
             randomWeaponTwo = mediumWeapons[Math.floor(Math.random() * mediumWeapons.length)];
+            if (randomWeaponTwo !== undefined) {
+                randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[0][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[0].length)]))[0];
+                randomWeaponTwoAmmo = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+                if (randomWeaponTwo.extraAmmo === true) {
+                    randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[1][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[1].length)]))[0];
+                    randomWeaponTwoAmmo2 = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
+                }
+            }
+            setTimeout(() => {
+                setWeaponTwo(randomWeaponTwo);
+                playEquipSound();
+                consoleText(setW2, [randomWeaponTwo !== undefined ? randomWeaponTwo.name : ''], 'w2', 'w2c', ['white']);
+                setWeaponTwoAmmo(randomWeaponTwoAmmo);
+                setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
+            }, timeoutStart + 2000);
+
+        } else if (maxWeaponSize) {
+            let largeWeapons = weaponsPool.filter((weapon) => weapon.size === 'L');
+            let mediumWeapons = weaponsPool.filter((weapon) => weapon.size === 'M');
+            let smallWeapons = weaponsPool.filter((weapon) => weapon.size === 'S');
+
+            //Roll Weapon One - Max Weapon Size
+            if (largeWeapons.length > 0) {
+                randomWeaponOne = largeWeapons[Math.floor(Math.random() * largeWeapons.length)];
+            } else if (mediumWeapons.length > 0) {
+                randomWeaponOne = mediumWeapons[Math.floor(Math.random() * mediumWeapons.length)];
+            } else {
+                randomWeaponOne = smallWeapons[Math.floor(Math.random() * smallWeapons.length)];
+            }
+            if (randomWeaponOne !== undefined) {
+                randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[0][Math.floor(Math.random() * randomWeaponOne.specialAmmo[0].length)]))[0];
+                randomWeaponOneAmmo = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+                if (randomWeaponOne.extraAmmo === true) {
+                    randomWeaponOneAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponOne.specialAmmo[1][Math.floor(Math.random() * randomWeaponOne.specialAmmo[1].length)]))[0];
+                    randomWeaponOneAmmo2 = customAmmo ? (randomWeaponOneAmmoImg === undefined ? '' : randomWeaponOneAmmoImg) : '';
+                }
+            }
+            setTimeout(() => {
+                setWeaponOne(randomWeaponOne);
+                playEquipSound();
+                consoleText(setW1, [randomWeaponOne !== undefined ? randomWeaponOne.name : ''], 'w1', 'w1c', ['white']);
+                setWeaponOneAmmo(randomWeaponOneAmmo);
+                setWeaponOneAmmo2(randomWeaponOneAmmo2);
+            }, timeoutStart + 1000);
+
+            //Roll Weapon Two - Max Weapon Size
+            if ((mediumWeapons.length > 0) && (randomWeaponOne.size !== 'L')) {
+                randomWeaponTwo = mediumWeapons[Math.floor(Math.random() * mediumWeapons.length)];
+            } else {
+                randomWeaponTwo = smallWeapons[Math.floor(Math.random() * smallWeapons.length)];
+            }
             if (randomWeaponTwo !== undefined) {
                 randomWeaponTwoAmmoImg = specialAmmoImages.filter((ammo) => ammo.name === (randomWeaponTwo.specialAmmo[0][Math.floor(Math.random() * randomWeaponTwo.specialAmmo[0].length)]))[0];
                 randomWeaponTwoAmmo = customAmmo ? (randomWeaponTwoAmmoImg === undefined ? '' : randomWeaponTwoAmmoImg) : '';
@@ -873,6 +945,15 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                         <div className="form">
                             <div className="infoHelp">
                                 <div className="infoHelpDropdown">
+                                    <p>Loudout will prioritize using weapons with the largest slot sizes</p>
+                                </div>
+                            </div>
+                            <p className="optionLarge">Enable Max Weapon Size</p>
+                            <input type={'checkbox'} className='checkbox' onClick={() => setMaxWeaponSize(!maxWeaponSize)} />
+                        </div>
+                        <div className="form">
+                            <div className="infoHelp">
+                                <div className="infoHelpDropdown">
                                     <p>Loudout will always contain one large slot and one medium slot weapon</p>
                                 </div>
                             </div>
@@ -898,7 +979,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                             <input type={'checkbox'} className='checkbox' onClick={() => setFixedMeleeTool(!fixedMeleeTool)} />
                         </div>
                     </div>
-                    <h4><span id='bloodline' style={{ color: 'white', fontSize: '16px' }}>BLOODLINE RANK</span></h4>
+                    <h4 id='bloodline'>BLOODLINE RANK</h4>
                     <div className="slider-form">
                         <input type="range" min="1" max="100" defaultValue='100' id='range-slider' onChange={() => filterByRank()} />
                         <div className="slider-diamond"></div>
@@ -1096,6 +1177,9 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
 
                         </div>
                     </div>
+                    <div className="clear-button" onClick={() => clearAllExclusions() } >
+                        <h5>Clear All</h5>
+                    </div>
                 </div>
                 <hr className='divider' />
                 {/* Loudout Container */}
@@ -1178,7 +1262,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                     </div>
                 </div>
             </div>
-            
+
             <div className="scroll-indicator-bottom">
                 <div className="bottom" onClick={() => handleDot3(2)}></div>
             </div>
