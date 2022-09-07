@@ -1,8 +1,11 @@
 import React from 'react';
 
-const PrestigeRoulette = () => {
+const PrestigeRoulette = ({ handleDot2 }) => {
     return (
         <div className="Deck">
+            <div className="scroll-indicator-top-about">
+                <div className="top" onClick={() => handleDot2(3)}></div>
+            </div>
             <h3 className="about-title">
                 <span role="img">♢</span>About<span role="img">♢</span>
             </h3>
@@ -31,6 +34,11 @@ const PrestigeRoulette = () => {
                 Let <span>Swamp Savant's Loudout Randomizer</span> guide your hunts today.
             </p>
             <hr style={{ color: '#fff', width: '30%' }} />
+            <div className='disclaimer'>
+                <h4>! DISCLAIMER !</h4>
+                <p>All images and symbols that represent elements from the game are copyright of the Crytek group in the EU, U.S. and/or other territories.<br/>
+                    Visit <a href='https://www.huntshowdown.com/'>huntshowdown.com</a> or <a href='https://www.crytek.com/'>crytek.com</a> for more information.</p>
+            </div>
             <hr style={{ color: 'rgb(245, 245, 245)', width: '30%', opacity: '0%' }} />
             <hr style={{ color: 'rgb(245, 245, 245)', width: '30%', opacity: '0%' }} />
         </div>

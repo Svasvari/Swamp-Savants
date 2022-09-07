@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-const LoudoutRandomizer = () => {
+const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
 
     //Default Ammo Types
     const COMPACT = 'compact';
@@ -243,6 +243,7 @@ const LoudoutRandomizer = () => {
         function count() {
             if (load === 100) {
                 setGenerating(false);
+                playSuccessSound();
                 setLoadingText(<img className='repeat' src='https://res.cloudinary.com/dqcmy8k1n/image/upload/v1661865924/Tarot%20Cards/repeat_sor1y0.png' alt='' />);
                 setRepeat(true);
                 clearInterval(myInterval);
@@ -568,6 +569,18 @@ const LoudoutRandomizer = () => {
 
     }
 
+    const playEquipSound = () => {
+        var audio = new Audio('https://res.cloudinary.com/dqcmy8k1n/video/upload/v1662508503/Tarot%20Cards/item-equip-6904_el91ys.mp3');
+        audio.loop = false;
+        audio.play();
+    }
+
+    const playSuccessSound = () => {
+        var audio = new Audio('https://res.cloudinary.com/dqcmy8k1n/video/upload/v1662509426/Tarot%20Cards/success_bell-6776_vfcr0g.mp3');
+        audio.loop = false;
+        audio.play();
+    }
+
     //Generate Loudout
     const roll = () => {
         setGenerating(true);
@@ -618,6 +631,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setWeaponOne(randomWeaponOne);
+                playEquipSound();
                 consoleText(setW1, [randomWeaponOne !== undefined ? randomWeaponOne.name : ''], 'w1', 'w1c', ['white']);
                 setWeaponOneAmmo(randomWeaponOneAmmo);
                 setWeaponOneAmmo2(randomWeaponOneAmmo2);
@@ -634,6 +648,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
+                playEquipSound();
                 consoleText(setW2, [randomWeaponTwo !== undefined ? randomWeaponTwo.name : ''], 'w2', 'w2c', ['white']);
                 setWeaponTwoAmmo(randomWeaponTwoAmmo);
                 setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
@@ -652,6 +667,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setWeaponOne(randomWeaponOne);
+                playEquipSound();
                 consoleText(setW1, [randomWeaponOne !== undefined ? randomWeaponOne.name : ''], 'w1', 'w1c', ['white']);
                 setWeaponOneAmmo2(randomWeaponOneAmmo2);
             }, timeoutStart + 1000);
@@ -680,6 +696,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setWeaponTwo(randomWeaponTwo);
+                playEquipSound();
                 consoleText(setW2, [randomWeaponTwo !== undefined ? randomWeaponTwo.name : ''], 'w2', 'w2c', ['white']);
                 setWeaponTwoAmmo(randomWeaponTwoAmmo);
                 setWeaponTwoAmmo2(randomWeaponTwoAmmo2);
@@ -700,6 +717,7 @@ const LoudoutRandomizer = () => {
             currentToolPool = currentToolPool.filter((tool) => tool.name !== 'First Aid Kit');
             setTimeout(() => {
                 setToolOne(randomToolOne[0]);
+                playEquipSound();
                 consoleText(setT1, [randomToolOne[0].name], 't1', 't1c', ['white']);
             }, timeoutStart + 3000);
         } else {
@@ -709,6 +727,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setToolOne(randomToolOne);
+                playEquipSound();
                 consoleText(setT1, [randomToolOne !== undefined ? randomToolOne.name : ''], 't1', 't1c', ['white']);
             }, timeoutStart + 3000);
         }
@@ -721,6 +740,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setToolTwo(randomToolTwo);
+                playEquipSound();
                 consoleText(setT2, [randomToolTwo !== undefined ? randomToolTwo.name : ''], 't2', 't2c', ['white']);
             }, timeoutStart + 4000);
         } else {
@@ -730,6 +750,7 @@ const LoudoutRandomizer = () => {
             }
             setTimeout(() => {
                 setToolTwo(randomToolTwo);
+                playEquipSound();
                 consoleText(setT2, [randomToolTwo !== undefined ? randomToolTwo.name : ''], 't2', 't2c', ['white']);
             }, timeoutStart + 4000);
         }
@@ -738,6 +759,7 @@ const LoudoutRandomizer = () => {
         currentToolPool = currentToolPool.filter((tool) => tool.name !== randomToolThree.name);
         setTimeout(() => {
             setToolThree(randomToolThree);
+            playEquipSound();
             consoleText(setT3, [randomToolThree.name], 't3', 't3c', ['white']);
         }, timeoutStart + 5000);
 
@@ -745,6 +767,7 @@ const LoudoutRandomizer = () => {
         randomToolFour = currentToolPool[Math.floor(Math.random() * currentToolPool.length)];
         setTimeout(() => {
             setToolFour(randomToolFour);
+            playEquipSound();
             consoleText(setT4, [randomToolFour.name], 't4', 't4c', ['white']);
         }, timeoutStart + 6000);
 
@@ -759,6 +782,7 @@ const LoudoutRandomizer = () => {
         randomConsumableOne = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableOne(randomConsumableOne);
+            playEquipSound();
             consoleText(setC1, [randomConsumableOne !== undefined ? randomConsumableOne.name : ''], 'c1', 'c1c', ['white']);
         }, timeoutStart + 7000);
 
@@ -766,6 +790,7 @@ const LoudoutRandomizer = () => {
         randomConsumableTwo = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableTwo(randomConsumableTwo);
+            playEquipSound();
             consoleText(setC2, [randomConsumableTwo.name], 'c2', 'c2c', ['white']);
         }, timeoutStart + 8000);
 
@@ -774,6 +799,7 @@ const LoudoutRandomizer = () => {
         randomConsumableThree = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableThree(randomConsumableThree);
+            playEquipSound();
             consoleText(setC3, [randomConsumableThree.name], 'c3', 'c3c', ['white']);
         }, timeoutStart + 9000);
 
@@ -782,6 +808,7 @@ const LoudoutRandomizer = () => {
         randomConsumableFour = consumablePool[Math.floor(Math.random() * consumablePool.length)];
         setTimeout(() => {
             setConsumableFour(randomConsumableFour);
+            playEquipSound();
             consoleText(setC4, [randomConsumableFour.name], 'c4', 'c4c', ['white']);
         }, timeoutStart + 10000);
 
@@ -1047,7 +1074,6 @@ const LoudoutRandomizer = () => {
                         <div className="weapon-slot-container">
                             <div className="weapon-slot" style={(repeat && generating) || weaponOne === '' ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOne !== undefined ? weaponOne.image : ''})`, borderColor: 'rgb(128, 128, 128)' }}>
                                 {generating && weaponOne === '' ? <div id="loader"></div> : ''}
-                                {/* <div id="loader"></div> */}
                             </div>
                             <div className="ammo-slot" style={(repeat && generating) || (weaponOneAmmo.image === undefined && weaponOneAmmo2.image === undefined) ? { borderColor: 'rgb(128, 128, 128, 0.1)' } : { backgroundImage: `url(${weaponOneAmmo.image === undefined ? weaponOneAmmo2.image : weaponOneAmmo.image})`, borderColor: 'rgb(128, 128, 128)' }}>
                             </div>
@@ -1120,6 +1146,12 @@ const LoudoutRandomizer = () => {
                         <div className='console-container'>Consumable 4:<span id='c4'>{c4}</span><div className='console-underscore' id='c4c'>&#95;</div></div>
                     </div>
                 </div>
+            </div>
+            <div className="scroll-indicator-top">
+                <div className="top" onClick={() => handleDot1(2)}></div>
+            </div>
+            <div className="scroll-indicator-bottom">
+                <div className="bottom" onClick={() => handleDot3(2)}></div>
             </div>
             <div style={{ color: 'rgb(245, 245, 245)', minHeight: '150px', minWidth: '100px', opacity: '20%' }} ></div>
         </div>

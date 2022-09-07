@@ -125,35 +125,17 @@ function App() {
           </div>
         }
       </nav>
-      <div id="page2">
-        <LoudoutRandomizer />
+      <div id="page2" style={screenID !== 2 ? { opacity: '0%' } : {}}>
+        <LoudoutRandomizer handleDot1={handleDot1} handleDot3={handleDot3} />
       </div>
       <div id="page3" >
-        <About />
+        <About handleDot2={handleDot2} />
       </div>
       <div id="page1">
         <Landing />
         <div className="wrapper">
           <div className="btn_fab" onClick={() => handleDot2(screenID)}>Enter</div>
         </div>
-      </div>
-      <div className="scroll-indicator-top">
-        <div className="top" style={screenID === 1 ? { visibility: 'hidden' } : {}} onClick={() => {
-          if (screenID === 2) {
-            handleDot1(screenID);
-          } else if (screenID === 3) {
-            handleDot2(screenID);
-          }
-        }}></div>
-      </div>
-      <div className="scroll-indicator-bottom">
-        <div className="bottom" style={screenID !== 2 ? { visibility: 'hidden' } : {}} onClick={() => {
-          if (screenID === 1) {
-            handleDot2(screenID);
-          } else if (screenID === 2) {
-            handleDot3(screenID);
-          }
-        }}></div>
       </div>
       <div className="slider">
         <div className="items-group">

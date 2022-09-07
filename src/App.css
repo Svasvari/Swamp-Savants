@@ -781,7 +781,16 @@ li {
 /* Scroll Indicator */
 .scroll-indicator-top {
   position: absolute;
-  top: 120px;
+  top: 5px;
+  left: 0px;
+  z-index: 1000;
+  width: 100%;
+
+}
+
+.scroll-indicator-top-about {
+  position: absolute;
+  top: 170px;
   left: 0px;
   z-index: 1000;
   width: 100%;
@@ -804,7 +813,7 @@ li {
 
 .scroll-indicator-bottom {
   position: absolute;
-  bottom: 120px;
+  bottom: 100px;
   left: 0px;
   z-index: 1000;
   width: 100%;
@@ -1229,7 +1238,7 @@ li {
 /* ABOUT PAGE */
 .about-title {
   text-align: center;
-  margin-top: 180px;
+  margin-top: 200px;
 }
 
 .about-p {
@@ -1253,6 +1262,43 @@ li {
 .divider {
   color: #fff;
   opacity: 0%;
+}
+
+.disclaimer {
+  width: 70%;
+  height: 100%;
+  max-height: 400px;
+  background-color: rgb(128, 128, 128, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: rgb(128, 128, 128, 0.1);
+  border-width: 5px;
+  border-radius: 10px;
+  padding: 0.5%;
+  margin-top: 2%;
+}
+
+.disclaimer h4 {
+  color: red;
+}
+
+.disclaimer p {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+
+.disclaimer a {
+  text-decoration: none;
+  color: white;
+}
+
+.disclaimer a:hover {
+  color: red;
 }
 
 /* RANGE SLIDER */
@@ -1293,6 +1339,8 @@ li {
   width: 80%;
 }
 
+
+
 /* Window Resize - Medium */
 @media screen and (max-width: 1700px) {
 
@@ -1306,10 +1354,26 @@ li {
     margin-bottom: 3%;
   }
 
+  .scroll-indicator-bottom {
+    position: absolute;
+    top: 2775px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+  }
+
 }
 
 /* Window Resize - Small */
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 700px) {
+
+  .scroll-indicator-bottom {
+    position: absolute;
+    top: 2900px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+  }
 
   .slider-diamond {
     width: 30px;
