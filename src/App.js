@@ -116,7 +116,7 @@ function App() {
             <span style={screenID !== 1 ? { background: '#fff' } : {}}></span>
             <ul id="menu">
               <li onClick={() => { handleDot1(screenID) }}>Home</li>
-              <li onClick={() => handleDot2(screenID)}>Loudout Randomizer</li>
+              <li onClick={() => handleDot2(screenID)}>Loadout Randomizer</li>
               <li onClick={() => handleDot3(screenID)}>About</li>
             </ul>
           </div>

@@ -11,11 +11,11 @@ const PrestigeRoulette = ({ handleDot2 }) => {
             </h3>
             <hr style={{ color: '#fff', width: '30%' }} />
             <p className="about-p">
-                Have you ever thought to yourself that <span>Hunt: Showdown</span> was too easy?<br /><br />Perhaps you are simply tired of using the same old loudouts game after game?
+                Have you ever thought to yourself that <span>Hunt: Showdown</span> was too easy?<br /><br />Perhaps you are simply tired of using the same old loadouts game after game?
             </p>
             <p className="about-p">
-                Whether you are seeking a new challenge, or trying to fight off burn-out, <span>Swamp Savant's Loudout Randomizer</span> can help you re-imagine and re-invigorate your gameplay.<br /><br />
-                With various customization options available to choose from, you can tailor your expereince however you like in order to get the most out of your loudout.
+                Whether you are seeking a new challenge, or trying to fight off burn-out, <span>Swamp Savant's Loadout Randomizer</span> can help you re-imagine and re-invigorate your gameplay.<br /><br />
+                With various customization options available to choose from, you can tailor your expereince however you like in order to get the most out of your loadout.
             </p>
             <p className="about-p">
                 Don't enjoy using sniper scopes? No worries, neither do I. With just a few clicks, it's like they don't even exist.
@@ -31,7 +31,7 @@ const PrestigeRoulette = ({ handleDot2 }) => {
                 You can fine-tune your experience or leave it completely up to fate.
             </p>
             <p className="about-p">
-                Let <span>Swamp Savant's Loudout Randomizer</span> guide your hunts today.
+                Let <span>Swamp Savant's Loadout Randomizer</span> guide your hunts today.
             </p>
             <hr style={{ color: '#fff', width: '30%' }} />
             <div className='disclaimer'>

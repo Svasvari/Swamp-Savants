@@ -927,7 +927,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                 <div className="top" onClick={() => handleDot1(2)}></div>
             </div>
             <h3 className="loudout-title">
-                <span role="img">♢</span>Loudout Randomizer<span role="img">♢</span>
+                <span role="img">♢</span>Loadout Randomizer<span role="img">♢</span>
                 <h4 className="loudout-subtitle">
                     A <span>Randomized</span> Loadout Generator
                 </h4>
@@ -948,7 +948,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                         <div className="form">
                             <div className="infoHelp">
                                 <div className="infoHelpDropdown">
-                                    <p>Loudout will prioritize using weapons with the largest slot sizes</p>
+                                    <p>Loadout will prioritize using weapons with the largest slot sizes</p>
                                 </div>
                             </div>
                             <p className="optionLarge">Enable Max Weapon Size</p>
@@ -957,7 +957,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                         <div className="form">
                             <div className="infoHelp">
                                 <div className="infoHelpDropdown">
-                                    <p>Loudout will always contain one large slot and one medium slot weapon</p>
+                                    <p>Loadout will always contain one large slot and one medium slot weapon</p>
                                 </div>
                             </div>
                             <p className="optionLarge">Enable Quartermaster</p>
@@ -966,7 +966,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                         <div className="form">
                             <div className="infoHelp">
                                 <div className="infoHelpDropdown">
-                                    <p>Loudout will always contain a First Aid Kit</p>
+                                    <p>Loadout will always contain a First Aid Kit</p>
                                 </div>
                             </div>
                             <p className="optionLarge">Enable Fixed Medkit</p>
@@ -975,7 +975,7 @@ const LoudoutRandomizer = ({ handleDot1, handleDot3 }) => {
                         <div className="form">
                             <div className="infoHelp">
                                 <div className="infoHelpDropdown">
-                                    <p>Loudout will always contain a melee tool</p>
+                                    <p>Loadout will always contain a melee tool</p>
                                 </div>
                             </div>
                             <p className="optionLarge">Enable Fixed Melee Tool</p>
